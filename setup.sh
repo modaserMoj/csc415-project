@@ -6,10 +6,11 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
 # ---------- 1. Python virtual environment ----------
-if [ ! -d "env" ]; then
-    python3 -m venv env
+if [ ! -d ".venv" ]; then
+    pip install --user virtualenv
+    python3 -m virtualenv .venv
 fi
-source env/bin/activate
+source .venv/bin/activate
 
 # ---------- 2. Clone TinyZero ----------
 if [ ! -d "TinyZero" ]; then
@@ -32,6 +33,6 @@ mkdir -p logs
 
 echo ""
 echo "=== Setup complete ==="
-echo "Activate with:  source env/bin/activate"
+echo "Activate with:  source .venv/bin/activate"
 echo "Prepare data:   python data/prepare_data.py --dataset countdown --local_dir data/countdown"
 echo "Run Phase 1:    export BASE_MODEL=Qwen/Qwen2.5-1.5B DATA_DIR=data/countdown && bash phase1/scripts/train_phase1.sh"
