@@ -1,16 +1,27 @@
 #!/usr/bin/env bash
 # One-time setup: clone TinyZero, create venv, install everything.
+# Venv goes on /virtual (local disk with 131GB) to avoid NFS home quota limits.
 set -euxo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
-# ---------- 1. Python virtual environment ----------
-if [ ! -d ".venv" ]; then
+VENV_DIR="/virtual/$(whoami)/csc415/venv"
+
+# ---------- 1. Python virtual environment (on local disk) ----------
+mkdir -p "$(dirname "$VENV_DIR")"
+if [ ! -d "$VENV_DIR" ]; then
     pip install --user virtualenv
-    python3 -m virtualenv .venv
+    python3 -m virtualenv "$VENV_DIR"
 fi
-source .venv/bin/activate
+source "$VENV_DIR/bin/activate"
+
+# Symlink so other scripts can use .venv as a shortcut
+ln -sfn "$VENV_DIR" .venv
+
+# Point pip cache to local disk too
+export PIP_CACHE_DIR="/virtual/$(whoami)/csc415/pip-cache"
+mkdir -p "$PIP_CACHE_DIR"
 
 # ---------- 2. Clone TinyZero ----------
 if [ ! -d "TinyZero" ]; then
@@ -33,6 +44,8 @@ mkdir -p logs
 
 echo ""
 echo "=== Setup complete ==="
-echo "Activate with:  source .venv/bin/activate"
-echo "Prepare data:   python data/prepare_data.py --dataset countdown --local_dir data/countdown"
-echo "Run Phase 1:    export BASE_MODEL=Qwen/Qwen2.5-1.5B DATA_DIR=data/countdown && bash phase1/scripts/train_phase1.sh"
+echo "Venv location: $VENV_DIR"
+echo "Activate with:  source $VENV_DIR/bin/activate"
+echo "  (or:          source .venv/bin/activate)"
+echo "Prepare data:   python data/prepare_data.py --dataset phase1_mix --local_dir data/phase1_mix"
+echo "Run Phase 1:    export BASE_MODEL=Qwen/Qwen2.5-1.5B DATA_DIR=data/phase1_mix && bash phase1/scripts/train_phase1.sh"
