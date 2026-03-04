@@ -18,7 +18,7 @@ python phase1/main_phase1.py \
     --eval_file "$DATA_DIR/test.parquet" \
     --output_dir checkpoints/phase1 \
     --num_epochs 3 \
-    --batch_size 4 \
+    --batch_size 5 \
     --grad_accum 4 \
     --num_generations 5 \
     --max_prompt_length 512 \
