@@ -27,7 +27,15 @@ def make_rnd_reward_fn(rnd_config: dict):
     _step = {"n": 0}
 
     def rnd_reward(completions, **kwargs):
-        rewards, metrics = rnd.compute_rewards(completions)
+        texts = []
+        for c in completions:
+            if isinstance(c, list):
+                texts.append(c[-1]["content"] if c else "")
+            elif isinstance(c, dict):
+                texts.append(c.get("content", str(c)))
+            else:
+                texts.append(str(c))
+        rewards, metrics = rnd.compute_rewards(texts)
         _step["n"] += 1
         if _step["n"] % 10 == 0:
             print(f"[RND step {_step['n']}] {metrics}")
