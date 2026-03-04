@@ -7,6 +7,8 @@ set -euxo pipefail
 : "${BASE_MODEL:=Qwen/Qwen2.5-0.5B}"
 : "${DATA_DIR:=data/phase1_mix}"
 
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+
 PROJECT_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 cd "$PROJECT_ROOT"
 mkdir -p logs
@@ -22,7 +24,7 @@ python phase1/main_phase1.py \
     --grad_accum 4 \
     --num_generations 5 \
     --max_prompt_length 512 \
-    --max_completion_length 512 \
+    --max_completion_length 256 \
     --beta 0.001 \
     --lr 1e-6 \
     --save_steps 50 \

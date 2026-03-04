@@ -93,6 +93,7 @@ def main():
         beta=args.beta,
         learning_rate=args.lr,
         gradient_checkpointing=True,
+        optim="adafactor",
         bf16=True,
         save_steps=args.save_steps,
         logging_steps=args.logging_steps,
