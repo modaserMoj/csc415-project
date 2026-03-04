@@ -139,6 +139,7 @@ class RNDModule:
 
     def _update_predictor(self, embeddings: torch.Tensor) -> float:
         self.predictor.train()
+        embeddings = embeddings.detach().clone()
         with torch.no_grad():
             target_feat = self.target(embeddings)
         pred_feat = self.predictor(embeddings)
