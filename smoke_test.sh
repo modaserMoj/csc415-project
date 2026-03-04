@@ -35,7 +35,7 @@ python -c "
 import torch
 assert torch.cuda.is_available(), 'No CUDA GPU detected'
 name = torch.cuda.get_device_name(0)
-mem = torch.cuda.get_device_properties(0).total_mem / 1e9
+mem = torch.cuda.get_device_properties(0).total_memory / 1e9
 print(f'{name}  {mem:.1f} GB')
 " || fail "GPU check failed"
 pass "GPU accessible"
