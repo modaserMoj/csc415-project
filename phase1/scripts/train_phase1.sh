@@ -57,7 +57,7 @@ python phase1/main_phase1.py \
     critic.fsdp_config.param_offload=True \
     critic.fsdp_config.grad_offload=True \
     critic.fsdp_config.optimizer_offload=True \
-    trainer.logger="['console','wandb']" \
+    trainer.logger="['console']" \
     +trainer.val_before_train=False \
     trainer.default_hdfs_dir=null \
     trainer.n_gpus_per_node="$N_GPUS" \
