@@ -29,7 +29,7 @@ python phase1/main_phase1.py \
     data.val_files="$DATA_DIR/test.parquet" \
     data.train_batch_size=128 \
     data.val_batch_size=128 \
-    data.max_prompt_length=256 \
+    data.max_prompt_length=512 \
     data.max_response_length=1024 \
     actor_rollout_ref.model.path="$BASE_MODEL" \
     actor_rollout_ref.model.use_remove_padding=True \
