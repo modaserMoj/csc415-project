@@ -14,6 +14,7 @@
 set -euxo pipefail
 
 export VLLM_ATTENTION_BACKEND=XFORMERS
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 
 : "${N_GPUS:=1}"
 : "${ROLLOUT_TP_SIZE:=1}"
@@ -44,19 +45,12 @@ python phase1/main_phase1.py \
     actor_rollout_ref.actor.fsdp_config.grad_offload=True \
     actor_rollout_ref.rollout.log_prob_micro_batch_size=4 \
     actor_rollout_ref.rollout.tensor_model_parallel_size="$ROLLOUT_TP_SIZE" \
-    actor_rollout_ref.rollout.gpu_memory_utilization=0.35 \
+    actor_rollout_ref.rollout.gpu_memory_utilization=0.25 \
     actor_rollout_ref.rollout.n=5 \
     actor_rollout_ref.ref.log_prob_micro_batch_size=4 \
     actor_rollout_ref.ref.fsdp_config.param_offload=True \
     algorithm.adv_estimator=grpo \
     algorithm.kl_ctrl.kl_coef=0.001 \
-    critic.optim.lr=1e-5 \
-    critic.model.path="$BASE_MODEL" \
-    critic.ppo_micro_batch_size=4 \
-    critic.model.enable_gradient_checkpointing=True \
-    critic.fsdp_config.param_offload=True \
-    critic.fsdp_config.grad_offload=True \
-    critic.fsdp_config.optimizer_offload=True \
     trainer.logger="['console']" \
     +trainer.val_before_train=False \
     trainer.default_hdfs_dir=null \

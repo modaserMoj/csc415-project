@@ -53,15 +53,15 @@ def main_task(config):
     local_path = copy_local_path_from_hdfs(config.actor_rollout_ref.model.path)
     tokenizer = hf_tokenizer(local_path)
 
-    # ---- worker setup (mirrors TinyZero's main_ppo.py) ----
+    # ---- worker setup ----
+    # GRPO does not use a learned critic (advantages come from group reward
+    # statistics), so we intentionally omit Role.Critic to save ~3 GB VRAM.
     if config.actor_rollout_ref.actor.strategy == "fsdp":
-        assert config.actor_rollout_ref.actor.strategy == config.critic.strategy
-        from verl.workers.fsdp_workers import ActorRolloutRefWorker, CriticWorker
+        from verl.workers.fsdp_workers import ActorRolloutRefWorker
         from verl.single_controller.ray import RayWorkerGroup
         ray_worker_group_cls = RayWorkerGroup
     elif config.actor_rollout_ref.actor.strategy == "megatron":
-        assert config.actor_rollout_ref.actor.strategy == config.critic.strategy
-        from verl.workers.megatron_workers import ActorRolloutRefWorker, CriticWorker
+        from verl.workers.megatron_workers import ActorRolloutRefWorker
         from verl.single_controller.ray.megatron import NVMegatronRayWorkerGroup
         ray_worker_group_cls = NVMegatronRayWorkerGroup
     else:
@@ -69,7 +69,6 @@ def main_task(config):
 
     role_worker_mapping = {
         Role.ActorRollout: ray.remote(ActorRolloutRefWorker),
-        Role.Critic: ray.remote(CriticWorker),
         Role.RefPolicy: ray.remote(ActorRolloutRefWorker),
     }
 
@@ -79,7 +78,6 @@ def main_task(config):
     }
     mapping = {
         Role.ActorRollout: global_pool_id,
-        Role.Critic: global_pool_id,
         Role.RefPolicy: global_pool_id,
     }
 
