@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # Quick smoke test (~5 min) to verify everything works before a full run.
-# Tests: venv, imports, data prep, GPU access, and a tiny training dry-run.
 set -euo pipefail
 
 PROJECT_ROOT="$(cd "$(dirname "$0")" && pwd)"
@@ -22,10 +21,10 @@ pass "venv activated"
 # ---------- 2. Python imports ----------
 echo "=== 2/6  Checking imports ==="
 python -c "
-import torch, vllm, ray, hydra, omegaconf, pandas
+import torch, trl, accelerate, pandas
 from sentence_transformers import SentenceTransformer
-from verl import DataProto
-print(f'torch {torch.__version__}  cuda {torch.cuda.is_available()}  vllm {vllm.__version__}')
+from trl import GRPOTrainer, GRPOConfig
+print(f'torch {torch.__version__}  cuda {torch.cuda.is_available()}  trl {trl.__version__}')
 " || fail "Import check failed"
 pass "all imports OK"
 

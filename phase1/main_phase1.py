@@ -1,116 +1,111 @@
 """
 Phase 1 entry point: Cognitive Pretraining with GRPO + RND.
 
-Trains the base LLM using group-relative policy optimisation where the *only*
-reward signal is RND prediction error (curiosity / novelty).  A KL penalty
-against the base model keeps generations coherent.
+Trains a base LLM using TRL's GRPOTrainer where the *only* reward signal
+is RND prediction error (curiosity / novelty).  A KL penalty against
+the base model keeps generations coherent.
 
 Usage:
-    python phase1/main_phase1.py           \
-        actor_rollout_ref.model.path=...   \
-        data.train_files=...               \
-        data.val_files=...                 \
-        +rnd.device=cuda                   \
-        ...                                \
-        (any veRL/TinyZero override)
-
-The Hydra config is loaded from TinyZero's default ppo_trainer.yaml;
-all Phase-1-specific defaults are overridden in scripts/train_phase1.sh.
+    python phase1/main_phase1.py \
+        --model Qwen/Qwen2.5-0.5B \
+        --train_file data/phase1_mix/train.parquet \
+        --eval_file data/phase1_mix/test.parquet
 """
 
-import ray
-import hydra
+import argparse
 
-from phase1.rnd_reward_manager import RNDRewardManager
+import pandas as pd
+from datasets import Dataset
+from trl import GRPOTrainer, GRPOConfig
 
-
-@hydra.main(config_path="config", config_name="phase1_trainer", version_base=None)
-def main(config):
-    if not ray.is_initialized():
-        ray.init(
-            runtime_env={
-                "env_vars": {
-                    "TOKENIZERS_PARALLELISM": "true",
-                    "NCCL_DEBUG": "WARN",
-                }
-            }
-        )
-    ray.get(main_task.remote(config))
+from phase1.rnd_module import RNDModule
 
 
-@ray.remote
-def main_task(config):
-    from pprint import pprint
+def make_rnd_reward_fn(rnd_config: dict):
+    """Create a TRL-compatible reward function backed by an RND module."""
+    rnd = RNDModule(**rnd_config)
+    _step = {"n": 0}
 
-    from omegaconf import OmegaConf
-    from verl.utils.fs import copy_local_path_from_hdfs
-    from verl.utils import hf_tokenizer
-    from verl.trainer.ppo.ray_trainer import RayPPOTrainer, ResourcePoolManager, Role
+    def rnd_reward(completions, **kwargs):
+        rewards, metrics = rnd.compute_rewards(completions)
+        _step["n"] += 1
+        if _step["n"] % 10 == 0:
+            print(f"[RND step {_step['n']}] {metrics}")
+        return rewards.tolist()
 
-    pprint(OmegaConf.to_container(config, resolve=True))
-    OmegaConf.resolve(config)
+    rnd_reward._rnd_module = rnd
+    return rnd_reward
 
-    local_path = copy_local_path_from_hdfs(config.actor_rollout_ref.model.path)
-    tokenizer = hf_tokenizer(local_path)
 
-    # ---- worker setup ----
-    # GRPO does not use a learned critic (advantages come from group reward
-    # statistics), so we intentionally omit Role.Critic to save ~3 GB VRAM.
-    if config.actor_rollout_ref.actor.strategy == "fsdp":
-        from verl.workers.fsdp_workers import ActorRolloutRefWorker
-        from verl.single_controller.ray import RayWorkerGroup
-        ray_worker_group_cls = RayWorkerGroup
-    elif config.actor_rollout_ref.actor.strategy == "megatron":
-        from verl.workers.megatron_workers import ActorRolloutRefWorker
-        from verl.single_controller.ray.megatron import NVMegatronRayWorkerGroup
-        ray_worker_group_cls = NVMegatronRayWorkerGroup
-    else:
-        raise NotImplementedError
+def main():
+    parser = argparse.ArgumentParser(description="Phase 1: GRPO + RND pretraining")
+    parser.add_argument("--model", default="Qwen/Qwen2.5-0.5B")
+    parser.add_argument("--train_file", required=True)
+    parser.add_argument("--eval_file", required=True)
+    parser.add_argument("--output_dir", default="checkpoints/phase1")
+    parser.add_argument("--num_epochs", type=int, default=3)
+    parser.add_argument("--batch_size", type=int, default=4)
+    parser.add_argument("--grad_accum", type=int, default=4)
+    parser.add_argument("--num_generations", type=int, default=5)
+    parser.add_argument("--max_prompt_length", type=int, default=512)
+    parser.add_argument("--max_completion_length", type=int, default=512)
+    parser.add_argument("--beta", type=float, default=0.001,
+                        help="KL penalty coefficient against reference model")
+    parser.add_argument("--lr", type=float, default=1e-6)
+    parser.add_argument("--save_steps", type=int, default=50)
+    parser.add_argument("--logging_steps", type=int, default=1)
 
-    role_worker_mapping = {
-        Role.ActorRollout: ray.remote(ActorRolloutRefWorker),
-        Role.RefPolicy: ray.remote(ActorRolloutRefWorker),
+    parser.add_argument("--rnd_device", default="cpu")
+    parser.add_argument("--rnd_reward_scale", type=float, default=1.0)
+    parser.add_argument("--rnd_reward_norm", default="batch")
+    parser.add_argument("--rnd_embedding_model", default="all-MiniLM-L6-v2")
+    args = parser.parse_args()
+
+    train_df = pd.read_parquet(args.train_file)
+    eval_df = pd.read_parquet(args.eval_file)
+    train_dataset = Dataset.from_pandas(train_df[["prompt"]])
+    eval_dataset = Dataset.from_pandas(eval_df[["prompt"]])
+
+    rnd_config = {
+        "embedding_model": args.rnd_embedding_model,
+        "device": args.rnd_device,
+        "reward_scale": args.rnd_reward_scale,
+        "reward_norm": args.rnd_reward_norm,
     }
+    reward_fn = make_rnd_reward_fn(rnd_config)
 
-    global_pool_id = "global_pool"
-    resource_pool_spec = {
-        global_pool_id: [config.trainer.n_gpus_per_node] * config.trainer.nnodes,
-    }
-    mapping = {
-        Role.ActorRollout: global_pool_id,
-        Role.RefPolicy: global_pool_id,
-    }
-
-    if config.reward_model.enable:
-        if config.reward_model.strategy == "fsdp":
-            from verl.workers.fsdp_workers import RewardModelWorker
-        elif config.reward_model.strategy == "megatron":
-            from verl.workers.megatron_workers import RewardModelWorker
-        else:
-            raise NotImplementedError
-        role_worker_mapping[Role.RewardModel] = ray.remote(RewardModelWorker)
-        mapping[Role.RewardModel] = global_pool_id
-
-    # ---- RND reward function (the Phase 1 novelty) ----
-    rnd_cfg = OmegaConf.to_container(config.get("rnd", {}), resolve=True) or {}
-    reward_fn = RNDRewardManager(tokenizer=tokenizer, rnd_config=rnd_cfg, num_examine=0)
-    val_reward_fn = RNDRewardManager(tokenizer=tokenizer, rnd_config=rnd_cfg, num_examine=1)
-
-    resource_pool_manager = ResourcePoolManager(
-        resource_pool_spec=resource_pool_spec, mapping=mapping,
+    training_args = GRPOConfig(
+        output_dir=args.output_dir,
+        num_train_epochs=args.num_epochs,
+        per_device_train_batch_size=args.batch_size,
+        gradient_accumulation_steps=args.grad_accum,
+        num_generations=args.num_generations,
+        max_prompt_length=args.max_prompt_length,
+        max_completion_length=args.max_completion_length,
+        beta=args.beta,
+        learning_rate=args.lr,
+        gradient_checkpointing=True,
+        bf16=True,
+        save_steps=args.save_steps,
+        logging_steps=args.logging_steps,
+        report_to="none",
+        save_total_limit=3,
+        temperature=1.0,
     )
 
-    trainer = RayPPOTrainer(
-        config=config,
-        tokenizer=tokenizer,
-        role_worker_mapping=role_worker_mapping,
-        resource_pool_manager=resource_pool_manager,
-        ray_worker_group_cls=ray_worker_group_cls,
-        reward_fn=reward_fn,
-        val_reward_fn=val_reward_fn,
+    trainer = GRPOTrainer(
+        model=args.model,
+        args=training_args,
+        reward_funcs=reward_fn,
+        train_dataset=train_dataset,
+        eval_dataset=eval_dataset,
     )
-    trainer.init_workers()
-    trainer.fit()
+    trainer.train()
+    trainer.save_model()
+
+    rnd_module = reward_fn._rnd_module
+    rnd_module.save(f"{args.output_dir}/rnd_checkpoint.pt")
+    print(f"RND checkpoint saved to {args.output_dir}/rnd_checkpoint.pt")
 
 
 if __name__ == "__main__":

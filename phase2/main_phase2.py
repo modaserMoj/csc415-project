@@ -5,104 +5,75 @@ Loads the Phase 1 checkpoint (diverse-reasoning model) and fine-tunes it
 on specific tasks where reward = 1 for correct answers, 0 otherwise.
 
 Usage:
-    python phase2/main_phase2.py                          \
-        actor_rollout_ref.model.path=<phase1_checkpoint>  \
-        data.train_files=...                              \
-        data.val_files=...
+    python phase2/main_phase2.py \
+        --model checkpoints/phase1 \
+        --train_file data/countdown/train.parquet \
+        --eval_file data/countdown/test.parquet
 """
 
-import ray
-import hydra
+import argparse
 
-from phase2.reward_manager import CorrectnessRewardManager
+import pandas as pd
+from datasets import Dataset
+from trl import GRPOTrainer, GRPOConfig
 
-
-@hydra.main(config_path="config", config_name="phase2_trainer", version_base=None)
-def main(config):
-    if not ray.is_initialized():
-        ray.init(
-            runtime_env={
-                "env_vars": {
-                    "TOKENIZERS_PARALLELISM": "true",
-                    "NCCL_DEBUG": "WARN",
-                }
-            }
-        )
-    ray.get(main_task.remote(config))
+from phase2.reward_manager import correctness_reward
 
 
-@ray.remote
-def main_task(config):
-    from pprint import pprint
+def main():
+    parser = argparse.ArgumentParser(description="Phase 2: GRPO + correctness fine-tuning")
+    parser.add_argument("--model", required=True,
+                        help="Phase 1 checkpoint path or HF model id (for baseline)")
+    parser.add_argument("--train_file", required=True)
+    parser.add_argument("--eval_file", required=True)
+    parser.add_argument("--output_dir", default="checkpoints/phase2")
+    parser.add_argument("--num_epochs", type=int, default=3)
+    parser.add_argument("--batch_size", type=int, default=4)
+    parser.add_argument("--grad_accum", type=int, default=4)
+    parser.add_argument("--num_generations", type=int, default=5)
+    parser.add_argument("--max_prompt_length", type=int, default=512)
+    parser.add_argument("--max_completion_length", type=int, default=512)
+    parser.add_argument("--beta", type=float, default=0.001)
+    parser.add_argument("--lr", type=float, default=1e-6)
+    parser.add_argument("--save_steps", type=int, default=50)
+    parser.add_argument("--logging_steps", type=int, default=1)
+    args = parser.parse_args()
 
-    from omegaconf import OmegaConf
-    from verl.utils.fs import copy_local_path_from_hdfs
-    from verl.utils import hf_tokenizer
-    from verl.trainer.ppo.ray_trainer import RayPPOTrainer, ResourcePoolManager, Role
+    train_df = pd.read_parquet(args.train_file)
+    eval_df = pd.read_parquet(args.eval_file)
 
-    pprint(OmegaConf.to_container(config, resolve=True))
-    OmegaConf.resolve(config)
+    keep_cols = [c for c in ["prompt", "data_source", "reward_model"] if c in train_df.columns]
+    train_dataset = Dataset.from_pandas(train_df[keep_cols])
+    eval_dataset = Dataset.from_pandas(eval_df[keep_cols])
 
-    local_path = copy_local_path_from_hdfs(config.actor_rollout_ref.model.path)
-    tokenizer = hf_tokenizer(local_path)
-
-    if config.actor_rollout_ref.actor.strategy == "fsdp":
-        assert config.actor_rollout_ref.actor.strategy == config.critic.strategy
-        from verl.workers.fsdp_workers import ActorRolloutRefWorker, CriticWorker
-        from verl.single_controller.ray import RayWorkerGroup
-        ray_worker_group_cls = RayWorkerGroup
-    elif config.actor_rollout_ref.actor.strategy == "megatron":
-        assert config.actor_rollout_ref.actor.strategy == config.critic.strategy
-        from verl.workers.megatron_workers import ActorRolloutRefWorker, CriticWorker
-        from verl.single_controller.ray.megatron import NVMegatronRayWorkerGroup
-        ray_worker_group_cls = NVMegatronRayWorkerGroup
-    else:
-        raise NotImplementedError
-
-    role_worker_mapping = {
-        Role.ActorRollout: ray.remote(ActorRolloutRefWorker),
-        Role.Critic: ray.remote(CriticWorker),
-        Role.RefPolicy: ray.remote(ActorRolloutRefWorker),
-    }
-
-    global_pool_id = "global_pool"
-    resource_pool_spec = {
-        global_pool_id: [config.trainer.n_gpus_per_node] * config.trainer.nnodes,
-    }
-    mapping = {
-        Role.ActorRollout: global_pool_id,
-        Role.Critic: global_pool_id,
-        Role.RefPolicy: global_pool_id,
-    }
-
-    if config.reward_model.enable:
-        if config.reward_model.strategy == "fsdp":
-            from verl.workers.fsdp_workers import RewardModelWorker
-        elif config.reward_model.strategy == "megatron":
-            from verl.workers.megatron_workers import RewardModelWorker
-        else:
-            raise NotImplementedError
-        role_worker_mapping[Role.RewardModel] = ray.remote(RewardModelWorker)
-        mapping[Role.RewardModel] = global_pool_id
-
-    reward_fn = CorrectnessRewardManager(tokenizer=tokenizer, num_examine=0)
-    val_reward_fn = CorrectnessRewardManager(tokenizer=tokenizer, num_examine=1)
-
-    resource_pool_manager = ResourcePoolManager(
-        resource_pool_spec=resource_pool_spec, mapping=mapping,
+    training_args = GRPOConfig(
+        output_dir=args.output_dir,
+        num_train_epochs=args.num_epochs,
+        per_device_train_batch_size=args.batch_size,
+        gradient_accumulation_steps=args.grad_accum,
+        num_generations=args.num_generations,
+        max_prompt_length=args.max_prompt_length,
+        max_completion_length=args.max_completion_length,
+        beta=args.beta,
+        learning_rate=args.lr,
+        gradient_checkpointing=True,
+        bf16=True,
+        save_steps=args.save_steps,
+        logging_steps=args.logging_steps,
+        report_to="none",
+        save_total_limit=3,
+        temperature=1.0,
     )
 
-    trainer = RayPPOTrainer(
-        config=config,
-        tokenizer=tokenizer,
-        role_worker_mapping=role_worker_mapping,
-        resource_pool_manager=resource_pool_manager,
-        ray_worker_group_cls=ray_worker_group_cls,
-        reward_fn=reward_fn,
-        val_reward_fn=val_reward_fn,
+    trainer = GRPOTrainer(
+        model=args.model,
+        args=training_args,
+        reward_funcs=correctness_reward,
+        train_dataset=train_dataset,
+        eval_dataset=eval_dataset,
     )
-    trainer.init_workers()
-    trainer.fit()
+    trainer.train()
+    trainer.save_model()
 
 
 if __name__ == "__main__":

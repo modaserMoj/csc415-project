@@ -1,64 +1,111 @@
 """
-Phase 2 Reward Manager — standard correctness-based rewards.
+Phase 2 scoring functions — standalone correctness checking.
 
-Takes the Phase 1 checkpoint (a model trained for diverse reasoning via RND)
-and fine-tunes it with outcome-based rewards:
-    correct answer → reward = 1
-    wrong answer   → reward = 0
-
-This is essentially the same RewardManager that TinyZero ships with, but
-centralised here so the two phases share a consistent project layout.
+Each function takes the model's completion text and a ground-truth value,
+returning 1.0 for correct and 0.0 for incorrect.  These replace the veRL
+scoring utilities so we have no TinyZero dependency.
 """
 
-import torch
-from verl import DataProto
-from verl.utils.reward_score import gsm8k, math, countdown
+import json
+import re
 
 
-def _get_score_fn(data_source: str):
-    if data_source == "openai/gsm8k":
-        return gsm8k.compute_score
-    if data_source == "lighteval/MATH":
-        return math.compute_score
-    if "countdown" in data_source:
-        return countdown.compute_score
-    raise NotImplementedError(f"No scoring function for data_source={data_source}")
+def score_countdown(completion: str, ground_truth: dict) -> float:
+    """Check if the completion contains a valid equation reaching the target."""
+    target = ground_truth["target"]
+    numbers = ground_truth["numbers"]
+
+    # Look for an equation pattern like "23 + 45 - 12 + 8 = 64"
+    equation_match = re.search(r"([\d\s\+\-\*\/\(\)]+)=\s*(\d+)", completion)
+    if not equation_match:
+        return 0.0
+
+    expr = equation_match.group(1).strip()
+    try:
+        result = eval(expr, {"__builtins__": {}})
+    except Exception:
+        return 0.0
+
+    if abs(result - target) > 1e-6:
+        return 0.0
+
+    # Verify only allowed numbers are used
+    used_numbers = sorted([int(n) for n in re.findall(r"\d+", expr)])
+    allowed_numbers = sorted(numbers)
+    if used_numbers != allowed_numbers:
+        return 0.0
+
+    return 1.0
 
 
-class CorrectnessRewardManager:
-    """Reward = 1 if the model's final answer matches ground truth, else 0."""
+def score_gsm8k(completion: str, ground_truth: str) -> float:
+    """Check if the completion contains the correct final numeric answer.
 
-    def __init__(self, tokenizer, num_examine: int = 0):
-        self.tokenizer = tokenizer
-        self.num_examine = num_examine
+    GSM8K convention: the answer appears after '####' or as the last number.
+    """
+    gt = ground_truth.strip().replace(",", "")
 
-    def __call__(self, data: DataProto) -> torch.Tensor:
-        reward_tensor = torch.zeros_like(data.batch["responses"], dtype=torch.float32)
-        printed: dict[str, int] = {}
+    # Look for #### marker first
+    marker = completion.rfind("####")
+    if marker != -1:
+        answer_text = completion[marker + 4:].strip()
+        answer_text = answer_text.replace(",", "").split()[0] if answer_text else ""
+        if answer_text == gt:
+            return 1.0
 
-        for i in range(len(data)):
-            item = data[i]
+    # Fallback: match the last number in the completion
+    all_nums = re.findall(r"-?\d[\d,]*\.?\d*", completion.replace(",", ""))
+    if all_nums and all_nums[-1] == gt:
+        return 1.0
 
-            prompt_ids = item.batch["prompts"]
-            prompt_len = prompt_ids.shape[-1]
-            valid_prompt_len = item.batch["attention_mask"][:prompt_len].sum()
-            valid_prompt_ids = prompt_ids[-valid_prompt_len:]
+    return 0.0
 
-            response_ids = item.batch["responses"]
-            valid_resp_len = item.batch["attention_mask"][prompt_len:].sum()
-            valid_resp_ids = response_ids[:valid_resp_len]
 
-            full_text = self.tokenizer.decode(torch.cat((valid_prompt_ids, valid_resp_ids)))
-            ground_truth = item.non_tensor_batch["reward_model"]["ground_truth"]
-            data_source = item.non_tensor_batch["data_source"]
+def score_math(completion: str, ground_truth: str) -> float:
+    r"""Check if the completion contains the correct answer in \boxed{}.
 
-            score = _get_score_fn(data_source)(solution_str=full_text, ground_truth=ground_truth)
-            reward_tensor[i, int(valid_resp_len) - 1] = score
+    Simple string matching after normalising whitespace.  This won't catch
+    all equivalent LaTeX forms but works for the majority of MATH problems.
+    """
+    gt = ground_truth.strip()
 
-            if data_source not in printed:
-                printed[data_source] = 0
-            if printed[data_source] < self.num_examine:
-                printed[data_source] += 1
-                print(full_text)
+    # Extract all \boxed{...} contents
+    boxed = re.findall(r"\\boxed\{([^}]+)\}", completion)
+    if not boxed:
+        # Fallback: check if gt appears literally in the last line
+        last_line = completion.strip().split("\n")[-1]
+        return 1.0 if gt in last_line else 0.0
 
-        return reward_tensor
+    predicted = boxed[-1].strip()
+    return 1.0 if predicted == gt else 0.0
+
+
+SCORE_FNS = {
+    "countdown": score_countdown,
+    "openai/gsm8k": score_gsm8k,
+    "lighteval/MATH": score_math,
+    "nlile/hendrycks-MATH-benchmark": score_math,
+}
+
+
+def correctness_reward(prompts, completions, data_source, reward_model, **kwargs):
+    """TRL-compatible reward function for Phase 2 correctness scoring."""
+    rewards = []
+    for prompt, completion, ds, rm_raw in zip(prompts, completions, data_source, reward_model):
+        rm = json.loads(rm_raw) if isinstance(rm_raw, str) else rm_raw
+        gt = rm["ground_truth"]
+
+        score_fn = None
+        for key, fn in SCORE_FNS.items():
+            if key in ds:
+                score_fn = fn
+                break
+
+        if score_fn is None:
+            rewards.append(0.0)
+            continue
+
+        full_text = prompt + completion
+        rewards.append(score_fn(full_text, gt))
+
+    return rewards
