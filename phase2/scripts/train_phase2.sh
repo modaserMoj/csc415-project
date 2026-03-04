@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Phase 2: Task Fine-tuning with GRPO + correctness reward
+# Tuned for: 1x RTX 4080 (16 GB VRAM), Qwen2.5-0.5B
 #
 # Required env vars:
 #   BASE_MODEL   — path to Phase 1 checkpoint (or HF model for baseline comparison)
@@ -13,6 +14,7 @@
 set -euxo pipefail
 
 export VLLM_ATTENTION_BACKEND=XFORMERS
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 
 : "${N_GPUS:=1}"
 : "${ROLLOUT_TP_SIZE:=1}"
@@ -20,6 +22,7 @@ export VLLM_ATTENTION_BACKEND=XFORMERS
 
 PROJECT_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 cd "$PROJECT_ROOT"
+mkdir -p logs
 
 PYTHONPATH="$PROJECT_ROOT:${PYTHONPATH:-}" \
 python phase2/main_phase2.py \
@@ -27,7 +30,7 @@ python phase2/main_phase2.py \
     data.val_files="$DATA_DIR/test.parquet" \
     data.train_batch_size=256 \
     data.val_batch_size=256 \
-    data.max_prompt_length=256 \
+    data.max_prompt_length=1024 \
     data.max_response_length=1024 \
     actor_rollout_ref.model.path="$BASE_MODEL" \
     actor_rollout_ref.model.use_remove_padding=True \
@@ -41,15 +44,13 @@ python phase2/main_phase2.py \
     actor_rollout_ref.actor.kl_loss_type=low_var_kl \
     actor_rollout_ref.rollout.log_prob_micro_batch_size=8 \
     actor_rollout_ref.rollout.tensor_model_parallel_size="$ROLLOUT_TP_SIZE" \
-    actor_rollout_ref.rollout.gpu_memory_utilization=0.4 \
+    actor_rollout_ref.rollout.gpu_memory_utilization=0.5 \
     actor_rollout_ref.rollout.n=5 \
-    actor_rollout_ref.ref.log_prob_micro_batch_size=4 \
+    actor_rollout_ref.ref.log_prob_micro_batch_size=8 \
+    actor_rollout_ref.ref.fsdp_config.param_offload=True \
     algorithm.adv_estimator=grpo \
     algorithm.kl_ctrl.kl_coef=0.001 \
-    critic.optim.lr=1e-5 \
-    critic.model.path="$BASE_MODEL" \
-    critic.ppo_micro_batch_size=8 \
-    trainer.logger="['console','wandb']" \
+    trainer.logger="['console']" \
     +trainer.val_before_train=False \
     trainer.default_hdfs_dir=null \
     trainer.n_gpus_per_node="$N_GPUS" \

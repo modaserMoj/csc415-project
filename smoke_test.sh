@@ -61,10 +61,10 @@ pass "test dataset created (100 samples)"
 echo "=== 6/6  Checking model access ==="
 python -c "
 from transformers import AutoTokenizer
-tok = AutoTokenizer.from_pretrained('Qwen/Qwen2.5-1.5B', trust_remote_code=True)
+tok = AutoTokenizer.from_pretrained('Qwen/Qwen2.5-0.5B', trust_remote_code=True)
 print(f'tokenizer vocab size: {tok.vocab_size}')
-" || fail "Cannot download Qwen2.5-1.5B — check internet / HF access"
-pass "Qwen2.5-1.5B accessible"
+" || fail "Cannot download Qwen2.5-0.5B — check internet / HF access"
+pass "Qwen2.5-0.5B accessible"
 
 echo ""
 echo -e "${GREEN}=== All checks passed! Ready for training. ===${NC}"
@@ -72,6 +72,6 @@ echo ""
 echo "Next steps:"
 echo "  tmux new -s phase1"
 echo "  source .venv/bin/activate"
-echo "  export BASE_MODEL=Qwen/Qwen2.5-1.5B"
+echo "  export BASE_MODEL=Qwen/Qwen2.5-0.5B"
 echo "  export DATA_DIR=data/phase1_mix"
 echo "  bash phase1/scripts/train_phase1.sh"

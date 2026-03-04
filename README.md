@@ -45,7 +45,7 @@ source .venv/bin/activate
 python data/prepare_data.py --dataset phase1_mix --local_dir data/phase1_mix
 
 # 3. Phase 1 — curiosity-driven pretraining on all three datasets
-export BASE_MODEL=Qwen/Qwen2.5-1.5B
+export BASE_MODEL=Qwen/Qwen2.5-0.5B
 export DATA_DIR=data/phase1_mix
 bash phase1/scripts/train_phase1.sh
 
@@ -88,5 +88,6 @@ bash phase2/scripts/train_phase2.sh
 
 ## GPU requirements
 
-- **1 GPU**: works for models ≤ 1.5B (Qwen2.5-0.5B, Qwen2.5-1.5B)
+- **1× 16 GB GPU**: Qwen2.5-0.5B (recommended — fits comfortably)
+- **1× 24 GB+ GPU**: Qwen2.5-1.5B
 - **2+ GPUs**: needed for 3B+ models (set `N_GPUS` and `ROLLOUT_TP_SIZE`)
