@@ -50,7 +50,7 @@ class RNDModule:
         hidden_dim: int = 256,
         rnd_output_dim: int = 128,
         predictor_lr: float = 1e-4,
-        device: str = "cuda",
+        device: str = "cpu",
         reward_scale: float = 1.0,
         reward_norm: str = "batch",
     ):

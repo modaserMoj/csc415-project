@@ -73,5 +73,6 @@ python phase1/main_phase1.py \
     rnd.rnd_output_dim=128 \
     rnd.predictor_lr=1e-4 \
     rnd.reward_scale=1.0 \
+    rnd.device=cpu \
     rnd.reward_norm=batch \
     2>&1 | tee logs/phase1_train.log
