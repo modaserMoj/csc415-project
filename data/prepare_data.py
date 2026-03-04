@@ -110,7 +110,7 @@ def prepare_math(local_dir: str):
     from datasets import load_dataset
 
     os.makedirs(local_dir, exist_ok=True)
-    ds = load_dataset("nlile/hendrycks-MATH-benchmark", trust_remote_code=True)
+    ds = load_dataset("nlile/hendrycks-MATH-benchmark")
 
     def format_split(split):
         rows = []
@@ -172,6 +172,12 @@ def prepare_phase1_mix(local_dir: str, countdown_size: int = 10_000, num_operand
     gsm_train, gsm_test = _collect_rows(prepare_gsm8k)
     print("Preparing MATH …")
     math_train, math_test = _collect_rows(prepare_math)
+
+    # JSON-serialize reward_model so all datasets have the same column type.
+    # (Countdown ground_truth is a dict, GSM8K/MATH is a string — can't mix in parquet.)
+    # Phase 1 (RND) doesn't read this column; Phase 2 uses single-dataset parquets.
+    for df in [cd_train, cd_test, gsm_train, gsm_test, math_train, math_test]:
+        df["reward_model"] = df["reward_model"].apply(json.dumps)
 
     train_df = pd.concat([cd_train, gsm_train, math_train], ignore_index=True).sample(frac=1, random_state=42)
     test_df = pd.concat([cd_test, gsm_test, math_test], ignore_index=True).sample(frac=1, random_state=42)
