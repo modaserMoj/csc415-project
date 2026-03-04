@@ -18,3 +18,4 @@ data/math/
 data/phase1_mix/
 *.parquet
 .env
+temp.txt

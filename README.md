@@ -77,14 +77,14 @@ bash phase2/scripts/train_phase2.sh
 
 ## Key hyperparameters
 
-| Parameter | Phase 1 | Phase 2 |
-|-----------|---------|---------|
-| Reward | RND prediction error | Correctness (0/1) |
-| `algorithm.adv_estimator` | `grpo` | `grpo` |
-| `rollout.n` (group size) | 5 | 5 |
-| `kl_loss_coef` | 0.001 | 0.001 |
-| `rnd.hidden_dim` | 256 | — |
-| `rnd.reward_norm` | batch | — |
+| Parameter                 | Phase 1              | Phase 2           |
+| ------------------------- | -------------------- | ----------------- |
+| Reward                    | RND prediction error | Correctness (0/1) |
+| `algorithm.adv_estimator` | `grpo`               | `grpo`            |
+| `rollout.n` (group size)  | 5                    | 5                 |
+| `kl_loss_coef`            | 0.001                | 0.001             |
+| `rnd.hidden_dim`          | 256                  | —                 |
+| `rnd.reward_norm`         | batch                | —                 |
 
 ## GPU requirements
 

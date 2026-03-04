@@ -110,7 +110,7 @@ def prepare_math(local_dir: str):
     from datasets import load_dataset
 
     os.makedirs(local_dir, exist_ok=True)
-    ds = load_dataset("lighteval/MATH", "all")
+    ds = load_dataset("nlile/hendrycks-MATH-benchmark", trust_remote_code=True)
 
     def format_split(split):
         rows = []
