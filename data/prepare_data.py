@@ -24,7 +24,19 @@ import json
 import os
 import random
 
+import numpy as np
 import pandas as pd
+
+
+class _NumpyEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        if isinstance(obj, (np.integer,)):
+            return int(obj)
+        if isinstance(obj, (np.floating,)):
+            return float(obj)
+        return super().default(obj)
 
 
 def prepare_countdown(local_dir: str, num_operands: int = 4, size: int = 490_000, test_size: int = 10_000):
@@ -177,7 +189,7 @@ def prepare_phase1_mix(local_dir: str, countdown_size: int = 10_000, num_operand
     # (Countdown ground_truth is a dict, GSM8K/MATH is a string — can't mix in parquet.)
     # Phase 1 (RND) doesn't read this column; Phase 2 uses single-dataset parquets.
     for df in [cd_train, cd_test, gsm_train, gsm_test, math_train, math_test]:
-        df["reward_model"] = df["reward_model"].apply(json.dumps)
+        df["reward_model"] = df["reward_model"].apply(lambda x: json.dumps(x, cls=_NumpyEncoder))
 
     train_df = pd.concat([cd_train, gsm_train, math_train], ignore_index=True).sample(frac=1, random_state=42)
     test_df = pd.concat([cd_test, gsm_test, math_test], ignore_index=True).sample(frac=1, random_state=42)
