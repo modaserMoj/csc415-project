@@ -7,7 +7,7 @@ the base model keeps generations coherent.
 
 Usage:
     python phase1/main_phase1.py \
-        --model Qwen/Qwen2.5-0.5B \
+        --model Qwen/Qwen2.5-1.5B \
         --train_file data/phase1_mix/train.parquet \
         --eval_file data/phase1_mix/test.parquet
 """
@@ -47,23 +47,25 @@ def make_rnd_reward_fn(rnd_config: dict):
 
 def main():
     parser = argparse.ArgumentParser(description="Phase 1: GRPO + RND pretraining")
-    parser.add_argument("--model", default="Qwen/Qwen2.5-0.5B")
+    parser.add_argument("--model", default="Qwen/Qwen2.5-1.5B")
     parser.add_argument("--train_file", required=True)
     parser.add_argument("--eval_file", required=True)
     parser.add_argument("--output_dir", default="checkpoints/phase1")
     parser.add_argument("--num_epochs", type=int, default=3)
-    parser.add_argument("--batch_size", type=int, default=4)
+    parser.add_argument("--batch_size", type=int, default=20)
     parser.add_argument("--grad_accum", type=int, default=4)
     parser.add_argument("--num_generations", type=int, default=5)
     parser.add_argument("--max_prompt_length", type=int, default=512)
     parser.add_argument("--max_completion_length", type=int, default=512)
-    parser.add_argument("--beta", type=float, default=0.001,
+    parser.add_argument("--beta", type=float, default=0.04,
                         help="KL penalty coefficient against reference model")
-    parser.add_argument("--lr", type=float, default=1e-6)
-    parser.add_argument("--save_steps", type=int, default=50)
+    parser.add_argument("--lr", type=float, default=5e-7)
+    parser.add_argument("--max_steps", type=int, default=-1,
+                        help="Stop after N optimizer steps (-1 = full epochs)")
+    parser.add_argument("--save_steps", type=int, default=200)
     parser.add_argument("--logging_steps", type=int, default=1)
 
-    parser.add_argument("--rnd_device", default="cpu")
+    parser.add_argument("--rnd_device", default="cuda")
     parser.add_argument("--rnd_reward_scale", type=float, default=1.0)
     parser.add_argument("--rnd_reward_norm", default="batch")
     parser.add_argument("--rnd_embedding_model", default="all-MiniLM-L6-v2")
@@ -85,6 +87,7 @@ def main():
     training_args = GRPOConfig(
         output_dir=args.output_dir,
         num_train_epochs=args.num_epochs,
+        max_steps=args.max_steps,
         per_device_train_batch_size=args.batch_size,
         gradient_accumulation_steps=args.grad_accum,
         num_generations=args.num_generations,
@@ -93,7 +96,6 @@ def main():
         beta=args.beta,
         learning_rate=args.lr,
         gradient_checkpointing=True,
-        optim="adafactor",
         bf16=True,
         save_steps=args.save_steps,
         logging_steps=args.logging_steps,

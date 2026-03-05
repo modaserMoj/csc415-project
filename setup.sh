@@ -1,43 +1,25 @@
 #!/usr/bin/env bash
-# One-time setup: create venv and install all dependencies.
-# Venv goes on /virtual (local disk) to avoid NFS home quota limits.
 set -euxo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
-VENV_DIR="/virtual/$(whoami)/csc415/venv"
-
-# ---------- 1. Python virtual environment (on local disk) ----------
-mkdir -p "$(dirname "$VENV_DIR")"
-if [ ! -d "$VENV_DIR" ]; then
-    pip install --user virtualenv
-    python3 -m virtualenv "$VENV_DIR"
-fi
-source "$VENV_DIR/bin/activate"
-
-ln -sfn "$VENV_DIR" .venv
-
-export PIP_CACHE_DIR="/virtual/$(whoami)/csc415/pip-cache"
-mkdir -p "$PIP_CACHE_DIR"
-
-# ---------- 2. Install PyTorch (CUDA 12.1) ----------
+# ---------- 1. Install project dependencies ----------
 pip install --upgrade pip
-pip install torch==2.4.0 --index-url https://download.pytorch.org/whl/cu121
-
-# ---------- 3. Install project dependencies ----------
 pip install -r requirements.txt
 
-# ---------- 4. Optional: flash-attn for faster training ----------
-TMPDIR="/virtual/$(whoami)/csc415/tmp" pip install flash-attn --no-build-isolation --no-cache-dir || \
-    echo "flash-attn install failed (optional — training will still work without it)"
+# ---------- 2. Prepare datasets ----------
+python data/prepare_data.py --dataset countdown  --local_dir data/countdown
+python data/prepare_data.py --dataset countdown3 --local_dir data/countdown3
+python data/prepare_data.py --dataset gsm8k      --local_dir data/gsm8k
+python data/prepare_data.py --dataset math       --local_dir data/math
+python data/prepare_data.py --dataset svamp      --local_dir data/svamp
+python data/prepare_data.py --dataset phase1_mix --local_dir data/phase1_mix
 
-# ---------- 5. Create log directory ----------
-mkdir -p logs
+# ---------- 3. Create directories ----------
+mkdir -p logs checkpoints
 
 echo ""
 echo "=== Setup complete ==="
-echo "Venv location: $VENV_DIR"
-echo "Activate with:  source .venv/bin/activate"
-echo "Prepare data:   python data/prepare_data.py --dataset phase1_mix --local_dir data/phase1_mix"
-echo "Run Phase 1:    bash phase1/scripts/train_phase1.sh"
+echo "Run Phase 1:  nohup bash phase1/scripts/train_phase1.sh > logs/phase1_train.log 2>&1 &"
+echo "Run Phase 2:  nohup bash phase2/scripts/train_phase2.sh > logs/phase2_train.log 2>&1 &"

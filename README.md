@@ -1,94 +1,84 @@
-# CSC 415 — Curiosity-Driven Reasoning via RND + GRPO
+# CSC 415 Project — Two-Phase LLM Training with Intrinsic Motivation
 
-Two-phase RL training pipeline that teaches an LLM to reason diversely before
-fine-tuning for task accuracy. Built on [TRL](https://github.com/huggingface/trl) (HuggingFace).
+Train an LLM using a two-phase pipeline:
+1. **Phase 1 (Exploration):** GRPO + RND curiosity reward — the model learns diverse reasoning patterns without task-specific correctness.
+2. **Phase 2 (Exploitation):** GRPO + correctness reward — fine-tune the Phase 1 checkpoint on specific tasks (GSM8K, MATH, Countdown).
 
 ## Architecture
 
-```
-Phase 1 (Cognitive Pretraining)        Phase 2 (Task Fine-tuning)
-─────────────────────────────────      ─────────────────────────────
-Reward = RND prediction error          Reward = correctness (0 / 1)
-  → encourages novel reasoning           → steers toward right answers
-KL penalty keeps outputs coherent      Starts from Phase 1 checkpoint
-No ground-truth labels needed          Uses ground-truth labels
-```
+- **Model:** Qwen2.5-1.5B
+- **RL Algorithm:** GRPO (Group Relative Policy Optimization) via HuggingFace TRL
+- **Intrinsic Reward:** Random Network Distillation (RND) for Phase 1 novelty signal
+- **Datasets:** GSM8K, MATH, Countdown (mixed for Phase 1, per-task for Phase 2)
 
-## Project layout
+## Quick Start (Vast.ai)
 
-```
-├── phase1/                    # Cognitive Pretraining (RND + GRPO)
-│   ├── rnd_module.py          # Target & predictor networks, RND reward
-│   ├── main_phase1.py         # TRL GRPOTrainer entry point
-│   └── scripts/               # Shell script to launch training
-├── phase2/                    # Task Fine-tuning (correctness + GRPO)
-│   ├── reward_manager.py      # Standalone correctness scoring
-│   ├── main_phase2.py         # TRL GRPOTrainer entry point
-│   └── scripts/               # Shell script to launch training
-├── data/
-│   └── prepare_data.py        # Dataset prep (Countdown, GSM8K, MATH)
-├── setup.sh                   # One-time env setup
-└── requirements.txt
-```
-
-## Quick start
+1. Rent an A100 80GB instance with a PyTorch Docker template
+2. SSH in and run:
 
 ```bash
-# 1. Setup (creates venv, installs deps)
+git clone https://github.com/modaserMoj/csc415-project.git
+cd csc415-project
 bash setup.sh
-source .venv/bin/activate
-
-# 2. Prepare data — combined Countdown + GSM8K + MATH for Phase 1
-python data/prepare_data.py --dataset phase1_mix --local_dir data/phase1_mix
-
-# 3. Phase 1 — curiosity-driven pretraining on all three datasets
-bash phase1/scripts/train_phase1.sh
-
-# 4. Phase 2 — fine-tune the Phase 1 checkpoint for correctness
-export BASE_MODEL=checkpoints/phase1
-export DATA_DIR=data/countdown
-bash phase2/scripts/train_phase2.sh
+bash smoke_test.sh
+nohup bash phase1/scripts/train_phase1.sh > logs/phase1_train.log 2>&1 &
 ```
 
-## How it works
+3. Monitor training:
+```bash
+tail -f logs/phase1_train.log
+```
 
-### Phase 1 — RND Exploration
+4. After Phase 1 completes, run Phase 2:
+```bash
+nohup bash phase2/scripts/train_phase2.sh > logs/phase2_train.log 2>&1 &
+```
 
-1. Prompts are sampled from the training set (Countdown, GSM8K, MATH)
-2. The LLM generates a **group** of responses per prompt (GRPO, `num_generations=5`)
-3. Each response is encoded via a sentence-transformer and passed through two MLPs:
-   - **Target network** (frozen random weights) → target embedding
-   - **Predictor network** (trainable) → predicted embedding
-4. `RND reward = ||predicted − target||²` — high for novel reasoning patterns
-5. GRPO uses within-group reward comparisons to update the LLM policy
-6. The predictor is updated to recognise patterns seen so far (drives novelty down over time)
-7. KL penalty against the base model keeps outputs coherent
+## Training Settings (A100 80GB)
 
-### Phase 2 — Correctness Fine-tuning
+| Setting | Phase 1 | Phase 2 |
+|---|---|---|
+| Model | Qwen2.5-1.5B | Phase 1 checkpoint |
+| Batch size | 20 | 20 |
+| Grad accumulation | 4 | 4 |
+| Num generations | 5 | 5 |
+| Max prompt length | 512 | 512 |
+| Max completion length | 512 | 512 |
+| KL penalty (beta) | 0.04 | 0.04 |
+| Learning rate | 5e-7 | 5e-7 |
+| Epochs | 3 | 3 |
+| Reward | RND novelty | Correctness (0/1) |
 
-1. Load the Phase 1 checkpoint (model that reasons diversely)
-2. Generate grouped responses, score each: correct=1, wrong=0
-3. GRPO updates the policy to make correct reasoning more likely
+### Estimated Training Time
+- **Phase 1:** ~6-10 hours on A100 80GB
+- **Phase 2:** ~2-4 hours on A100 80GB (smaller per-task datasets)
 
-## Key hyperparameters
+## Baselines (Qwen2.5-1.5B)
 
-| Parameter                 | Phase 1              | Phase 2           |
-| ------------------------- | -------------------- | ----------------- |
-| Reward                    | RND prediction error | Correctness (0/1) |
-| `num_generations`         | 5                    | 5                 |
-| `beta` (KL penalty)      | 0.001                | 0.001             |
-| `batch_size`              | 4                    | 4                 |
-| `max_completion_length`   | 512                  | 512               |
+| Benchmark | Base Model | Expected After Phase 2 |
+|---|---|---|
+| GSM8K | ~40-50% | 55-65% |
+| MATH | ~20-30% | 30-40% |
+| Countdown | ~0-5% | 30-50% |
 
-## GPU requirements
+## Project Structure
 
-- **1× 16 GB GPU**: Qwen2.5-0.5B (recommended — fits comfortably)
-- **1× 24 GB+ GPU**: Qwen2.5-1.5B
-- **2+ GPUs**: needed for 3B+ models
-
-## Baselines (Qwen2.5-0.5B, 4-shot)
-
-| Dataset | Base model | Instruct |
-| ------- | ---------- | -------- |
-| GSM8K   | 41.6%      | 49.6%    |
-| MATH    | 19.5%      | 34.4%    |
+```
+├── data/
+│   ├── prepare_data.py          # Dataset preparation
+│   ├── countdown/               # Countdown dataset (generated)
+│   ├── gsm8k/                   # GSM8K dataset
+│   ├── math/                    # MATH dataset
+│   └── phase1_mix/              # Mixed dataset for Phase 1
+├── phase1/
+│   ├── main_phase1.py           # Phase 1 training entry point
+│   ├── rnd_module.py            # RND novelty reward module
+│   └── scripts/train_phase1.sh  # Phase 1 launch script
+├── phase2/
+│   ├── main_phase2.py           # Phase 2 training entry point
+│   ├── reward_manager.py        # Correctness scoring functions
+│   └── scripts/train_phase2.sh  # Phase 2 launch script
+├── setup.sh                     # One-time environment setup
+├── smoke_test.sh                # Quick verification
+└── requirements.txt             # Python dependencies
+```

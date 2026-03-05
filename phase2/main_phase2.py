@@ -28,13 +28,15 @@ def main():
     parser.add_argument("--eval_file", required=True)
     parser.add_argument("--output_dir", default="checkpoints/phase2")
     parser.add_argument("--num_epochs", type=int, default=3)
-    parser.add_argument("--batch_size", type=int, default=4)
+    parser.add_argument("--batch_size", type=int, default=20)
     parser.add_argument("--grad_accum", type=int, default=4)
     parser.add_argument("--num_generations", type=int, default=5)
     parser.add_argument("--max_prompt_length", type=int, default=512)
     parser.add_argument("--max_completion_length", type=int, default=512)
-    parser.add_argument("--beta", type=float, default=0.001)
-    parser.add_argument("--lr", type=float, default=1e-6)
+    parser.add_argument("--beta", type=float, default=0.04)
+    parser.add_argument("--lr", type=float, default=5e-7)
+    parser.add_argument("--max_steps", type=int, default=-1,
+                        help="Stop after N optimizer steps (-1 = full epochs)")
     parser.add_argument("--save_steps", type=int, default=50)
     parser.add_argument("--logging_steps", type=int, default=1)
     args = parser.parse_args()
@@ -49,6 +51,7 @@ def main():
     training_args = GRPOConfig(
         output_dir=args.output_dir,
         num_train_epochs=args.num_epochs,
+        max_steps=args.max_steps,
         per_device_train_batch_size=args.batch_size,
         gradient_accumulation_steps=args.grad_accum,
         num_generations=args.num_generations,
