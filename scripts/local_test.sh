@@ -1,14 +1,23 @@
 #!/usr/bin/env bash
 # Quick end-to-end test: 2 training steps each for Phase 1, Phase 2, and baseline.
-# Uses tiny batch sizes and short sequences to fit on limited GPU memory.
-# Expected runtime: ~5-10 minutes on a 16GB GPU.
+# Auto-detects GPU; falls back to CPU if no CUDA available.
+# CPU runtime: ~10-20 min (0.5B model). GPU runtime: ~5-10 min (1.5B model).
 set -euxo pipefail
 
 PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$PROJECT_ROOT"
 mkdir -p logs
 
-MODEL="${MODEL:-Qwen/Qwen2.5-1.5B}"
+# Auto-detect GPU
+if python -c "import torch; assert torch.cuda.is_available()" 2>/dev/null; then
+    echo "=== GPU detected ==="
+    MODEL="${MODEL:-Qwen/Qwen2.5-1.5B}"
+    RND_DEVICE="cuda"
+else
+    echo "=== No GPU — running on CPU (using smaller model) ==="
+    MODEL="${MODEL:-Qwen/Qwen2.5-0.5B}"
+    RND_DEVICE="cpu"
+fi
 
 # ---------- 1. Prepare tiny test dataset ----------
 echo "=== Preparing tiny test datasets ==="
@@ -32,7 +41,7 @@ python phase1/main_phase1.py \
     --lr 5e-7 \
     --save_steps 999 \
     --logging_steps 1 \
-    --rnd_device cuda \
+    --rnd_device "$RND_DEVICE" \
     2>&1 | tee logs/test_phase1.log
 
 echo "=== Phase 1 test PASSED ==="

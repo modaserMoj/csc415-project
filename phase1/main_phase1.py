@@ -15,6 +15,7 @@ Usage:
 import argparse
 
 import pandas as pd
+import torch
 from datasets import Dataset
 from trl import GRPOTrainer, GRPOConfig
 
@@ -96,7 +97,7 @@ def main():
         beta=args.beta,
         learning_rate=args.lr,
         gradient_checkpointing=True,
-        bf16=True,
+        bf16=torch.cuda.is_available(),
         save_steps=args.save_steps,
         logging_steps=args.logging_steps,
         report_to="none",
