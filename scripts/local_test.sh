@@ -37,7 +37,6 @@ $PYTHON phase1/main_phase1.py \
     --batch_size 2 \
     --grad_accum 1 \
     --num_generations 2 \
-    --max_prompt_length 128 \
     --max_completion_length 64 \
     --beta 0.04 \
     --lr 5e-7 \
@@ -60,7 +59,6 @@ $PYTHON phase2/main_phase2.py \
     --batch_size 2 \
     --grad_accum 1 \
     --num_generations 2 \
-    --max_prompt_length 128 \
     --max_completion_length 64 \
     --beta 0.04 \
     --lr 5e-7 \
@@ -82,7 +80,6 @@ $PYTHON phase2/main_phase2.py \
     --batch_size 2 \
     --grad_accum 1 \
     --num_generations 2 \
-    --max_prompt_length 128 \
     --max_completion_length 64 \
     --beta 0.04 \
     --lr 5e-7 \

@@ -21,7 +21,6 @@ python phase2/main_phase2.py \
     --batch_size 20 \
     --grad_accum 4 \
     --num_generations 5 \
-    --max_prompt_length 512 \
     --max_completion_length 512 \
     --beta 0.04 \
     --lr 5e-7 \

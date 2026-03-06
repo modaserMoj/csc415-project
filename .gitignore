@@ -1,4 +1,5 @@
 .venv/
+env/
 TinyZero/
 __pycache__/
 *.pyc
@@ -13,9 +14,13 @@ outputs/
 wandb/
 .hydra/
 data/countdown/
+data/countdown3/
 data/gsm8k/
 data/math/
+data/svamp/
 data/phase1_mix/
+data/test_countdown/
+results/
 *.parquet
 .env
 temp.txt

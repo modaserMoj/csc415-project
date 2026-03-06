@@ -32,7 +32,6 @@ def main():
     parser.add_argument("--batch_size", type=int, default=20)
     parser.add_argument("--grad_accum", type=int, default=4)
     parser.add_argument("--num_generations", type=int, default=5)
-    parser.add_argument("--max_prompt_length", type=int, default=512)
     parser.add_argument("--max_completion_length", type=int, default=512)
     parser.add_argument("--beta", type=float, default=0.04)
     parser.add_argument("--lr", type=float, default=5e-7)
@@ -56,7 +55,6 @@ def main():
         per_device_train_batch_size=args.batch_size,
         gradient_accumulation_steps=args.grad_accum,
         num_generations=args.num_generations,
-        max_prompt_length=args.max_prompt_length,
         max_completion_length=args.max_completion_length,
         beta=args.beta,
         learning_rate=args.lr,

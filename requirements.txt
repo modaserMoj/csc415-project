@@ -1,6 +1,6 @@
-trl==0.16.1
-transformers==4.47.1
-accelerate==1.2.1
+trl>=0.29.0
+transformers>=4.47.1
+accelerate>=1.2.1
 datasets>=2.14.0
 sentence-transformers>=2.2.0
 pandas>=2.0.0

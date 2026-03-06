@@ -83,7 +83,7 @@ def prepare_countdown(local_dir: str, num_operands: int = 4, size: int = 490_000
 
     pd.DataFrame(train_rows).to_parquet(os.path.join(local_dir, "train.parquet"))
     pd.DataFrame(test_rows).to_parquet(os.path.join(local_dir, "test.parquet"))
-    print(f"Countdown: {len(train_rows)} train, {len(test_rows)} test → {local_dir}")
+    print(f"Countdown: {len(train_rows)} train, {len(test_rows)} test -> {local_dir}")
 
 
 def prepare_gsm8k(local_dir: str):
@@ -116,7 +116,7 @@ def prepare_gsm8k(local_dir: str):
 
     pd.DataFrame(train_rows).to_parquet(os.path.join(local_dir, "train.parquet"))
     pd.DataFrame(test_rows).to_parquet(os.path.join(local_dir, "test.parquet"))
-    print(f"GSM8K: {len(train_rows)} train, {len(test_rows)} test → {local_dir}")
+    print(f"GSM8K: {len(train_rows)} train, {len(test_rows)} test -> {local_dir}")
 
 
 def prepare_math(local_dir: str):
@@ -148,7 +148,7 @@ def prepare_math(local_dir: str):
 
     pd.DataFrame(train_rows).to_parquet(os.path.join(local_dir, "train.parquet"))
     pd.DataFrame(test_rows).to_parquet(os.path.join(local_dir, "test.parquet"))
-    print(f"MATH: {len(train_rows)} train, {len(test_rows)} test → {local_dir}")
+    print(f"MATH: {len(train_rows)} train, {len(test_rows)} test -> {local_dir}")
 
 
 def prepare_svamp(local_dir: str):
@@ -189,7 +189,7 @@ def prepare_svamp(local_dir: str):
 
     pd.DataFrame(train_rows).to_parquet(os.path.join(local_dir, "train.parquet"))
     pd.DataFrame(test_rows).to_parquet(os.path.join(local_dir, "test.parquet"))
-    print(f"SVAMP: {len(train_rows)} train, {len(test_rows)} test → {local_dir}")
+    print(f"SVAMP: {len(train_rows)} train, {len(test_rows)} test -> {local_dir}")
 
 
 def _collect_rows(prepare_fn, **kwargs):
@@ -244,7 +244,7 @@ def prepare_phase1_mix(local_dir: str, countdown_size: int = 10_000, num_operand
         print(f"  train  {src[0]:25s}  {src[1]:>6d} rows")
     for src in test_df["data_source"].value_counts().items():
         print(f"  test   {src[0]:25s}  {src[1]:>6d} rows")
-    print(f"Phase 1 mix: {len(train_df)} train, {len(test_df)} test → {local_dir}")
+    print(f"Phase 1 mix: {len(train_df)} train, {len(test_df)} test -> {local_dir}")
 
 
 if __name__ == "__main__":
