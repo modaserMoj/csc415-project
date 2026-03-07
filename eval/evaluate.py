@@ -74,11 +74,16 @@ def main():
     prompts = []
     for _, row in df.iterrows():
         p = row["prompt"]
+        # TRL datasets can store prompts as:
+        #   - list[{"role": ..., "content": ...}] (chat format)
+        #   - plain string
+        #   - in rare cases, already-rendered templates
         if isinstance(p, list):
             text = tokenizer.apply_chat_template(p, tokenize=False, add_generation_prompt=True)
         else:
             text = p
-        prompts.append(text)
+        # Ensure everything is a plain string for the tokenizer call
+        prompts.append(str(text))
 
     data_sources = df["data_source"].tolist()
     reward_models = []
@@ -94,7 +99,8 @@ def main():
 
     print(f"Evaluating {total} examples (batch_size={args.batch_size})...")
     for i in range(0, total, args.batch_size):
-        batch_prompts = prompts[i : i + args.batch_size]
+        # Coerce any residual odd types (e.g. lists/dicts) to strings
+        batch_prompts = [str(p) for p in prompts[i : i + args.batch_size]]
         inputs = tokenizer(batch_prompts, return_tensors="pt", padding=True, truncation=True,
                            max_length=512).to(model.device)
 
