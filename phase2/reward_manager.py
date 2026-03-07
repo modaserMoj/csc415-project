@@ -8,6 +8,27 @@ scoring utilities so we have no TinyZero dependency.
 
 import json
 import re
+from typing import Any
+
+
+def _to_text(x: Any) -> str:
+    """Convert TRL-style prompt/completion objects into plain text.
+
+    TRL can pass:
+      - a plain string
+      - a dict with a 'content' field
+      - a list of chat messages [{"role": ..., "content": ...}, ...]
+    """
+    if isinstance(x, list):
+        if not x:
+            return ""
+        last = x[-1]
+        if isinstance(last, dict):
+            return str(last.get("content", ""))
+        return str(last)
+    if isinstance(x, dict):
+        return str(x.get("content", ""))
+    return str(x)
 
 
 def score_countdown(completion: str, ground_truth: dict) -> float:
@@ -106,7 +127,10 @@ def correctness_reward(prompts, completions, data_source, reward_model, **kwargs
             rewards.append(0.0)
             continue
 
-        full_text = prompt + completion
+        prompt_text = _to_text(prompt)
+        completion_text = _to_text(completion)
+        full_text = prompt_text + completion_text
+
         rewards.append(score_fn(full_text, gt))
 
     return rewards
