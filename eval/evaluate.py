@@ -116,8 +116,13 @@ def main():
     for i in range(0, total, args.batch_size):
         # Coerce any residual odd types (e.g. lists/dicts) to strings
         batch_prompts = [str(p) for p in prompts[i : i + args.batch_size]]
-        inputs = tokenizer(batch_prompts, return_tensors="pt", padding=True, truncation=True,
-                           max_length=512).to(model.device)
+        inputs = tokenizer(
+            batch_prompts,
+            return_tensors="pt",
+            padding=True,
+            truncation=True,
+            max_length=512,
+        ).to(model.device)
 
         with torch.no_grad():
             gen_kwargs = dict(
@@ -129,9 +134,15 @@ def main():
                 gen_kwargs["temperature"] = args.temperature
             outputs = model.generate(**inputs, **gen_kwargs)
 
+        input_ids = inputs["input_ids"]
+        attn_mask = inputs["attention_mask"]
+
         for j, output in enumerate(outputs):
             idx = i + j
-            new_tokens = output[inputs["input_ids"].shape[1]:]
+
+            # With left padding, each row's prompt length is the sum of its attention mask.
+            prompt_len = int(attn_mask[j].sum().item())
+            new_tokens = output[prompt_len:]
             completion = tokenizer.decode(new_tokens, skip_special_tokens=True)
 
             # Score only the generated completion to avoid accidental prompt leakage.
