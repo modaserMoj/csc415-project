@@ -42,16 +42,28 @@ def score_example(completion: str, data_source: str, reward_model: dict) -> floa
     return 0.0
 
 
+def _to_python(obj):
+    """Force pyarrow / numpy objects into plain Python types."""
+    if hasattr(obj, "as_py"):
+        return obj.as_py()
+    if hasattr(obj, "tolist"):
+        return obj.tolist()
+    return obj
+
+
 def render_prompt(prompt_obj, tokenizer) -> str:
     """Render dataset prompt into a model-ready string.
 
     Prompts may arrive as:
-      - list/dict chat messages
+      - list/dict chat messages (native or pyarrow)
       - plain strings
-      - stringified Python lists/dicts from parquet/object round-trips
+      - stringified Python lists/dicts from parquet round-trips
     """
+    prompt_obj = _to_python(prompt_obj)
+
     if isinstance(prompt_obj, list):
-        return tokenizer.apply_chat_template(prompt_obj, tokenize=False, add_generation_prompt=True)
+        msgs = [_to_python(m) for m in prompt_obj]
+        return tokenizer.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
     if isinstance(prompt_obj, dict):
         return tokenizer.apply_chat_template([prompt_obj], tokenize=False, add_generation_prompt=True)
     if isinstance(prompt_obj, str):
@@ -103,6 +115,7 @@ def main():
     data_sources = df["data_source"].tolist()
     reward_models = []
     for rm in df["reward_model"].tolist():
+        rm = _to_python(rm) if not isinstance(rm, (str, dict)) else rm
         if isinstance(rm, str):
             reward_models.append(json.loads(rm))
         else:
