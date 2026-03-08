@@ -164,6 +164,7 @@ def main():
 
             results.append({
                 "idx": idx,
+                "prompt": batch_prompts[j][:500],
                 "data_source": data_sources[idx],
                 "score": score,
                 "completion": completion[:500],
