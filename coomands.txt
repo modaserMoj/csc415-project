@@ -137,5 +137,3 @@ countdown (~3h each, cap with max_steps=1000; adjust if needed):
     --beta 0.04 --lr 5e-7 \
     --save_steps 250 --logging_steps 10 \
     > logs/phase2_countdown_0.5b.log 2>&1 &
-
-  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
