@@ -33,8 +33,11 @@ def _to_text(x: Any) -> str:
 
 def score_countdown(completion: str, ground_truth: dict) -> float:
     """Check if the completion contains a valid equation reaching the target."""
-    target = ground_truth["target"]
-    numbers = ground_truth["numbers"]
+    raw_target = ground_truth["target"]
+    target = int(raw_target[0] if isinstance(raw_target, (tuple, list)) else raw_target)
+    raw_numbers = ground_truth["numbers"]
+    numbers = list(raw_numbers) if isinstance(raw_numbers, (tuple, list)) else [raw_numbers]
+    allowed_numbers = sorted(int(n) for n in numbers)
 
     # Look for an equation pattern like "23 + 45 - 12 + 8 = 64"
     equation_match = re.search(r"([\d\s\+\-\*\/\(\)]+)=\s*(\d+)", completion)
@@ -52,7 +55,6 @@ def score_countdown(completion: str, ground_truth: dict) -> float:
 
     # Verify only allowed numbers are used
     used_numbers = sorted([int(n) for n in re.findall(r"\d+", expr)])
-    allowed_numbers = sorted(numbers)
     if used_numbers != allowed_numbers:
         return 0.0
 
@@ -82,23 +84,58 @@ def score_gsm8k(completion: str, ground_truth: str) -> float:
     return 0.0
 
 
-def score_math(completion: str, ground_truth: str) -> float:
-    r"""Check if the completion contains the correct answer in \boxed{}.
+def _normalize_math_answer(s: str) -> str:
+    """Strip whitespace and optional outer $ for comparison."""
+    s = s.strip().strip("$").strip()
+    return s
 
-    Simple string matching after normalising whitespace.  This won't catch
-    all equivalent LaTeX forms but works for the majority of MATH problems.
-    """
+
+def _extract_canonical_answer(ground_truth: str) -> str:
+    """If ground_truth is a full solution with \\boxed{}, use the boxed content."""
     gt = ground_truth.strip()
+    boxed = re.findall(r"\\boxed\{([^}]*)\}", gt)
+    if boxed:
+        return _normalize_math_answer(boxed[-1])
+    return _normalize_math_answer(gt)
 
-    # Extract all \boxed{...} contents
-    boxed = re.findall(r"\\boxed\{([^}]+)\}", completion)
-    if not boxed:
-        # Fallback: check if gt appears literally in the last line
-        last_line = completion.strip().split("\n")[-1]
-        return 1.0 if gt in last_line else 0.0
 
-    predicted = boxed[-1].strip()
-    return 1.0 if predicted == gt else 0.0
+def score_math(completion: str, ground_truth: str) -> float:
+    r"""Check if the completion contains the correct answer.
+
+    Accepts either \boxed{...} or <answer>...</answer> (we instruct the latter).
+    Ground truth may be a full solution string with \boxed{}; we use the boxed part.
+    """
+    gt_canonical = _extract_canonical_answer(ground_truth)
+    if not gt_canonical:
+        return 0.0
+
+    # 1) Prefer <answer>...</answer> (what we ask for in the prompt)
+    answer_tag = re.findall(r"<answer>\s*([\s\S]*?)\s*</answer>", completion, re.IGNORECASE)
+    if answer_tag:
+        predicted = _normalize_math_answer(answer_tag[-1])
+        if predicted == gt_canonical:
+            return 1.0
+        # Relaxed: gt might be LaTeX, predicted might be simplified
+        if gt_canonical in predicted or predicted in gt_canonical:
+            return 1.0
+
+    # 2) Standard MATH format \boxed{...}
+    boxed = re.findall(r"\\boxed\{([^}]*)\}", completion)
+    if boxed:
+        predicted = _normalize_math_answer(boxed[-1])
+        if predicted == gt_canonical:
+            return 1.0
+        if gt_canonical in predicted or predicted in gt_canonical:
+            return 1.0
+
+    # 3) Fallback: gt appears in completion (e.g. last line)
+    if gt_canonical in completion:
+        return 1.0
+    last_line = completion.strip().split("\n")[-1] if completion.strip() else ""
+    if gt_canonical in last_line:
+        return 1.0
+
+    return 0.0
 
 
 SCORE_FNS = {

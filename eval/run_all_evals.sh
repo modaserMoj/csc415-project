@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Evaluate all 7 models on all 5 datasets.
+# Evaluate all 5 models (base, 2 baselines, 2 phase2) on all 5 datasets.
 # Produces a results/ directory with JSON files for each (model, dataset) pair.
 set -euo pipefail
 
 PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$PROJECT_ROOT"
-mkdir -p results
+mkdir -p results logs
 
 DATASETS=(
     "data/gsm8k/test.parquet"
@@ -17,25 +17,27 @@ DATASETS=(
 
 DATASET_NAMES=(gsm8k math countdown4 svamp countdown3)
 
+# 0.5B setup: base, 3 baselines, 3 phase2 (gsm8k, math, countdown)
 MODELS=(
-    "Qwen/Qwen2.5-1.5B"
-    "checkpoints/baseline_gsm8k"
-    "checkpoints/baseline_math"
-    "checkpoints/baseline_countdown"
-    "checkpoints/phase2_gsm8k"
-    "checkpoints/phase2_math"
-    "checkpoints/phase2_countdown"
+    "Qwen/Qwen2.5-0.5B"
+    "checkpoints/baseline_gsm8k_0.5b"
+    "checkpoints/baseline_math_0.5b"
+    "checkpoints/baseline_countdown_0.5b"
+    "checkpoints/phase2_gsm8k_0.5b"
+    "checkpoints/phase2_math_0.5b"
+    "checkpoints/phase2_countdown_0.5b"
 )
 
-MODEL_NAMES=(base baseline_gsm8k baseline_math baseline_countdown phase2_gsm8k phase2_math phase2_countdown)
+MODEL_NAMES=(base_0.5b baseline_gsm8k_0.5b baseline_math_0.5b baseline_countdown_0.5b phase2_gsm8k_0.5b phase2_math_0.5b phase2_countdown_0.5b)
 
-MAX_SAMPLES="${MAX_SAMPLES:-500}"
+MAX_SAMPLES="${MAX_SAMPLES:-1000}"
+MAX_NEW_TOKENS="${MAX_NEW_TOKENS:-256}"
 
 for m_idx in "${!MODELS[@]}"; do
     model="${MODELS[$m_idx]}"
     model_name="${MODEL_NAMES[$m_idx]}"
 
-    if [ ! -d "$model" ] && [[ "$model" != *"/"* ]]; then
+    if [[ "$model" == checkpoints/* ]] && [ ! -d "$model" ]; then
         echo "SKIP: $model not found"
         continue
     fi
@@ -66,6 +68,7 @@ for m_idx in "${!MODELS[@]}"; do
             --dataset "$dataset" \
             --output_file "$output_file" \
             --max_samples "$MAX_SAMPLES" \
+            --max_new_tokens "$MAX_NEW_TOKENS" \
             --batch_size 8
     done
 done
