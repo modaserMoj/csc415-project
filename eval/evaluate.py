@@ -14,6 +14,7 @@ Usage:
 """
 
 import argparse
+import ast
 import json
 import os
 import sys
@@ -39,6 +40,30 @@ def score_example(completion: str, data_source: str, reward_model: dict) -> floa
         if key in data_source:
             return fn(completion, gt)
     return 0.0
+
+
+def render_prompt(prompt_obj, tokenizer) -> str:
+    """Render dataset prompt into a model-ready string.
+
+    Prompts may arrive as:
+      - list/dict chat messages
+      - plain strings
+      - stringified Python lists/dicts from parquet/object round-trips
+    """
+    if isinstance(prompt_obj, list):
+        return tokenizer.apply_chat_template(prompt_obj, tokenize=False, add_generation_prompt=True)
+    if isinstance(prompt_obj, dict):
+        return tokenizer.apply_chat_template([prompt_obj], tokenize=False, add_generation_prompt=True)
+    if isinstance(prompt_obj, str):
+        stripped = prompt_obj.strip()
+        if stripped and stripped[0] in "[{":
+            try:
+                parsed = ast.literal_eval(stripped)
+                return render_prompt(parsed, tokenizer)
+            except Exception:
+                pass
+        return prompt_obj
+    return str(prompt_obj)
 
 
 def main():
@@ -73,17 +98,7 @@ def main():
 
     prompts = []
     for _, row in df.iterrows():
-        p = row["prompt"]
-        # TRL datasets can store prompts as:
-        #   - list[{"role": ..., "content": ...}] (chat format)
-        #   - plain string
-        #   - in rare cases, already-rendered templates
-        if isinstance(p, list):
-            text = tokenizer.apply_chat_template(p, tokenize=False, add_generation_prompt=True)
-        else:
-            text = p
-        # Ensure everything is a plain string for the tokenizer call
-        prompts.append(str(text))
+        prompts.append(str(render_prompt(row["prompt"], tokenizer)))
 
     data_sources = df["data_source"].tolist()
     reward_models = []
@@ -119,8 +134,8 @@ def main():
             new_tokens = output[inputs["input_ids"].shape[1]:]
             completion = tokenizer.decode(new_tokens, skip_special_tokens=True)
 
-            full_text = prompts[idx] + completion
-            score = score_example(full_text, data_sources[idx], reward_models[idx])
+            # Score only the generated completion to avoid accidental prompt leakage.
+            score = score_example(completion, data_sources[idx], reward_models[idx])
             correct += score
 
             results.append({
