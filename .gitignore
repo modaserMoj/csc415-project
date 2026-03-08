@@ -24,3 +24,4 @@ results/
 *.parquet
 .env
 temp.txt
+commands.txt
