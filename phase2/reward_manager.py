@@ -31,12 +31,31 @@ def _to_text(x: Any) -> str:
     return str(x)
 
 
+def _to_scalar(x: Any):
+    """Best-effort conversion of pyarrow / numpy wrappers into a Python scalar."""
+    if hasattr(x, "as_py"):
+        x = x.as_py()
+    if hasattr(x, "item"):
+        try:
+            x = x.item()
+        except Exception:
+            pass
+    if isinstance(x, (list, tuple)) and len(x) == 1:
+        return _to_scalar(x[0])
+    return x
+
+
 def score_countdown(completion: str, ground_truth: dict) -> float:
     """Check if the completion contains a valid equation reaching the target."""
     raw_target = ground_truth["target"]
-    target = int(raw_target[0] if isinstance(raw_target, (tuple, list)) else raw_target)
+    target = int(_to_scalar(raw_target))
+
     raw_numbers = ground_truth["numbers"]
-    numbers = list(raw_numbers) if isinstance(raw_numbers, (tuple, list)) else [raw_numbers]
+    if hasattr(raw_numbers, "tolist"):
+        raw_numbers = raw_numbers.tolist()
+    elif not isinstance(raw_numbers, (list, tuple)):
+        raw_numbers = [raw_numbers]
+    numbers = [_to_scalar(n) for n in raw_numbers]
     allowed_numbers = sorted(int(n) for n in numbers)
 
     # Look for an equation pattern like "23 + 45 - 12 + 8 = 64"
