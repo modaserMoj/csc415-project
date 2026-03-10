@@ -1,0 +1,1269 @@
+{
+  "model": "modaserMoj/csc415-baseline-gsm8k-0.5b",
+  "dataset": "data/multiarith/test.parquet",
+  "total": 180,
+  "correct": 162,
+  "accuracy": 0.9,
+  "examples": [
+    {
+      "idx": 0,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Paige had 11 songs on her mp3 player. If she deleted 9 old songs from it and then added 8 new songs, how many songs does she have on her mp3 player? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 0.0,
+      "completion": "\nPaige had 11 songs on her mp3 player. \n\nStep 1: Paige deleted 9 old songs from her mp3 player. \nStep 2: She then added 8 new songs to her mp3 player. \nStep 3: To find out how many songs she has on her mp3 player now, we need to add the number of songs she deleted to the number of songs she added. \nStep 4: 11 (original songs) - 9 (deleted songs) + 8 (new songs) = 10 songs. \nStep 5: So, Paige has 10 songs on her mp3 player."
+    },
+    {
+      "idx": 1,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n There were 39 girls and 4 boys trying out for the schools basketball team. If only 26 of them got called back, how many students didn't make the cut? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Total number of students trying out**: \n   \\[\n   39 \\text{ girls} + 4 \\text{ boys} = 43 \\text{ students}\n   \\]\n\n2. **Number of students who got called back**:\n   \\[\n   26 \\text{ students}\n   \\]\n\n3. **Number of students who didn't make the cut**:\n   \\[\n   \\text{Total number of students} - \\text{Number of students who got called back} = 43 - 26 = 17\n   \\]\n\nSo, the number of students who didn't make the cut is:\n\\[\n\\boxed{17}\n\\]"
+    },
+    {
+      "idx": 2,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Faye had 34 coloring books. If she gave away 3 of them, but then bought 48 more, how many would she have total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of coloring books**: Faye had 34 coloring books.\n2. **Books given away**: She gave away 3 books.\n   \\[\n   34 - 3 = 31\n   \\]\n   So, after giving away 3 books, Faye has 31 coloring books left.\n3. **Books bought**: She then bought 48 more books.\n   \\[\n   31 + 48 = 79\n   \\]\n   Therefore, after buying 48 more books, Faye has a total of 79 coloring books.\n\nThe final answer is:\n\\[\n\\boxed{79}\n\\]"
+    },
+    {
+      "idx": 3,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n The school cafeteria had 23 apples. If they used 20 to make lunch for the students and then bought 6 more, how many apples would they have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of apples**: The cafeteria started with 23 apples.\n2. **Apples used for lunch**: They used 20 apples for lunch.\n3. **Apples bought**: They then bought 6 more apples.\n\nFirst, we need to find out how many apples are left after using some for lunch:\n\\[ 23 - 20 = 3 \\]\n\nNext, we add the 6 apples they bought to the remaining apples:\n\\[ 3 + 6 = 9 \\]\n\nSo, the final number of apples the cafeteria has is:\n\\[ \\boxed{9} \\]"
+    },
+    {
+      "idx": 4,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n In a video game, each enemy defeated gives you 9 points. If a level has 11 enemies total and you destroy all but 3 of them, how many points would you earn? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "assistant\nSure, let's solve this step by step.\n\n1. **Determine the total number of enemies defeated:**\n   - There are 11 enemies in total.\n   - You destroy all but 3 of them.\n   - Therefore, the number of enemies defeated is:\n     \\[\n     11 - 3 = 8\n     \\]\n\n2. **Calculate the points earned:**\n   - Each enemy defeated gives you 9 points.\n   - So, the total points earned is:\n     \\[\n     8 \\times 9 = 72\n     \\]\n\nThus, the total points you would earn is \\(\\boxed{72}\\)."
+    },
+    {
+      "idx": 5,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Megan earned 8 points for each bag of cans she recycled. If she had 14 bags, but didn't recycle 5 of them, how many points would she have earned? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the number of bags Megan recycled:**\n   Megan had 14 bags of cans, but she didn't recycle 5 of them.\n   \\[\n   \\text{Number of bags recycled} = 14 - 5 = 9\n   \\]\n\n2. **Calculate the total points Megan earned:**\n   Megan earns 8 points for each bag of cans she recycled.\n   \\[\n   \\text{Total points} = 9 \\times 8 = 72\n   \\]\n\nSo, Megan would have earned \\(\\boxed{72}\\) points."
+    },
+    {
+      "idx": 6,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n April's discount flowers was having a sale where each rose was 4 dollars. If April started with 13 roses and had 4 roses left, how much money did she earn? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the number of roses April had initially:**\n   - April started with 13 roses.\n\n2. **Determine the number of roses April had left:**\n   - April had 4 roses left.\n\n3. **Calculate the number of roses April had after the sale:**\n   - Initially, April had 13 roses.\n   - After the sale, she had 4 roses left.\n   - Therefore, the number of roses she had after the sale is:\n     \\[\n     13 - 4 = 9\n     \\]\n\n4. **Calculate the total earnings:**\n"
+    },
+    {
+      "idx": 7,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Ned had to wash 9 short sleeve shirts and 21 long sleeve shirts before school. If he had only washed 29 of them by the time school started, how many did he not wash? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Sure, let's solve this step by step.\n\n1. **Total number of shirts Ned had to wash:**\n   - Short sleeve shirts: 9\n   - Long sleeve shirts: 21\n   - Total: \\( 9 + 21 = 30 \\)\n\n2. **Number of shirts Ned washed:**\n   - Total: 29\n   - Number of shirts washed: 29\n\n3. **Number of shirts Ned did not wash:**\n   - Total: 30\n   - Number of shirts washed: 29\n   - Number of shirts not washed: \\( 30 - 29 = 1 \\)\n\nSo, Ned did not wash \\(\\boxed{1}\\) shirt."
+    },
+    {
+      "idx": 8,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A company invited 47 people to a luncheon, but 7 of them didn't show up. If the tables they had held 5 people each, how many tables do they need? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the number of people who actually attended the luncheon:**\n   - The company invited 47 people, but 7 didn't show up.\n   - Therefore, the number of people who attended is:\n     \\[\n     47 - 7 = 40\n     \\]\n\n2. **Calculate the number of tables needed:**\n   - Each table can hold 5 people.\n   - To find out how many tables are needed, we divide the number of attendees by the capacity of each table:\n     \\[\n    "
+    },
+    {
+      "idx": 9,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Tom had 5 books. If he sold 4 of them and used the money he earned to buy 38 new books, how many books would Tom have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": ". Give your final numerical answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of books Tom had:**\n   \\[\n   \\text{Initial number of books} = 5\n   \\]\n\n2. **Books sold:**\n   \\[\n   \\text{Books sold} = 4\n   \\]\n\n3. **Books remaining after selling:**\n   \\[\n   \\text{Books remaining} = \\text{Initial number of books} - \\text{Books sold} = 5 - 4 = 1\n   \\]\n\n4. **Books bought:**\n   \\[\n   \\text{Books bought} = 38\n   \\]\n\n5. **Total number of books Tom has af"
+    },
+    {
+      "idx": 10,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n For a birthday party Jerry bought 41 regular sodas and 22 diet sodas. If his fridge would only hold 9 on each shelf, how many shelves would he fill up? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the total number of sodas:**\n   - Regular sodas: 41\n   - Diet sodas: 22\n   - Total sodas = 41 + 22 = 63\n\n2. **Determine how many shelves are needed:**\n   - Each shelf can hold 9 sodas.\n   - Number of shelves = Total sodas / Sodas per shelf\n   - Number of shelves = 63 / 9 = 7\n\nSo, Jerry would fill up 7 shelves."
+    },
+    {
+      "idx": 11,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n For Halloween Debby and her sister combined the candy they received. Debby had 32 pieces of candy while her sister had 42. If they ate 35 pieces the first night, how many pieces do they have left? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the total number of candies:**\n   - Debby has 32 pieces.\n   - Her sister has 42 pieces.\n   - Together, they have:\n     \\[\n     32 + 42 = 74 \\text{ pieces}\n     \\]\n\n2. **Subtract the number of pieces they ate:**\n   - They ate 35 pieces.\n   - So, the number of pieces left is:\n     \\[\n     74 - 35 = 39 \\text{ pieces}\n     \\]\n\nTherefore, the number of pieces they have left is \\(\\boxed{39}\\)."
+    },
+    {
+      "idx": 12,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Emily was planting vegetables in her garden. She started with 41 seeds and planted 29 of them in the big garden and in each of her small gardens put 4 seeds each. How many small gardens did Emily have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Total number of seeds Emily started with**: 41\n2. **Number of seeds planted in the big garden**: 29\n3. **Number of seeds planted in each small garden**: 4\n\nFirst, we need to find out how many seeds are left after planting in the big garden. This can be calculated by subtracting the number of seeds planted in the big garden from the total number of seeds:\n\n\\[ 41 - 29 = 12 \\]\n\nSo, Emily has 12 seeds left to plant in the small gardens.\n\nNe"
+    },
+    {
+      "idx": 13,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n For Halloween Emily received 5 pieces of candy from neighbors and 13 pieces from her older sister. If she only ate 9 pieces a day, how long would the candy last her? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Total pieces of candy received:**\n   - From neighbors: 5 pieces\n   - From older sister: 13 pieces\n   - Total = 5 + 13 = 18 pieces\n\n2. **Pieces of candy eaten per day:**\n   - Emily eats 9 pieces a day\n\n3. **Number of days the candy will last:**\n   - Total pieces of candy = 18\n   - Pieces of candy eaten per day = 9\n   - Number of days = Total pieces of candy / Pieces of candy eaten per day\n   - Number of days "
+    },
+    {
+      "idx": 14,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Mike is at the library helping put away books. There are 82 book to put away total but a librarian takes 10 of them and leaves Mike with the rest. If he can fit 9 books on a shelf, how many shelves will he need? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Sure, let's solve this step by step.\n\n1. **Total number of books initially:**\n   \\[\n   82\n   \\]\n\n2. **Number of books taken by the librarian:**\n   \\[\n   10\n   \\]\n\n3. **Number of books left after the librarian leaves:**\n   \\[\n   82 - 10 = 72\n   \\]\n\n4. **Number of books per shelf:**\n   \\[\n   9\n   \\]\n\n5. **Number of shelves needed:**\n   To find the number of shelves required, we divide the number of books left by the number of books per shelf:\n   \\[\n   \\frac{72}{9} = 8\n   \\]\n\nSo, Mike will need \\bo"
+    },
+    {
+      "idx": 15,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n While on vacation, Nancy took 49 pictures at the zoo and 8 at the museum. If she later deleted 38 of the pictures, how many pictures from her vacation did she still have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 0.0,
+      "completion": "answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial Pictures:**\n   - At the zoo: 49 pictures\n   - At the museum: 8 pictures\n\n2. **Pictures Deleted:**\n   - Nancy deleted 38 pictures.\n\n3. **Calculate the Remaining Pictures:**\n   - Remaining pictures = Initial pictures - Deleted pictures\n   - Remaining pictures = 49 - 38\n   - Remaining pictures = 11\n\nSo, Nancy still has \\boxed{11} pictures from her vacation."
+    },
+    {
+      "idx": 16,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A new building needed 14 windows. The builder had already installed 8 of them. If it takes 8 hours to install each window, how long will it take him to install the rest? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "assistant\nSure, let's solve this step by step.\n\n1. **Determine the total number of windows needed:**\n   The building needs 14 windows in total.\n\n2. **Determine the number of windows already installed:**\n   The builder has already installed 8 windows.\n\n3. **Calculate the number of windows left to be installed:**\n   \\[\n   \\text{Number of windows left} = \\text{Total number of windows} - \\text{Number of windows already installed}\n   \\]\n   \\[\n   \\text{Number of windows left} = 14 - 8 = 6\n   \\]\n\n4. **"
+    },
+    {
+      "idx": 17,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A store had 40 oranges in a bin. If they threw away 25 of the old ones and put 21 new ones in the bin how many would be in the bin? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of oranges**: 40\n2. **Oranges thrown away**: 25\n   \\[\n   40 - 25 = 15\n   \\]\n   So, after throwing away the old ones, there are 15 oranges left.\n3. **New oranges added**: 21\n   \\[\n   15 + 21 = 36\n   \\]\n   So, after adding the new ones, there are 36 oranges in the bin.\n\nTherefore, the final number of oranges in the bin is \\boxed{36}."
+    },
+    {
+      "idx": 18,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n At lunch a waiter had 7 customers and 5 of them didn't leave a tip. If he got $3 each from the ones who did tip, how much money did he earn? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 0.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the number of customers who left a tip:**\n   - Total customers: 7\n   - Customers who didn't leave a tip: 5\n   - Customers who left a tip: \\( 7 - 5 = 2 \\)\n\n2. **Calculate the total amount of money earned from the customers who left a tip:**\n   - Each customer who left a tip received $3.\n   - Total amount from customers who left a tip: \\( 2 \\times 3 = 6 \\)\n\n3. **Calculate the total amount of money earned from all customers:**\n   - Tot"
+    },
+    {
+      "idx": 19,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n For Halloween Faye scored 47 pieces of candy. She ate 25 pieces the first night and then her sister gave her 40 more pieces. How many pieces of candy does Faye have now? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Sure, let's solve this step by step.\n\n1. **Initial amount of candy**: Faye starts with 47 pieces of candy.\n2. **Candy eaten the first night**: She ate 25 pieces.\n   \\[\n   47 - 25 = 22\n   \\]\n   So, after eating 25 pieces, Faye has 22 pieces of candy left.\n3. **Candy given by her sister**: Her sister gave her 40 more pieces.\n   \\[\n   22 + 40 = 62\n   \\]\n   Therefore, after receiving 40 more pieces, Faye has 62 pieces of candy.\n\nThe final answer is:\n\\[\n\\boxed{62}\n\\]"
+    },
+    {
+      "idx": 20,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A group of 4 friends went into a restaurant. The chef already had 9 chicken wings cooked but cooked 7 more for the group. If they each got the same amount how many would each person get? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nSure, let's solve this step by step.\n\n1. **Initial number of chicken wings cooked**: The chef already had 9 chicken wings.\n2. **Number of additional chicken wings cooked**: The chef cooked 7 more chicken wings.\n3. **Total number of chicken wings**: \n   \\[\n   9 + 7 = 16\n   \\]\n4. **Number of friends**: There are 4 friends.\n5. **Number of chicken wings each person gets**: To find out how many chicken wings each person gets, we divide the total number of chicken wings by the number of friends.\n   \\"
+    },
+    {
+      "idx": 21,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n John earned 8 dollars for each lawn he mowed. If he had 15 lawns to mow, but forgot to mow 7 of them, how much money did he actually earn? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "assistant\nSure, let's solve this step by step.\n\n1. **Calculate the total number of lawns John mowed:**\n   John had 15 lawns to mow, but forgot to mow 7 of them.\n   \\[\n   \\text{Total lawns mowed} = 15 - 7 = 8\n   \\]\n\n2. **Calculate the total amount of money John earned:**\n   John earns 8 dollars for each lawn he mowed.\n   \\[\n   \\text{Total money earned} = 8 \\times 8 = 64\n   \\]\n\nSo, the final answer is:\n\\[\n\\boxed{64}\n\\]"
+    },
+    {
+      "idx": 22,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A pet shelter had 5 puppies when another 35 were brought in. If 8 puppies a day are adopted, how long would it take for all of them to be adopted? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": ".\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of puppies**: 5\n2. **Puppies brought in**: 35\n3. **Total number of puppies**: \\(5 + 35 = 40\\)\n4. **Puppies adopted per day**: 8\n5. **Number of days to be adopted**: \\( \\frac{40}{8} = 5 \\) days\n\nSo, it would take 5 days for all the puppies to be adopted."
+    },
+    {
+      "idx": 23,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A new building needed 9 windows. The builder had already installed 6 of them. If it takes 6 hours to install each window, how long will it take him to install the rest? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the total number of windows needed:**\n   The building needs 9 windows in total.\n\n2. **Determine the number of windows already installed:**\n   The builder has already installed 6 windows.\n\n3. **Calculate the number of windows left to be installed:**\n   \\[\n   \\text{Number of windows left} = \\text{Total number of windows} - \\text{Number of windows already installed}\n   \\]\n   \\[\n   \\text{Number of windows left} = 9 - 6 = 3\n   \\]\n\n4. **D"
+    },
+    {
+      "idx": 24,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A teacher had 34 worksheets to grade. If she graded 7, but then another 36 were turned in, how many worksheets would she have to grade? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " your final numerical answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of worksheets**: The teacher had 34 worksheets to grade.\n2. **Worksheets graded**: She graded 7 worksheets.\n3. **Worksheets turned in**: Another 36 worksheets were turned in.\n\nTo find out how many worksheets she would have to grade after these changes, we need to subtract the number of worksheets graded from the initial number of worksheets and then add the number of works"
+    },
+    {
+      "idx": 25,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n While playing at the arcade, Frank won 33 tickets playing 'whack a mole' and 9 tickets playing 'skee ball'. If he was trying to buy candy that cost 6 tickets a piece, how many could he buy? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "assistant\nSure, let's solve this step by step.\n\n1. **Total tickets Frank won:**\n   - Tickets from 'whack a mole': 33\n   - Tickets from 'skee ball': 9\n   - Total tickets: \\( 33 + 9 = 42 \\)\n\n2. **Tickets needed for one piece of candy:**\n   - Tickets per piece of candy: 6\n\n3. **Number of pieces of candy Frank can buy:**\n   - Number of pieces of candy: \\( \\frac{42}{6} = 7 \\)\n\nSo, Frank can buy \\(\\boxed{7}\\) pieces of candy."
+    },
+    {
+      "idx": 26,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n At a restaurant each adult meal costs $7 and kids eat free. If a group of 13 people came in and 9 were kids, how much would it cost for the group to eat? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 0.0,
+      "completion": "answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the total cost for the adults:**\n   - Each adult meal costs $7.\n   - There are 13 adults.\n   - Total cost for adults = \\( 13 \\times 7 = 91 \\) dollars.\n\n2. **Calculate the total cost for the kids:**\n   - Since there are 9 kids and each kid eats free, the total cost for the kids is \\( 9 \\times 0 = 0 \\) dollars.\n\n3. **Calculate the total cost for the group:**\n   - Add the cost for the adults and the cost for the "
+    },
+    {
+      "idx": 27,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Paige had 43 math problems and 12 science problems for homework. If she finished 44 of the problems at school, how many problems did she have to do for homework? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " in <answer> </answer> tags.\nassistant\nPaige had 43 math problems and 12 science problems for homework. She finished 44 of the problems at school. To find out how many problems she had to do for homework, we need to subtract the number of problems she finished from the total number of problems she had.\n\nTotal number of problems Paige had to do for homework = 43 (math problems) + 12 (science problems) = 55 problems\n\nNumber of problems Paige finished at school = 44 problems\n\nNumber of problems Pai"
+    },
+    {
+      "idx": 28,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Rachel was playing a video game where she scores 9 points for each treasure she finds. If she found 5 treasures on the first level and 2 on the second, what would her score be? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "answer> </answer> tags.\nassistant\nRachel's score can be calculated by multiplying the number of treasures she found on each level by the points she earns per treasure and then summing these values. \n\nFirst, we calculate the points from the first level: 5 treasures * 9 points per treasure = 45 points. \n\nNext, we calculate the points from the second level: 2 treasures * 9 points per treasure = 18 points. \n\nFinally, we add the points from both levels to get the total score: 45 points + 18 points = "
+    },
+    {
+      "idx": 29,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A waiter at 'The Greasy Spoon' restaurant had 26 customers to wait on. During the lunch rush he added another 27 customers. If 27 of the customers didn't leave him a tip, how many customers did leave a tip? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Sure, let's solve this step by step.\n\n1. **Initial number of customers**: The waiter started with 26 customers.\n2. **Additional customers**: During the lunch rush, he added 27 more customers.\n3. **Total number of customers**: To find the total number of customers, we add the initial number to the additional number:\n   \\[\n   26 + 27 = 53\n   \\]\n   So, there are now 53 customers in total.\n4. **Customers who didn't leave a tip**: We know that 27 customers didn't leave a tip. To find out how many cus"
+    },
+    {
+      "idx": 30,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A toy store had 17 giant stuffed bears in stock when they got another shipment with 10 bears in it. The put the bears onto shelves with 9 on each shelf. How many shelves did they use? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Total number of bears**: The toy store started with 17 bears and received another shipment with 10 bears. So, the total number of bears is:\n   \\[\n   17 + 10 = 27\n   \\]\n\n2. **Number of bears per shelf**: Each shelf holds 9 bears.\n\n3. **Number of shelves needed**: To find out how many shelves are needed to hold all 27 bears, we divide the total number of bears by the number of bears per shelf:\n   \\[\n   \\frac{27}{9} = 3\n   \\]\n\nSo, the toy"
+    },
+    {
+      "idx": 31,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Gwen was organizing her book case making sure each of the shelves had exactly 4 books on it. If she had 5 shelves of mystery books and 3 shelves of picture books, how many books did she have total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the number of books on each shelf:**\n   - Gwen has 5 shelves of mystery books.\n   - Each shelf has 4 books.\n   - Therefore, the total number of mystery books is:\n     \\[\n     5 \\text{ shelves} \\times 4 \\text{ books per shelf} = 20 \\text{ mystery books}\n     \\]\n\n2. **Determine the number of books on each shelf:**\n   - Gwen has 3 shelves of picture books.\n   - Each shelf has 4 books.\n   - Therefore, the total number of picture "
+    },
+    {
+      "idx": 32,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Wendy uploaded 79 pictures to Facebook. She put 44 pics into one album and put the rest into 5 different albums. How many pictures were in each album? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 0.0,
+      "completion": "> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. Wendy uploaded a total of 79 pictures.\n2. She put 44 pictures into one album. This means the remaining pictures are in the other 5 albums.\n3. To find out how many pictures were in each of the other 5 albums, we need to subtract the number of pictures in the first album from the total number of pictures.\n\n\\[ 79 - 44 = 35 \\]\n\nSo, there are 35 pictures in each of the other 5 albums."
+    },
+    {
+      "idx": 33,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n The schools debate team had 5 boys and 40 girls on it. If they were split into groups of 9 how many groups could they make? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the total number of students:**\n   - There are 5 boys and 40 girls.\n   - Total number of students = 5 boys + 40 girls = 45 students.\n\n2. **Determine how many groups can be formed:**\n   - The teams are split into groups of 9.\n   - To find out how many groups can be formed, we divide the total number of students by the number of students per group.\n   - Number of groups = Total number of students \u00f7 N"
+    },
+    {
+      "idx": 34,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n April's discount flowers was having a sale where each rose was 7 dollars. If April started with 9 roses and had 4 roses left, how much money did she earn? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the number of roses April had initially:**\n   - April started with 9 roses.\n\n2. **Determine the number of roses April had left:**\n   - April had 4 roses left.\n\n3. **Calculate the number of roses April had after the sale:**\n   - Initially, April had 9 roses.\n   - After the sale, she had 4 roses left.\n   - Therefore, the number of roses she had after the sale is:\n     \\[\n     9 - 4 = 5\n     \\]\n\n4. **Calculate the total"
+    },
+    {
+      "idx": 35,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A trivia team had 11 members total, but during a game 6 members didn't show up. If each member that did show up scored 9 points, how many points were scored total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": ".\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the number of members who showed up:**\n   - The total number of members is 11.\n   - 6 members didn't show up.\n   - Therefore, the number of members who showed up is:\n     \\[\n     11 - 6 = 5\n     \\]\n\n2. **Calculate the total points scored:**\n   - Each member who showed up scored 9 points.\n   - So, the total points scored by the 5 members who showed up is:\n     \\[\n     5 \\times 9 = 45\n     \\]\n\nThus, the total points scored is \\(\\boxe"
+    },
+    {
+      "idx": 36,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A pet store had 13 siamese cats and 5 house cats. During a sale they sold 10 cats. How many cats do they have left? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial Count:**\n   - Siamese cats: 13\n   - House cats: 5\n\n2. **Total number of cats initially:**\n   \\[\n   13 \\text{ (Siamese)} + 5 \\text{ (House cats)} = 18 \\text{ cats}\n   \\]\n\n3. **Cats sold:**\n   - Cats sold: 10\n\n4. **Cats left after selling:**\n   \\[\n   18 \\text{ (initial total)} - 10 \\text{ (sold)} = 8 \\text{ cats}\n   \\]\n\nSo, the number of cats left is \\(\\boxed{8}\\)."
+    },
+    {
+      "idx": 37,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Victor was working as a sacker at a grocery store where he made 6 dollars an hour. On Monday he worked 5 hours and on Tuesday he worked 5 hours. How much money did Victor make in those two days? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Victor made 6 dollars an hour, so on Monday he worked 5 hours, so he made 5 * 6 = 30 dollars. On Tuesday he worked 5 hours, so he made 5 * 6 = 30 dollars. In total, Victor made 30 + 30 = 60 dollars in those two days.anko"
+    },
+    {
+      "idx": 38,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Megan baked 71 cupcakes for her school's bake sale. If her brother, Todd, ate 43 of them how many packages could she make if she put 7 cupcake in each package? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Determine how many cupcakes Megan has left after Todd ate some:**\n   Megan baked 71 cupcakes and Todd ate 43 of them.\n   \\[\n   71 - 43 = 28\n   \\]\n   So, Megan has 28 cupcakes left.\n\n2. **Calculate how many packages Megan can make with the remaining cupcakes:**\n   Each package contains 7 cupcakes.\n   \\[\n   \\frac{28}{7} = 4\n   \\]\n   So, Megan can make 4 packages.\n\n3. **State the final answer:**\n   Megan can make \\boxed{4} packages."
+    },
+    {
+      "idx": 39,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n There were 2 friends playing a video game online when 2 more players joined the game. If each player had 6 lives, how many lives did they have total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the total number of players:**\n   - Initially, there were 2 friends playing the game.\n   - Then, 2 more players joined the game.\n   - Therefore, the total number of players is:\n     \\[\n     2 + 2 = 4\n     \\]\n\n2. **Calculate the total number of lives:**\n   - Each player has 6 lives.\n   - With 4 players, the total number of lives is:\n     \\[\n     4 \\times 6 = 24\n     \\]\n\nSo, the total number of lives they have i"
+    },
+    {
+      "idx": 40,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Sam had 10 socks. If he threw away 3 old ones that didn't fit and bought 36 new ones, how many socks would he have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " final numerical answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of socks**: Sam had 10 socks.\n2. **Socks thrown away**: He threw away 3 old ones. So, the number of socks left after throwing away the old ones is:\n   \\[\n   10 - 3 = 7\n   \\]\n3. **New socks bought**: Sam bought 36 new socks. So, the total number of socks he has now is:\n   \\[\n   7 + 36 = 43\n   \\]\n\nTherefore, the final number of socks Sam has is \\(\\boxed{43}\\)."
+    },
+    {
+      "idx": 41,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Wendy picked 103 flowers for her friend\u2019s wedding. She was making bouquets with 8 flowers in each one. If 47 of the flowers wilted before the wedding, how many bouquets could she still make? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "assistant\nSure, let's solve this step by step.\n\n1. **Calculate the total number of flowers Wendy picked:**\n   Wendy picked 103 flowers.\n\n2. **Determine the number of flowers that wilted:**\n   47 flowers wilted.\n\n3. **Calculate the number of flowers that are still usable:**\n   Subtract the number of wilted flowers from the total number of flowers.\n   \\[\n   103 - 47 = 56\n   \\]\n   So, Wendy has 56 usable flowers.\n\n4. **Determine how many bouquets Wendy can make:**\n   Each bouquet requires 8 flowers"
+    },
+    {
+      "idx": 42,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Adam had 48 books. If he sold 19 of them and used the money he earned to buy 38 new books, how many books would Adam have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of books Adam had:**\n   \\[\n   \\text{Initial number of books} = 48\n   \\]\n\n2. **Books sold:**\n   \\[\n   \\text{Books sold} = 19\n   \\]\n\n3. **Books remaining after selling:**\n   \\[\n   \\text{Books remaining} = 48 - 19 = 29\n   \\]\n\n4. **Books bought:**\n   \\[\n   \\text{Books bought} = 38\n   \\]\n\n5. **Total number of books after buying:**\n   \\[\n   \\text{Total number of books} = 29 + 38 = 67\n   \\]\n\nSo, afte"
+    },
+    {
+      "idx": 43,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Nancy's class is going on a field trip to the zoo. If each van can hold 5 people and there are 12 students and 3 adults going, how many vans will they need? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the total number of people going on the trip:**\n   - There are 12 students.\n   - There are 3 adults.\n   - Total number of people = 12 students + 3 adults = 15 people.\n\n2. **Determine how many vans are needed:**\n   - Each van can hold 5 people.\n   - To find out how many vans are needed, we divide the total number of people by the capacity of one van:\n     \\[\n     \\text{Number of vans needed} = \\frac{\\text{Total number"
+    },
+    {
+      "idx": 44,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n For a birthday party Tom bought 4 regular sodas and 52 diet sodas. If his fridge would only hold 7 on each shelf, how many shelves would he fill up? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the total number of sodas:**\n   - Tom bought 4 regular sodas.\n   - He also bought 52 diet sodas.\n   - Total sodas = 4 + 52 = 56\n\n2. **Determine how many shelves are needed:**\n   - Each shelf can hold 7 sodas.\n   - To find out how many shelves are needed, we divide the total number of sodas by the number of sodas each shelf can hold.\n   - Number of shelves = 56 \u00f7 7 = 8\n\nSo, Tom would fill up 8 shelves."
+    },
+    {
+      "idx": 45,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n The school cafeteria had 38 apples. If they used 20 to make lunch for the students and then bought 28 more, how many apples would they have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of apples**: The cafeteria started with 38 apples.\n2. **Apples used for lunch**: They used 20 apples for lunch.\n3. **Remaining apples after lunch**: Subtract the apples used from the initial number.\n   \\[\n   38 - 20 = 18\n   \\]\n   So, after using 20 apples for lunch, they have 18 apples left.\n4. **Apples bought**: They then bought 28 more apples.\n5. **Total number of apples**: Add the apples th"
+    },
+    {
+      "idx": 46,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Luke was helping the cafeteria workers pick up lunch trays, but he could only carry 4 trays at a time. If he had to pick up 20 trays from one table and 16 trays from another, how many trips will he make? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 0.0,
+      "completion": "Luke can carry 4 trays at a time. To find out how many trips he will make, we need to divide the total number of trays he needs to pick up by the number of trays he can carry at a time.\n\n20 trays / 4 trays per trip = 5 trips\n\nLuke will make 5 trips to pick up the trays.anko"
+    },
+    {
+      "idx": 47,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n The cafeteria had 96 apples. For lunch they handed out 42 to students and decided to use the rest to make pies. If each pie takes 6 apples, how many pies could they make? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Total Apples Available:**\n   The cafeteria started with 96 apples.\n\n2. **Apples Handed Out to Students:**\n   They handed out 42 apples to students.\n\n3. **Apples Left for Making Pies:**\n   To find out how many apples are left for pies, we subtract the apples handed out from the total apples:\n   \\[\n   96 - 42 = 54\n   \\]\n   So, there are 54 apples left for making pies.\n\n4. **Number of Pies That Can Be Made:**\n   Each pie requires 6 apples"
+    },
+    {
+      "idx": 48,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Henry had 3 action figures, but needed 8 total for a complete collection. If each one costs $6, how much money would he need to finish his collection? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the total number of action figures needed:**\n   Henry needs 8 action figures in total.\n\n2. **Calculate the number of action figures he already has:**\n   Henry has 3 action figures.\n\n3. **Find the number of additional action figures needed:**\n   \\[\n   \\text{Additional action figures needed} = \\text{Total action figures needed} - \\text{Action figures already have}\n   \\]\n   \\[\n   \\text{Additional action figures needed} = 8 - 3 ="
+    },
+    {
+      "idx": 49,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Frank had saved up 3 dollars. If he received another 37 dollars for his allowance, how many 8 dollar toys could he buy? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial Savings**: Frank initially had 3 dollars.\n2. **Additional Allowance**: Frank received another 37 dollars for his allowance.\n3. **Total Money**: To find out how much money Frank has in total, we add his initial savings to his additional allowance:\n   \\[\n   3 \\text{ dollars} + 37 \\text{ dollars} = 40 \\text{ dollars}\n   \\]\n4. **Cost of Each Toy**: Each toy costs 8 dollars.\n5. **Number of Toys**: To determine how "
+    },
+    {
+      "idx": 50,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Vanessa and her mom were picking carrots from their garden. Vanessa picked 17 and her mother picked 14. If only 24 of the carrots were good, how many bad carrots did they have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Sure, let's solve this step by step.\n\n1. **Total number of carrots picked by Vanessa and her mom:**\n   \\[\n   17 + 14 = 31\n   \\]\n\n2. **Number of good carrots:**\n   \\[\n   24\n   \\]\n\n3. **Number of bad carrots:**\n   To find the number of bad carrots, we subtract the number of good carrots from the total number of carrots picked.\n   \\[\n   31 - 24 = 7\n   \\]\n\nSo, the number of bad carrots they had is \\(\\boxed{7}\\)."
+    },
+    {
+      "idx": 51,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n At a company picnic 23 managers and 7 employees decided to start a game of volleyball. If they split into 6 teams how many people would be on each team? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Total number of people at the picnic:**\n   - Managers: 23\n   - Employees: 7\n   - Total = 23 + 7 = 30\n\n2. **Number of teams:**\n   - Total people: 30\n   - Number of teams = 6\n\n3. **Number of people per team:**\n   - To find the number of people per team, we divide the total number of people by the number of teams.\n   \\[\n   \\text{Number of people per team} = \\frac{\\text{Total number of people}}{\\text{Number of teams}} = \\frac{30}{6} = 5\n   "
+    },
+    {
+      "idx": 52,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Tiffany baked 8 brownies, but needed 17 total for her party. If she used 8 cups of flour on each one, how much cups of flour does she still need? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 0.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Total number of brownies needed**: Tiffany needs 17 brownies in total.\n2. **Number of brownies already baked**: Tiffany has baked 8 brownies.\n3. **Number of brownies still needed**: To find out how many more brownies are needed, we subtract the number of brownies already baked from the total number of brownies needed.\n\n\\[\n\\text{Number of brownies still needed} = \\text{Total number of brownies needed} - \\text{Number of brownies already baked}\n"
+    },
+    {
+      "idx": 53,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Carol and her mom were picking carrots from their garden. Carol picked 29 and her mother picked 16. If only 38 of the carrots were good, how many bad carrots did they have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Sure, let's solve this step by step.\n\n1. **Total number of carrots picked by Carol and her mom:**\n   \\[\n   29 + 16 = 45\n   \\]\n\n2. **Total number of good carrots:**\n   \\[\n   38\n   \\]\n\n3. **Number of bad carrots:**\n   To find the number of bad carrots, we subtract the total number of good carrots from the total number of carrots picked.\n   \\[\n   45 - 38 = 7\n   \\]\n\nSo, the number of bad carrots they had is \\(\\boxed{7}\\)."
+    },
+    {
+      "idx": 54,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A worksheet had 7 problems on it. If a teacher had 17 worksheets to grade and had already graded 8 of them, how many more problems does she have to grade? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 0.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Total number of worksheets**: The teacher has 17 worksheets in total.\n2. **Number of worksheets already graded**: The teacher has already graded 8 worksheets.\n3. **Number of worksheets left to grade**: To find out how many worksheets are left to grade, we subtract the number of worksheets already graded from the total number of worksheets.\n\n\\[\n\\text{Number of worksheets left to grade} = \\text{Total number of worksheets} - \\text{Number of work"
+    },
+    {
+      "idx": 55,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n There were 8 friends playing a video game online when 2 more players joined the game. If each player had 6 lives, how many lives did they have total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of players**: There were 8 friends playing the game online initially.\n2. **New players joining**: 2 more players joined the game.\n3. **Total number of players**: We add the initial number of players to the new players.\n   \\[\n   8 + 2 = 10\n   \\]\n   So, there are now 10 players in total.\n4. **Lives per player**: Each player has 6 lives.\n5. **Total number of lives**: We multiply the total number of players by the number of "
+    },
+    {
+      "idx": 56,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n At the arcade Cody won 49 tickets. If he spent 25 tickets on a beanie and later won 6 more tickets, how many would he have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. Cody starts with 49 tickets.\n2. He spends 25 tickets on a beanie. So, we subtract 25 from 49:\n   \\[\n   49 - 25 = 24\n   \\]\n   Now Cody has 24 tickets left.\n3. Later, he wins 6 more tickets. So, we add 6 to 24:\n   \\[\n   24 + 6 = 30\n   \\]\n   Now Cody has 30 tickets.\n\nSo, the final answer is:\n\\[\n\\boxed{30}\n\\]"
+    },
+    {
+      "idx": 57,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n For Halloween Bianca received 78 pieces of candy. She ate 30 pieces then placed the rest into piles with 8 in each pile. How many piles could she make? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the number of pieces left after Bianca ate some:**\n   \\[\n   78 - 30 = 48\n   \\]\n   So, Bianca has 48 pieces of candy left.\n\n2. **Determine how many piles she can make with 48 pieces, with each pile containing 8 pieces:**\n   \\[\n   \\frac{48}{8} = 6\n   \\]\n   Therefore, Bianca can make 6 piles.\n\n3. **Write the final answer:**\n   \\[\n   \\boxed{6}\n   \\]"
+    },
+    {
+      "idx": 58,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n There were 5 friends playing a video game online when 2 more players joined the game. If each player had 8 lives, how many lives did they have total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of players**: There were 5 friends playing the game.\n2. **New players joining**: 2 more players joined the game.\n3. **Total number of players**: \n   \\[\n   5 + 2 = 7\n   \\]\n   So, there are now 7 players in total.\n4. **Lives per player**: Each player has 8 lives.\n5. **Total number of lives**: \n   \\[\n   7 \\times 8 = 56\n   \\]\n\nTherefore, the total number of lives they have is \\(\\boxed{56}\\)."
+    },
+    {
+      "idx": 59,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n At a restaurant each adult meal costs $8 and kids eat free. If a group of 11 people came in and 2 were kids, how much would it cost for the group to eat? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the number of adults:**\n   - There are 11 people in total.\n   - 2 of them are kids.\n   - Therefore, the number of adults is:\n     \\[\n     11 - 2 = 9\n     \\]\n\n2. **Calculate the cost for the adults:**\n   - Each adult meal costs $8.\n   - The cost for 9 adults is:\n     \\[\n     9 \\times 8 = 72\n     \\]\n\n3. **Calculate the cost for the kids:**\n   - Since kids eat free, the cost for the kids is:\n     \\[\n     2 \\times 0 = 0\n     \\]\n\n4. **Ca"
+    },
+    {
+      "idx": 60,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Roger had 25 books. If he sold 21 of them and used the money he earned to buy 30 new books, how many books would Roger have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " </answer> tags.\nassistant\nRoger initially had 25 books. He sold 21 of them, so he would have:\n\n25 - 21 = 4 books left.\n\nThen, he used the money he earned to buy 30 new books. So, he would have:\n\n4 + 30 = 34 books in total."
+    },
+    {
+      "idx": 61,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Wendy was playing a video game and had 10 lives. In a hard part of the game she lost 6 lives. If she got 37 more lives in the next level, how many lives would she have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Sure, let's solve this step by step:\n\n1. Wendy started with 10 lives.\n2. She lost 6 lives in the hard part of the game.\n3. After losing those 6 lives, she had:\n   \\[\n   10 - 6 = 4 \\text{ lives}\n   \\]\n4. Then, she got 37 more lives in the next level.\n5. So, the total number of lives she would have is:\n   \\[\n   4 + 37 = 41 \\text{ lives}\n   \\]\n\nTherefore, Wendy would have \\boxed{41} lives."
+    },
+    {
+      "idx": 62,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Frank made 19 dollars mowing lawns over the summer. If he spent 11 dollars buying new mower blades, how many 2 dollar games could he buy with the money he had left? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Initial Amount**: Frank started with $19.\n2. **Money Spent on Mower Blades**: He spent $11 on mower blades.\n3. **Money Left After Buying Blades**: \n   \\[\n   19 - 11 = 8\n   \\]\n   So, Frank has $8 left.\n4. **Cost of Each Game**: Each game costs $2.\n5. **Number of Games He Can Buy**: To find out how many $2 games he can buy with $8, we divide the remaining money by the cost of one game:\n   \\[\n   \\frac{8}{2} = 4\n   \\]\n\nSo, Frank can buy \\(\\boxed{"
+    },
+    {
+      "idx": 63,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n There school's baseball team had 48 new players and 6 returning players. If the coach put them into groups with 6 players in each group, how many groups would there be? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Total number of players**: There are 48 new players and 6 returning players.\n   \\[\n   \\text{Total players} = 48 + 6 = 54\n   \\]\n\n2. **Number of players per group**: The coach puts them into groups with 6 players in each group.\n\n3. **Number of groups**: To find out how many groups there will be, we divide the total number of players by the number of players per group.\n   \\[\n   \\text{Number of groups} = \\frac{54}{6} = 9\n   \\]\n\nSo, the coac"
+    },
+    {
+      "idx": 64,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Nancy had 80 files on her computer. She deleted 31 of them and put the rest into folders with 7 files in each one. How many folders did Nancy end up with? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of files**: Nancy had 80 files on her computer.\n2. **Files deleted**: She deleted 31 files.\n   \\[\n   \\text{Remaining files} = 80 - 31 = 49\n   \\]\n3. **Files per folder**: She put the remaining 49 files into folders with 7 files in each one.\n   \\[\n   \\text{Number of folders} = \\frac{49}{7} = 7\n   \\]\n\nSo, Nancy ended up with \\boxed{7} folders."
+    },
+    {
+      "idx": 65,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Luke was selling his old games. He started out with 39 but sold 19 of them. He packed the rest up putting 4 games into each box. How many boxes did he have to use? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "assistant\nLuke started with 39 games, and he sold 19 of them. So, he has 39 - 19 = 20 games left. He packed these 20 games into boxes, with 4 games in each box. To find out how many boxes he used, we divide the number of games by the number of games per box: 20 \u00f7 4 = 5. Luke used 5 boxes.anko"
+    },
+    {
+      "idx": 66,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n There are 65 students trying out for the school's trivia teams. If 17 of them didn't get picked for the team and the rest were put into 8 groups, how many students would be in each group? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Sure, let's solve this step by step.\n\n1. **Total number of students trying out for the trivia teams**: 65\n2. **Number of students who didn't get picked for the team**: 17\n3. **Number of students who were put into 8 groups**: 65 - 17 = 48\n\nNow, we need to divide the remaining students (48) into 8 equal groups.\n\n4. **Number of students in each group**: \n   \\[\n   \\frac{48}{8} = 6\n   \\]\n\nSo, there would be \\boxed{6} students in each group."
+    },
+    {
+      "idx": 67,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Isabel uploaded 25 pictures to Facebook. She put 10 pics into one album and put the rest into 5 different albums. How many pictures were in each album? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 0.0,
+      "completion": "> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. Isabel uploaded a total of 25 pictures.\n2. She put 10 pictures into one album. This means the remaining pictures are in the other 5 albums.\n3. To find out how many pictures were in each of the 5 albums, we need to subtract the number of pictures in the first album from the total number of pictures.\n\nSo, the calculation is:\n\\[ 25 - 10 = 15 \\]\n\nTherefore, each of the 5 albums had 15 pictures."
+    },
+    {
+      "idx": 68,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Mike made 14 dollars mowing lawns and 26 dollars weed eating. If he only spent 5 dollar a week, how long would the money last him? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Total money Mike made:**\n   \\[\n   14 \\text{ dollars (mowing lawns)} + 26 \\text{ dollars (weed eating)} = 40 \\text{ dollars}\n   \\]\n\n2. **Money Mike spends per week:**\n   \\[\n   5 \\text{ dollars}\n   \\]\n\n3. **Number of weeks the money will last:**\n   \\[\n   \\frac{40 \\text{ dollars}}{5 \\text{ dollars per week}} = 8 \\text{ weeks}\n   \\]\n\nSo, the money will last Mike 8 weeks."
+    },
+    {
+      "idx": 69,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Vanessa had 16 music files and 48 video files on her flash drive. If she deleted 30 of the files, how many files were still on her flash drive? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of music files:**\n   Vanessa had 16 music files.\n\n2. **Initial number of video files:**\n   Vanessa had 48 video files.\n\n3. **Total number of files before deletion:**\n   To find the total number of files, we add the number of music files and video files together:\n   \\[\n   16 + 48 = 64\n   \\]\n\n4. **Number of files deleted:**\n   Vanessa deleted 30 files.\n\n5. **Number of files remaining:**\n   To find the number of files"
+    },
+    {
+      "idx": 70,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Dave had to wash 9 short sleeve shirts and 27 long sleeve shirts before school. If he had only washed 20 of them by the time school started, how many did he not wash? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Total number of shirts Dave had to wash:**\n   - Short sleeve shirts: 9\n   - Long sleeve shirts: 27\n   - Total = 9 + 27 = 36 shirts\n\n2. **Number of shirts Dave washed by the time school started:**\n   - By the time school started, Dave had washed 20 shirts.\n\n3. **Number of shirts Dave did not wash:**\n   - Total number of shirts = 36\n   - Number of shirts washed = 20\n   - Number of shirts not washed = 36 - 20 = 16\n\nSo, Dave did not wash \\boxed{1"
+    },
+    {
+      "idx": 71,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A chef needs to cook 9 potatoes. He has already cooked 7. If each potato takes 3 minutes to cook, how long will it take him to cook the rest? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the total number of potatoes to be cooked:**\n   The chef needs to cook 9 potatoes in total.\n\n2. **Determine the number of potatoes already cooked:**\n   The chef has already cooked 7 potatoes.\n\n3. **Calculate the number of potatoes left to be cooked:**\n   \\[\n   \\text{Number of potatoes left} = \\text{Total number of potatoes} - \\text{Number of potatoes already cooked}\n   \\]\n   \\[\n   \\text{Number of potatoes left} = 9 -"
+    },
+    {
+      "idx": 72,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n While on vacation, Gwen took 41 pictures at the zoo and 29 at the museum. If she later deleted 15 of the pictures, how many pictures from her vacation did she still have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the total number of pictures Gwen took:**\n   - At the zoo: 41 pictures\n   - At the museum: 29 pictures\n   - Total pictures: \\( 41 + 29 = 70 \\)\n\n2. **Subtract the pictures she deleted:**\n   - Pictures deleted: 15\n   - Pictures remaining: \\( 70 - 15 = 55 \\)\n\nSo, Gwen still has \\(\\boxed{55}\\) pictures from her vacation."
+    },
+    {
+      "idx": 73,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A pet shelter had 2 puppies when another 34 were brought in. If 4 puppies a day are adopted, how long would it take for all of them to be adopted? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of puppies**: The pet shelter started with 2 puppies.\n2. **Puppies brought in**: Another 34 puppies were brought in.\n3. **Total number of puppies**: \n   \\[\n   2 + 34 = 36\n   \\]\n4. **Puppies adopted per day**: 4 puppies are adopted each day.\n5. **Number of days to be adopted**: We need to find out how many days it will take for all 36 puppies to be adopted. Since 4 puppies are adopted each day, we divide the tota"
+    },
+    {
+      "idx": 74,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Will had 59 pieces of clothing to wash. He put 32 of them in one load, but decided to split the rest into 9 equal loads. How many pieces of clothing could go in each of the small loads? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Sure, let's solve this step by step.\n\n1. **Total pieces of clothing**: 59\n2. **Pieces in the first load**: 32\n3. **Remaining pieces**: \\( 59 - 32 = 27 \\)\n\n4. **Pieces to be split into 9 equal loads**: \\( \\frac{27}{9} = 3 \\)\n\nSo, each of the small loads can have 3 pieces of clothing. \n\nFinal answer: Each small load can have 3 pieces of clothing."
+    },
+    {
+      "idx": 75,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Adam bought 2 boxes of chocolate candy and 5 boxes of caramel candy. If each box has 4 pieces inside it, how much candy did he have total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the total number of chocolate candy boxes:**\n   - Adam bought 2 boxes of chocolate candy.\n   - Each box contains 4 pieces of chocolate candy.\n   - Total chocolate candy = 2 boxes * 4 pieces/box = 8 pieces.\n\n2. **Calculate the total number of caramel candy boxes:**\n   - Adam bought 5 boxes of caramel candy.\n   - Each box contains 4 pieces of caramel candy.\n   - Total caramel candy = 5 boxes * 4 pieces/box "
+    },
+    {
+      "idx": 76,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n April's discount flowers was having a sale where each flower was 6 dollars. If Katie bought 5 roses and 5 daisies, how much did she spend? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the cost of the roses:**\n   - Each rose costs $6.\n   - Katie bought 5 roses.\n   - So, the total cost for the roses is:\n     \\[\n     5 \\text{ roses} \\times 6 \\text{ dollars/rose} = 30 \\text{ dollars}\n     \\]\n\n2. **Calculate the cost of the daisies:**\n   - Each daisy costs $6.\n   - Katie bought 5 daisies.\n   - So, the total cost for the daisies is:\n     \\[\n     5 \\text{ daisies} \\times 6 \\text{ dollars/daisy} "
+    },
+    {
+      "idx": 77,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n At the schools book fair Victor bought 32 adventure books and 37 mystery books. If 16 of the books were used, how many new books did he buy? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "> </answer> tags.\nassistant\nVictor bought a total of 32 + 37 = 69 books. If 16 of them were used, then he bought 69 - 16 = 53 new books."
+    },
+    {
+      "idx": 78,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Maria picked 48 carrots from her garden. If she threw out 11 of them and then picked 15 more the next day, how many carrots would she have total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " </answer> tags.\nassistant\nMaria picked 48 carrots from her garden. She threw out 11 of them, so she has 48 - 11 = 37 carrots left. Then she picked 15 more the next day, so she has 37 + 15 = 52 carrots in total."
+    },
+    {
+      "idx": 79,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A florist had 50 roses. If she sold 15 of them and then later picked 21 more, how many roses would she have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of roses**: The florist started with 50 roses.\n2. **Roses sold**: She sold 15 roses.\n   \\[\n   50 - 15 = 35\n   \\]\n   So, after selling 15 roses, she has 35 roses left.\n3. **Roses picked later**: She picked 21 more roses.\n   \\[\n   35 + 21 = 56\n   \\]\n   Therefore, after picking 21 more roses, she has 56 roses in total.\n\nThe final answer is:\n\\[\n\\boxed{56}\n\\]"
+    },
+    {
+      "idx": 80,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Isabel had 2 pages of math homework and 4 pages of reading homework. If each page had 5 problems on it, how many problems did she have to complete total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the total number of pages Isabel has:**\n   - Math homework: 2 pages\n   - Reading homework: 4 pages\n   - Total pages = 2 + 4 = 6 pages\n\n2. **Calculate the total number of problems:**\n   - Each page has 5 problems.\n   - Total problems = 6 pages * 5 problems per page = 30 problems\n\nSo, Isabel had to complete a total of 30 problems."
+    },
+    {
+      "idx": 81,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n There were 4 friends playing a video game online when 5 more players joined the game. If each player had 3 lives, how many lives did they have total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of players**: There were 4 friends playing the game online initially.\n2. **New players joining**: 5 more players joined the game.\n3. **Total number of players**: We add the initial number of players to the new players.\n   \\[\n   4 + 5 = 9\n   \\]\n   So, there are 9 players in total.\n4. **Lives per player**: Each player has 3 lives.\n5. **Total number of lives**: We multiply the total number of players by the number "
+    },
+    {
+      "idx": 82,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Kaleb had 12 dollars. If he spent 8 bucks on a new game, how many 2 dollar toys could he buy with the money he had left? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial Amount**: Kaleb starts with 12 dollars.\n2. **Amount Spent on Game**: He spends 8 dollars on a new game.\n3. **Remaining Money**: To find out how much money he has left, we subtract the amount spent on the game from his initial amount:\n   \\[\n   12 - 8 = 4 \\text{ dollars}\n   \\]\n4. **Cost of Each Toy**: Each toy costs 2 dollars.\n5. **Number of Toys Kaleb Can Buy**: To determine how many 2 dollar toys he can buy with the re"
+    },
+    {
+      "idx": 83,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Katie had 7 pages of math homework and 3 pages of reading homework. If each page had 9 problems on it, how many problems did she have to complete total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the total number of math problems:**\n   - Katie has 7 pages of math homework.\n   - Each page has 9 problems.\n   - Total math problems = \\( 7 \\text{ pages} \\times 9 \\text{ problems per page} \\)\n\n   \\[\n   7 \\times 9 = 63\n   \\]\n\n2. **Calculate the total number of reading problems:**\n   - Katie has 3 pages of reading homework.\n   - Each page has 9 problems.\n   - Total reading problems = \\( 3 \\text{ pages} \\times 9 \\text{ pr"
+    },
+    {
+      "idx": 84,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n While shopping for music online, Janet bought 6 country albums and 2 pop albums. Each album came with a lyric sheet and had 9 songs. How many songs did Janet buy total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": ".\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the total number of country albums:**\n   Janet bought 6 country albums.\n\n2. **Calculate the total number of pop albums:**\n   Janet bought 2 pop albums.\n\n3. **Calculate the total number of albums:**\n   Add the number of country albums and pop albums together:\n   \\[\n   6 \\text{ (country albums)} + 2 \\text{ (pop albums)} = 8 \\text{ (total albums)}\n   \\]\n\n4. **Calculate the total number of songs:**\n   Each album has 9 songs. Therefore,"
+    },
+    {
+      "idx": 85,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Jerry made 14 dollars mowing lawns and 31 dollars weed eating. If he only spent 5 dollar a week, how long would the money last him? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the total amount of money Jerry made:**\n   \\[\n   \\text{Total money} = \\text{Money from mowing lawns} + \\text{Money from weed eating}\n   \\]\n   \\[\n   \\text{Total money} = 14 + 31 = 45 \\text{ dollars}\n   \\]\n\n2. **Determine how many weeks the money will last:**\n   Jerry spends $5 per week. To find out how many weeks the money will last, we divide the total amount of money by the weekly spending:\n   \\[\n   \\text{Number of wee"
+    },
+    {
+      "idx": 86,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Adam had 33 books. If he sold 11 of them and used the money he earned to buy 23 new books, how many books would Adam have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of books Adam had:**\n   \\[\n   \\text{Initial number of books} = 33\n   \\]\n\n2. **Books sold:**\n   \\[\n   \\text{Books sold} = 11\n   \\]\n\n3. **Books remaining after selling:**\n   \\[\n   \\text{Books remaining} = 33 - 11 = 22\n   \\]\n\n4. **Books bought:**\n   \\[\n   \\text{Books bought} = 23\n   \\]\n\n5. **Total number of books after buying:**\n   \\[\n   \\text{Total number of books} = 22 + 23 = 45\n   \\]\n\nSo, after selling 11 books and"
+    },
+    {
+      "idx": 87,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Kaleb was collecting cans for recycling. On Saturday he filled 5 bags up and on Sunday he filled 5 more bags. If each bag had 4 cans in it, how many cans did he pick up total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 0.0,
+      "completion": "Sure, let's solve this step by step.\n\n1. **Calculate the number of bags filled on Saturday:**\n   Kaleb filled 5 bags on Saturday.\n\n2. **Calculate the number of bags filled on Sunday:**\n   Kaleb filled 5 more bags on Sunday, so the total number of bags filled on Sunday is:\n   \\[\n   5 + 5 = 10 \\text{ bags}\n   \\]\n\n3. **Calculate the total number of bags filled:**\n   Add the number of bags filled on Saturday and Sunday:\n   \\[\n   5 + 10 = 15 \\text{ bags}\n   \\]\n\n4. **Calculate the total number of cans"
+    },
+    {
+      "idx": 88,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Nancy was organizing her book case making sure each of the shelves had exactly 6 books on it. If she had 2 shelves of mystery books and 6 shelves of picture books, how many books did she have total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "assistant\nSure, let's solve this step by step.\n\n1. **Determine the number of books on each type of shelf:**\n   - Nancy has 2 shelves of mystery books.\n   - Each shelf has 6 books.\n   - Therefore, the total number of mystery books is:\n     \\[\n     2 \\text{ shelves} \\times 6 \\text{ books per shelf} = 12 \\text{ mystery books}\n     \\]\n\n   - Nancy has 6 shelves of picture books.\n   - Each shelf has 6 books.\n   - Therefore, the total number of picture books is:\n     \\[\n     6 \\text{ shelves} \\times 6 "
+    },
+    {
+      "idx": 89,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Paul had saved up 3 dollars. If he received another 7 dollars for his allowance, how many 5 dollar toys could he buy? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " your final numerical answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial Savings**: Paul had saved up 3 dollars.\n2. **Additional Allowance**: He received another 7 dollars for his allowance.\n3. **Total Money**: To find out how much money he has in total, we add the initial savings to the additional allowance:\n   \\[\n   3 + 7 = 10 \\text{ dollars}\n   \\]\n4. **Number of 5 Dollar Toys**: Now, we need to determine how many 5 dollar toys he can buy with the t"
+    },
+    {
+      "idx": 90,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Wendy was playing a video game and had 43 lives. In a hard part of the game she lost 8 lives. If she got 39 more lives in the next level, how many lives would she have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nSure, let's solve this step by step:\n\n1. Wendy started with 43 lives.\n2. She lost 8 lives in the hard part of the game.\n3. After losing those 8 lives, she had:\n   \\[\n   43 - 8 = 35 \\text{ lives}\n   \\]\n4. Then, she got 39 more lives in the next level.\n5. So, the total number of lives she would have is:\n   \\[\n   35 + 39 = 74 \\text{ lives}\n   \\]\n\nTherefore, Wendy would have \\boxed{74} lives."
+    },
+    {
+      "idx": 91,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Katie had 85 files on her computer. She deleted 40 of them and put the rest into folders with 5 files in each one. How many folders did Katie end up with? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of files**: Katie had 85 files on her computer.\n2. **Files deleted**: She deleted 40 files.\n   \\[\n   \\text{Remaining files} = 85 - 40 = 45\n   \\]\n3. **Files per folder**: She put the remaining 45 files into folders with 5 files in each one.\n   \\[\n   \\text{Number of folders} = \\frac{45}{5} = 9\n   \\]\n\nSo, Katie ended up with \\boxed{9} folders."
+    },
+    {
+      "idx": 92,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Will was working as a sacker at a grocery store where he made 8 dollars an hour. On Monday he worked 8 hours and on Tuesday he worked 2 hours. How much money did Will make in those two days? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Sure, let's solve this step by step.\n\n1. **Calculate the amount Will made on Monday:**\n   - Will worked 8 hours on Monday.\n   - He earns $8 per hour.\n   - So, the amount he made on Monday is:\n     \\[\n     8 \\text{ hours} \\times 8 \\text{ dollars/hour} = 64 \\text{ dollars}\n     \\]\n\n2. **Calculate the amount Will made on Tuesday:**\n   - Will worked 2 hours on Tuesday.\n   - He earns $8 per hour.\n   - So, the amount he made on Tuesday is:\n     \\[\n     2 \\text{ hours} \\times 8 \\text{ dollars/hour} = 1"
+    },
+    {
+      "idx": 93,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n For the school bake sale Carol made 19 cupcakes. If she sold 6 of them and then made 27 more, how many cupcakes would she have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 0.0,
+      "completion": " <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of cupcakes:**\n   Carol made 19 cupcakes.\n\n2. **Cupcakes sold:**\n   She sold 6 cupcakes.\n   \\[\n   19 - 6 = 13\n   \\]\n   So, after selling 6 cupcakes, she has 13 cupcakes left.\n\n3. **Cupcakes to be made:**\n   Carol plans to make 27 more cupcakes.\n   \\[\n   13 + 27 = 40\n   \\]\n   So, she plans to make 40 more cupcakes.\n\n4. **Total number of cupcakes:**\n   To find the total number of cupcakes she will have, w"
+    },
+    {
+      "idx": 94,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A trivia team had 14 members total, but during a game 7 members didn't show up. If each member that did show up scored 5 points, how many points were scored total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": ".\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the number of members who showed up:**\n   - The total number of members is 14.\n   - 7 members didn't show up.\n   - Therefore, the number of members who showed up is:\n     \\[\n     14 - 7 = 7\n     \\]\n\n2. **Calculate the total points scored:**\n   - Each member who showed up scored 5 points.\n   - So, the total points scored by the 7 members is:\n     \\[\n     7 \\times 5 = 35\n     \\]\n\nThus, the total points scored is \\(\\boxed{35}\\)."
+    },
+    {
+      "idx": 95,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A trivia team had 5 members total, but during a game 2 members didn't show up. If each member that did show up scored 6 points, how many points were scored total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the number of members who showed up:**\n   - The trivia team had 5 members in total.\n   - 2 members didn't show up.\n   - Therefore, the number of members who showed up is:\n     \\[\n     5 - 2 = 3\n     \\]\n\n2. **Calculate the total points scored by the members who showed up:**\n   - Each member who showed up scored 6 points.\n   - So, the total points scored by the 3 members is:\n     \\[\n     3 \\times 6 = 18\n     \\]\n\nThus, the total "
+    },
+    {
+      "idx": 96,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Oliver is at the library helping put away books. There are 46 book to put away total but a librarian takes 10 of them and leaves Oliver with the rest. If he can fit 4 books on a shelf, how many shelves will he need? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Sure, let's solve this step by step.\n\n1. **Total number of books**: 46\n2. **Number of books taken by the librarian**: 10\n3. **Number of books left for Oliver**: \\( 46 - 10 = 36 \\)\n4. **Number of books per shelf**: 4\n\nTo find out how many shelves Oliver will need, we divide the number of books left by the number of books per shelf:\n\n\\[\n\\text{Number of shelves} = \\frac{36}{4} = 9\n\\]\n\nSo, Oliver will need \\(\\boxed{9}\\) shelves."
+    },
+    {
+      "idx": 97,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Luke was putting his spare change into piles. He had 5 piles of quarters and 5 piles of dimes. If each pile had 3 coins in it, how many coins did he have total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "answer> </answer> tags.\nassistant\nLuke had 5 piles of quarters, and each pile had 3 quarters, so he had 5 * 3 = 15 quarters.\nLuke also had 5 piles of dimes, and each pile had 3 dimes, so he had 5 * 3 = 15 dimes.\nIn total, Luke had 15 quarters + 15 dimes = 30 coins."
+    },
+    {
+      "idx": 98,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Gwen and her friends were recycling paper for their class. For every 3 pounds they recycled they earned one point. If Gwen recycled 5 pounds and her friends recycled 13 pounds, how many points did they earn? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the total amount of paper recycled:**\n   - Gwen recycled 5 pounds.\n   - Her friends recycled 13 pounds.\n   - Total recycled = 5 pounds + 13 pounds = 18 pounds.\n\n2. **Calculate the points earned:**\n   - For every 3 pounds recycled, they earn 1 point.\n   - We need to find out how many sets of 3 pounds are in 18 pounds.\n   - \\( \\frac{18 \\text{ pounds}}{3 \\text{ pounds/set}} = 6 \\text{ sets} \\).\n\n3. **Calculate the total po"
+    },
+    {
+      "idx": 99,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Haley's favorite band was holding a concert where tickets were 4 dollars each. Haley bought 3 tickets for herself and her friends and 5 extra tickets in case anyone else wanted to go. How much did she spend? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "answer> tags.\nassistant\nSure, let's break down the problem step by step.\n\n1. **Calculate the cost of the 3 tickets for Haley and her friends:**\n   - Each ticket costs $4.\n   - Haley bought 3 tickets.\n   - So, the total cost for the 3 tickets is:\n     \\[\n     3 \\text{ tickets} \\times 4 \\text{ dollars/ticket} = 12 \\text{ dollars}\n     \\]\n\n2. **Calculate the cost of the 5 extra tickets:**\n   - Each extra ticket costs $4.\n   - Haley bought 5 extra tickets.\n   - So, the total cost for the 5 extra tic"
+    },
+    {
+      "idx": 100,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n George had 30 dollars. For his birthday he got 16 more dollars but spent 38 on a new game. How much money does he have now? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " Give your final numerical answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. George started with 30 dollars.\n2. He received 16 more dollars for his birthday, so we add 16 to his initial amount:\n   \\[\n   30 + 16 = 46\n   \\]\n3. George then spent 38 dollars on a new game. To find out how much money he has left, we subtract 38 from his current amount:\n   \\[\n   46 - 38 = 8\n   \\]\n\nSo, George has \\boxed{8} dollars now."
+    },
+    {
+      "idx": 101,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A pet store has 4 bird cages. If each cage has 8 parrots and 2 parakeets in it, how many birds does the pet store have total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " your final numerical answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the total number of parrots:**\n   - Each cage has 8 parrots.\n   - There are 4 cages.\n   - So, the total number of parrots is \\( 8 \\text{ parrots/cage} \\times 4 \\text{ cages} = 32 \\text{ parrots} \\).\n\n2. **Calculate the total number of parakeets:**\n   - Each cage has 2 parakeets.\n   - There are 4 cages.\n   - So, the total number of parakeets is \\( 2 \\text{ parakeets/cage} \\times"
+    },
+    {
+      "idx": 102,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Kaleb bought 14 boxes of chocolate candy and gave 5 to his little brother. If each box has 6 pieces inside it, how many pieces did Kaleb still have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 0.0,
+      "completion": " numerical answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the total number of chocolate candies Kaleb bought:**\n   - Kaleb bought 14 boxes.\n   - Each box contains 6 pieces.\n   - Therefore, the total number of candies is:\n     \\[\n     14 \\text{ boxes} \\times 6 \\text{ pieces per box} = 84 \\text{ pieces}\n     \\]\n\n2. **Subtract the number of candies given to his little brother:**\n   - Kaleb gave 5 pieces to his little brother.\n   - Therefore, the nu"
+    },
+    {
+      "idx": 103,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Robin uploaded 31 pictures from her phone and 5 from her camera to facebook. If she sorted the pics into 9 different albums with the same amount of pics in each album, how many pictures were in each of the albums? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": ".\nassistant\nSure, let's solve this step by step.\n\n1. **Total number of pictures:**\n   Robin uploaded a total of \\(31\\) pictures from her phone and \\(5\\) pictures from her camera. So, the total number of pictures is:\n   \\[\n   31 + 5 = 36\n   \\]\n\n2. **Number of albums:**\n   Robin sorted the pictures into \\(9\\) different albums. To find out how many pictures were in each album, we need to divide the total number of pictures by the number of albums:\n   \\[\n   \\frac{36}{9} = 4\n   \\]\n\nSo, each album con"
+    },
+    {
+      "idx": 104,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Mike made 69 dollars mowing lawns over the summer. If he spent 24 dollars buying new mower blades, how many 5 dollar games could he buy with the money he had left? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Initial Amount**: Mike started with $69.\n2. **Money Spent on Mower Blades**: He spent $24 on mower blades.\n3. **Money Left After Buying Blades**: \n   \\[\n   69 - 24 = 45\n   \\]\n   So, Mike has $45 left.\n4. **Money per Game**: Each game costs $5.\n5. **Number of Games He Can Buy**: To find out how many $5 games he can buy with $45, we divide the remaining money by the cost of one game:\n   \\[\n   \\frac{45}{5} = 9\n   \\]\n\nSo, Mike can buy \\(\\boxed{9}"
+    },
+    {
+      "idx": 105,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Maria bought 2 new chairs and 2 new tables for her house. If she spent 8 minutes on each piece furniture putting it together, how many minutes did it take her to finish? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the total number of pieces of furniture:**\n   - Maria bought 2 chairs.\n   - Maria bought 2 tables.\n   - Therefore, the total number of pieces of furniture is:\n     \\[\n     2 \\text{ chairs} + 2 \\text{ tables} = 4 \\text{ pieces of furniture}\n     \\]\n\n2. **Calculate the total time spent:**\n   - Maria spent 8 minutes on each piece of furniture.\n   - Therefore, the total time spent is:\n     \\[\n     4 \\text{ pieces of furniture} \\ti"
+    },
+    {
+      "idx": 106,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n While on vacation, Rachel took 6 pictures at the zoo and 9 at the museum. If she later deleted 11 of the pictures, how many pictures from her vacation did she still have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the total number of pictures Rachel took:**\n   - At the zoo: 6 pictures\n   - At the museum: 9 pictures\n   - Total pictures: \\(6 + 9 = 15\\)\n\n2. **Subtract the pictures she deleted:**\n   - Pictures deleted: 11\n   - Pictures remaining: \\(15 - 11 = 4\\)\n\nSo, Rachel still has \\(\\boxed{4}\\) pictures from her vacation."
+    },
+    {
+      "idx": 107,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Maria was making baggies of cookies with 8 cookies in each bag. If she had 5 chocolate chip cookies and 19 oatmeal cookies, how many baggies could she make? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Total number of cookies**: Maria has 5 chocolate chip cookies and 19 oatmeal cookies.\n   \\[\n   \\text{Total cookies} = 5 + 19 = 24\n   \\]\n\n2. **Number of cookies per bag**: Maria wants to make baggies with 8 cookies in each bag.\n\n3. **Number of baggies she can make**: To find out how many baggies she can make, we divide the total number of cookies by the number of cookies per bag.\n   \\[\n   \\text{Number of baggies} = \\frac{24}{8} = 3\n   \\]"
+    },
+    {
+      "idx": 108,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n April's discount flowers was having a sale where each flower was 3 dollars. If Zoe bought 8 roses and 2 daisies, how much did she spend? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the cost of the roses:**\n   - Each rose costs $3.\n   - Zoe bought 8 roses.\n   - So, the total cost for the roses is:\n     \\[\n     8 \\text{ roses} \\times 3 \\text{ dollars/rose} = 24 \\text{ dollars}\n     \\]\n\n2. **Calculate the cost of the daisies:**\n   - Each daisy costs $3.\n   - Zoe bought 2 daisies.\n   - So, the total cost for the daisies is:\n     \\[\n     2 \\text{ daisies} \\times 3 \\text{ dollars/daisy} = 6 \\text{ d"
+    },
+    {
+      "idx": 109,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Bianca was organizing her book case making sure each of the shelves had exactly 8 books on it. If she had 5 shelves of mystery books and 4 shelves of picture books, how many books did she have total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Sure, let's solve this step by step.\n\n1. First, we need to find out the total number of books Bianca has on her shelves. She has 5 shelves of mystery books and 4 shelves of picture books.\n\n2. Each shelf has 8 books. So, for the mystery books, she has \\(5 \\times 8 = 40\\) books. For the picture books, she has \\(4 \\times 8 = 32\\) books.\n\n3. To find the total number of books, we add the number of books on the mystery books and the picture books together: \\(40 + 32 = 72\\).\n\nSo, the total number of bo"
+    },
+    {
+      "idx": 110,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n John was organizing his baseball cards in a binder with 3 on each page. If he had 8 new cards and 16 old cards to put in the binder, how many pages would he use? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Total number of new cards**: John has 8 new cards.\n2. **Total number of old cards**: John has 16 old cards.\n3. **Total number of cards**: To find the total number of cards, we add the new cards and the old cards together:\n   \\[\n   8 + 16 = 24\n   \\]\n   So, there are 24 cards in total.\n\n4. **Number of pages needed**: Each page can hold 3 cards. To find out how many pages are needed to hold all 24 cards, we divide the total number of cards by th"
+    },
+    {
+      "idx": 111,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Isabel baked 3 brownies, but needed 5 total for her party. If she used 5 cups of flour on each one, how much cups of flour does she still need? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 0.0,
+      "completion": "> tags.\nassistant\nSure, let's solve this step by step.\n\n1. Isabel baked 3 brownies.\n2. She needed a total of 5 brownies for her party.\n3. She used 5 cups of flour on each brownie.\n\nTo find out how much flour she still needs, we can follow these steps:\n\n- First, calculate the total amount of flour Isabel used for all the brownies.\n  \\[\n  \\text{Total flour used} = \\text{Number of brownies} \\times \\text{Flour per brownie} = 3 \\times 5 = 15 \\text{ cups}\n  \\]\n\n- Next, determine how much flour Isabel "
+    },
+    {
+      "idx": 112,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n For the school bake sale Maria made 19 cupcakes. If she sold 5 of them and then made 10 more, how many cupcakes would she have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " final numerical answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. Maria started with 19 cupcakes.\n2. She sold 5 cupcakes. So, we subtract 5 from 19:\n   \\[\n   19 - 5 = 14\n   \\]\n   Now, Maria has 14 cupcakes left.\n3. Next, she made 10 more cupcakes. So, we add 10 to the remaining 14 cupcakes:\n   \\[\n   14 + 10 = 24\n   \\]\n   Therefore, Maria now has 24 cupcakes.\n\nThe final answer is:\n\\[\n\\boxed{24}\n\\]"
+    },
+    {
+      "idx": 113,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Tom bought 40 tickets at the state fair. He spent 28 tickets at the 'dunk a clown' booth and decided to use the rest on rides. If each ride cost 4 tickets, how many rides could he go on? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Sure, let's solve this step by step.\n\n1. **Determine the number of tickets Tom has left:**\n   Tom initially bought 40 tickets and used 28 tickets at the 'dunk a clown' booth.\n   \\[\n   \\text{Tickets left} = 40 - 28 = 12\n   \\]\n\n2. **Calculate how many rides Tom can go on with the remaining tickets:**\n   Each ride costs 4 tickets.\n   \\[\n   \\text{Number of rides} = \\frac{\\text{Tickets left}}{\\text{Tickets per ride}} = \\frac{12}{4} = 3\n   \\]\n\nSo, Tom can go on \\boxed{3} rides."
+    },
+    {
+      "idx": 114,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n In fourth grade there were 31 students at the start of the year. During the year 5 students left and 11 new students came to school. How many students were in fourth grade at the end? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of students**: 31\n2. **Students who left**: 5\n3. **Students who came in**: 11\n\nTo find the final number of students, we need to subtract the number of students who left from the initial number and then add the number of students who came in.\n\n\\[\n\\text{Final number of students} = \\text{Initial number of students} - \\text{Students who left} + \\text{Students who came in}\n\\]\n\nSubstituting the given values:\n\n\\[\n\\text{Final num"
+    },
+    {
+      "idx": 115,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n While shopping, Maria bought 35 green towels and 21 white towels. If she gave her mother 34 of them, how many towels did Maria end up with? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the total number of green towels Maria bought:**\n   \\[\n   \\text{Total green towels} = 35\n   \\]\n\n2. **Calculate the total number of white towels Maria bought:**\n   \\[\n   \\text{Total white towels} = 21\n   \\]\n\n3. **Add the total number of green and white towels together:**\n   \\[\n   \\text{Total towels} = 35 + 21 = 56\n   \\]\n\n4. **Subtract the number of towels Maria gave to her mother:**\n   \\[\n   \\text{Towels l"
+    },
+    {
+      "idx": 116,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n While playing a trivia game, Adam answered 8 questions correct in the first half and 2 questions correct in the second half. If each question was worth 8 points, what was his final score? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the total number of questions answered:**\n   - Adam answered 8 questions correctly in the first half.\n   - Adam answered 2 questions correctly in the second half.\n   - Total questions answered = 8 (first half) + 2 (second half) = 10 questions.\n\n2. **Calculate the total points earned:**\n   - Each question is worth 8 points.\n   - Total points = 10 questions * 8 points/question = 80 points.\n\n3. **Determine Adam's final "
+    },
+    {
+      "idx": 117,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Paul was collecting cans for recycling. On Saturday he filled 6 bags up and on Sunday he filled 3 more bags. If each bag had 8 cans in it, how many cans did he pick up total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the number of bags filled on Saturday:**\n   Paul filled 6 bags on Saturday.\n\n2. **Calculate the number of bags filled on Sunday:**\n   Paul filled 3 more bags on Sunday, so the total number of bags filled is:\n   \\[\n   6 + 3 = 9 \\text{ bags}\n   \\]\n\n3. **Calculate the total number of cans:**\n   Each bag contains 8 cans. Therefore, the total number of cans is:\n   \\[\n   9 \\text{ bags} \\times 8 \\text{ cans per bag} = 72 \\text{ cans}"
+    },
+    {
+      "idx": 118,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Bianca and her friends were recycling paper for their class. For every 3 pounds they recycled they earned one point. If Bianca recycled 24 pounds and her friends recycled 3 pounds, how many points did they earn? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the total amount of paper recycled:**\n   - Bianca recycled 24 pounds.\n   - Her friends recycled 3 pounds.\n   - Total recycled = 24 pounds + 3 pounds = 27 pounds.\n\n2. **Calculate the number of points earned:**\n   - For every 3 pounds recycled, they earn 1 point.\n   - Number of points = \\(\\frac{27 \\text{ pounds}}{3 \\text{ pounds/point}} = 9 \\text{ points}\\).\n\nSo, Bianca and her friends earned \\(\\boxed{9}\\) points."
+    },
+    {
+      "idx": 119,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A group of 3 friends went into a restaurant. The chef already had 8 chicken wings cooked but cooked 10 more for the group. If they each got the same amount how many would each person get? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of chicken wings cooked by the chef**: 8\n2. **Number of chicken wings cooked by the group**: 10\n3. **Total number of chicken wings**: \\( 8 + 10 = 18 \\)\n4. **Number of friends**: 3\n5. **Number of chicken wings each person gets**: \\( \\frac{18}{3} = 6 \\)\n\nSo, each person would get 6 chicken wings."
+    },
+    {
+      "idx": 120,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n John had 33 socks. If he threw away 19 old ones that didn't fit and bought 13 new ones, how many socks would he have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " your final numerical answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of socks John had:**\n   \\[\n   33\n   \\]\n\n2. **Number of socks John threw away:**\n   \\[\n   19\n   \\]\n   So, the number of socks John has left after throwing away the old ones is:\n   \\[\n   33 - 19 = 14\n   \\]\n\n3. **Number of new socks John bought:**\n   \\[\n   13\n   \\]\n\n4. **Total number of socks John has now:**\n   \\[\n   14 + 13 = 27\n   \\]\n\nSo, the final number of socks John has "
+    },
+    {
+      "idx": 121,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n There school's baseball team had 2 new players and 6 returning players. If the coach put them into groups with 4 players in each group, how many groups would there be? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the total number of players:**\n   - There are 2 new players.\n   - There are 6 returning players.\n   - Total number of players = 2 + 6 = 8 players.\n\n2. **Determine the number of players per group:**\n   - Each group will have 4 players.\n\n3. **Calculate the number of groups:**\n   - To find the number of groups, we divide the total number of players by the number of players per group.\n   - Number of gr"
+    },
+    {
+      "idx": 122,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A painter needed to paint 6 rooms in a building. Each room takes 5 hours to paint. If he already painted 2 rooms, how much longer will he take to paint the rest? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 0.0,
+      "completion": " <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the total number of rooms to paint:**\n   - The painter needs to paint 6 rooms in total.\n   - He has already painted 2 rooms.\n   - Therefore, the number of rooms to paint is:\n     \\[\n     6 - 2 = 4 \\text{ rooms}\n     \\]\n\n2. **Calculate the total time required to paint all 4 rooms:**\n   - Each room takes 5 hours to paint.\n   - Therefore, the total time required to paint 4 rooms is:\n     \\[\n     4 \\text{ rooms}"
+    },
+    {
+      "idx": 123,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A waiter had 22 customers in his section. If 14 of them left and the rest of his tables had 4 people at each table, how many tables did he have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of customers**: 22\n2. **Customers who left**: 14\n3. **Remaining customers**: \\( 22 - 14 = 8 \\)\n\n4. **Number of people at each table**: 4\n\n5. **Number of tables**: To find the number of tables, we divide the remaining customers by the number of people per table.\n\n\\[\n\\text{Number of tables} = \\frac{\\text{Remaining customers}}{\\text{People per table}} = \\frac{8}{4} = 2\n\\]\n\nSo, the waiter had \\(\\boxed{2}"
+    },
+    {
+      "idx": 124,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Roger had 120 pieces of clothing to wash. He put 48 of them in one load, but decided to split the rest into 9 equal loads. How many pieces of clothing could go in each of the small loads? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Total pieces of clothing:**\n   Roger had 120 pieces of clothing.\n\n2. **Pieces of clothing in one load:**\n   Roger put 48 pieces of clothing in one load.\n\n3. **Remaining pieces of clothing:**\n   To find the remaining pieces of clothing, subtract the number of pieces in one load from the total number of pieces:\n   \\[\n   120 - 48 = 72\n   \\]\n   So, there are 72 pieces of clothing left to be divided into 9 equal loads.\n\n4. **Number of pieces of cl"
+    },
+    {
+      "idx": 125,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n In fourth grade there were 10 students at the start of the year. During the year 4 students left and 42 new students came to school. How many students were in fourth grade at the end? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 0.0,
+      "completion": "answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of students**: There were 10 students at the start of the year.\n\n2. **Students who left**: 4 students left the school.\n\n3. **Students who came in**: 42 new students came to school.\n\n4. **Total number of students at the end**:\n   - Start number of students: 10\n   - Students who left: 4\n   - Students who came in: 42\n\n   To find the total number of students at the end, we add these two numbers together:\n   \\[\n   10 + "
+    },
+    {
+      "idx": 126,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Roger is at the library helping put away books. There are 14 book to put away total but a librarian takes 2 of them and leaves Roger with the rest. If he can fit 3 books on a shelf, how many shelves will he need? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Roger has 14 books to put away in total. The librarian takes 2 books, so he has 14 - 2 = 12 books left to put away. If he can fit 3 books on a shelf, then he will need 12 / 3 = 4 shelves.anko"
+    },
+    {
+      "idx": 127,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Bianca picked 39 tulips and 49 roses to make flower bouquets. If she only used 81 of the flowers though, how many extra flowers did Bianca pick? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Total number of flowers Bianca picked:**\n   - Tulips: 39\n   - Roses: 49\n   - Total flowers: \\( 39 + 49 = 88 \\)\n\n2. **Number of flowers used:**\n   - Flowers used: 81\n\n3. **Number of extra flowers:**\n   - Extra flowers = Total flowers - Flowers used\n   - Extra flowers = 88 - 81 = 7\n\nSo, Bianca picked \\(\\boxed{7}\\) extra flowers."
+    },
+    {
+      "idx": 128,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Emily bought 4 new chairs and 2 new tables for her house. If she spent 8 minutes on each piece furniture putting it together, how many minutes did it take her to finish? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "assistant\nSure, let's solve this step by step.\n\n1. **Calculate the total number of chairs and tables Emily bought:**\n   - Emily bought 4 chairs.\n   - Emily bought 2 tables.\n   - Total number of pieces of furniture = 4 chairs + 2 tables = 6 pieces.\n\n2. **Determine the time spent on each piece of furniture:**\n   - Emily spent 8 minutes on each piece of furniture.\n\n3. **Calculate the total time spent on all the pieces of furniture:**\n   - Total time = Number of pieces \u00d7 Time per piece\n   - Total ti"
+    },
+    {
+      "idx": 129,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A pet store has 6 bird cages. If each cage has 2 parrots and 7 parakeets in it, how many birds does the pet store have total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": ".\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the number of parrots in one cage:**\n   Each cage has 2 parrots.\n\n2. **Determine the number of parakeets in one cage:**\n   Each cage has 7 parakeets.\n\n3. **Calculate the total number of parrots in all cages:**\n   Since there are 6 cages and each cage has 2 parrots, the total number of parrots is:\n   \\[\n   6 \\text{ cages} \\times 2 \\text{ parrots per cage} = 12 \\text{ parrots}\n   \\]\n\n4. **Calculate the total number of parakeets in al"
+    },
+    {
+      "idx": 130,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Dave had to wash 9 short sleeve shirts and 27 long sleeve shirts before school. If he had only washed 20 of them by the time school started, how many did he not wash? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Sure, let's solve this step by step.\n\n1. **Total number of shirts Dave had to wash:**\n   - Short sleeve shirts: 9\n   - Long sleeve shirts: 27\n   - Total = 9 + 27 = 36 shirts\n\n2. **Number of shirts Dave washed by the time school started:**\n   - By the time school started, Dave had washed 20 shirts.\n\n3. **Number of shirts Dave did not wash:**\n   - Total number of shirts = 36\n   - Number of shirts washed = 20\n   - Number of shirts not washed = Total number of shirts - Number of shirts washed\n   - N"
+    },
+    {
+      "idx": 131,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n While on vacation, Haley took 50 pictures at the zoo and 8 at the museum. If she later deleted 38 of the pictures, how many pictures from her vacation did she still have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 0.0,
+      "completion": "Sure, let's solve this step by step.\n\n1. **Initial Pictures:**\n   - At the zoo: 50 pictures\n   - At the museum: 8 pictures\n\n2. **Pictures Deleted:**\n   - Haley deleted 38 pictures.\n\n3. **Calculate the Remaining Pictures:**\n   - Remaining pictures = Initial pictures - Deleted pictures\n   - Remaining pictures = 50 - 38\n\n4. **Perform the Calculation:**\n   - 50 - 38 = 12\n\nSo, Haley still has \\boxed{12} pictures from her vacation."
+    },
+    {
+      "idx": 132,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A florist had 5 roses. If she sold 3 of them and then later picked 34 more, how many roses would she have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of roses**: The florist started with 5 roses.\n2. **Roses sold**: She sold 3 roses.\n   \\[\n   5 - 3 = 2\n   \\]\n   So, after selling 3 roses, she has 2 roses left.\n3. **Roses picked later**: She picked 34 more roses.\n   \\[\n   2 + 34 = 36\n   \\]\n   Therefore, after picking 34 more roses, she has 36 roses in total.\n\nSo, the final number of roses she has is \\(\\boxed{36}\\)."
+    },
+    {
+      "idx": 133,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n For a birthday party Cody bought 4 regular sodas and 44 diet sodas. If his fridge would only hold 6 on each shelf, how many shelves would he fill up? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "assistant\nSure, let's solve this step by step.\n\n1. **Calculate the total number of sodas:**\n   - Cody bought 4 regular sodas.\n   - He also bought 44 diet sodas.\n   - Total sodas = 4 (regular) + 44 (diet) = 48 sodas.\n\n2. **Determine how many shelves are needed:**\n   - Each shelf can hold 6 sodas.\n   - To find out how many shelves are needed, we divide the total number of sodas by the capacity of each shelf:\n     \\[\n     \\text{Number of shelves} = \\frac{\\text{Total number of sodas}}{\\text{Sodas pe"
+    },
+    {
+      "idx": 134,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n The schools debate team had 26 boys and 46 girls on it. If they were split into groups of 9 how many groups could they make? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Total number of students**: \n   - Number of boys: 26\n   - Number of girls: 46\n   - Total number of students = 26 + 46 = 72\n\n2. **Number of students per group**:\n   - Each group should have 9 students.\n\n3. **Calculate the number of groups**:\n   - To find the number of groups, we divide the total number of students by the number of students per group.\n   - Number of groups = Total number of students / Number of students per group\n "
+    },
+    {
+      "idx": 135,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n The school cafeteria ordered 6 red apples and 15 green apples for students lunches. But, if only 5 students wanted fruit, how many extra did the cafeteria end up with? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the total number of apples:**\n   - The cafeteria ordered 6 red apples and 15 green apples.\n   - Total number of apples = 6 (red) + 15 (green) = 21 apples.\n\n2. **Calculate the number of apples needed for 5 students:**\n   - Each student wants 1 apple.\n   - Total number of apples needed = 5 students \u00d7 1 apple/student = 5 apples.\n\n3. **Determine the number of extra apples:**\n   - The cafeteria started with 21 apples.\n   - The number of "
+    },
+    {
+      "idx": 136,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n At a company picnic 9 managers and 15 employees decided to start a game of volleyball. If they split into 8 teams how many people would be on each team? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Total number of people at the picnic:**\n   - Managers: 9\n   - Employees: 15\n   - Total = 9 + 15 = 24\n\n2. **Number of teams:**\n   - Total people = 24\n   - Number of teams = 8\n\n3. **Number of people per team:**\n   - To find the number of people per team, we divide the total number of people by the number of teams.\n   \\[\n   \\text{Number of people per team} = \\frac{\\text{Total number of people}}{\\text{Number of teams}} = \\f"
+    },
+    {
+      "idx": 137,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A book store had 4 books in the bargin bin. If they sold 3 books, but then put 10 more in the bin, how many books would be in the bin? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of books in the bin:**\n   The book store had 4 books in the bin initially.\n\n2. **Books sold:**\n   They sold 3 books. So, we subtract 3 from the initial number:\n   \\[\n   4 - 3 = 1\n   \\]\n   Now, the number of books in the bin is 1.\n\n3. **Books added:**\n   They then put 10 more books in the bin. So, we add 10 to the current number of books:\n   \\[\n   1 + 10 = 11\n   \\]\n   Now, the number of books in the bin is 11.\n\nSo, the fi"
+    },
+    {
+      "idx": 138,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Mike made 42 dollars mowing lawns over the summer. If he spent 10 dollars buying new mower blades, how many 8 dollar games could he buy with the money he had left? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": ".\nassistant\nSure, let's solve this step by step.\n\n1. **Initial Amount**: Mike started with $42.\n2. **Money Spent on Mower Blades**: He spent $10 on mower blades.\n3. **Remaining Money**: Subtract the amount spent on mower blades from the initial amount.\n   \\[\n   42 - 10 = 32\n   \\]\n   So, Mike has $32 left.\n4. **Cost of Each Game**: Each game costs $8.\n5. **Number of Games He Can Buy**: Divide the remaining money by the cost of one game.\n   \\[\n   \\frac{32}{8} = 4\n   \\]\n   Therefore, Mike can buy 4"
+    },
+    {
+      "idx": 139,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A chef needs to cook 13 potatoes. He has already cooked 5. If each potato takes 6 minutes to cook, how long will it take him to cook the rest? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the total number of potatoes to be cooked:**\n   The chef needs to cook 13 potatoes in total.\n\n2. **Determine the number of potatoes already cooked:**\n   The chef has already cooked 5 potatoes.\n\n3. **Calculate the number of potatoes left to be cooked:**\n   \\[\n   \\text{Number of potatoes left} = \\text{Total number of potatoes} - \\text{Number of potatoes already cooked}\n   \\]\n   \\[\n   \\text{Number of potatoes left} = 13"
+    },
+    {
+      "idx": 140,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Paige had 43 math problems and 12 science problems for homework. If she finished 44 of the problems at school, how many problems did she have to do for homework? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "answer> tags.\nassistant\nPaige had 43 math problems and 12 science problems for homework. She finished 44 of the problems at school. To find out how many problems she had to do for homework, we need to subtract the number of problems she finished from the total number of problems she had.\n\nTotal number of problems Paige had to do for homework = 43 (math problems) + 12 (science problems) = 55 problems\n\nNumber of problems Paige finished at school = 44 problems\n\nNumber of problems Paige had to do fo"
+    },
+    {
+      "idx": 141,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n April's discount flowers was having a sale where each flower was 8 dollars. If Vanessa bought 3 roses and 3 daisies, how much did she spend? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " <answer> </answer> tags.\nassistant\nSure, let's solve the problem step by step.\n\n1. **Calculate the cost of the roses:**\n   - Each rose costs $8.\n   - Vanessa bought 3 roses.\n   - So, the total cost for the roses is:\n     \\[\n     3 \\text{ roses} \\times 8 \\text{ dollars/rose} = 24 \\text{ dollars}\n     \\]\n\n2. **Calculate the cost of the daisies:**\n   - Each daisy costs $8.\n   - Vanessa bought 3 daisies.\n   - So, the total cost for the daisies is:\n     \\[\n     3 \\text{ daisies} \\times 8 \\text{ doll"
+    },
+    {
+      "idx": 142,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Olivia uploaded 5 pictures from her phone and 35 from her camera to facebook. If she sorted the pics into 8 different albums with the same amount of pics in each album, how many pictures were in each of the albums? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Sure, let's solve this step by step.\n\n1. **Total number of pictures Olivia uploaded:**\n   \\[\n   5 \\text{ (from her phone)} + 35 \\text{ (from her camera)} = 40 \\text{ pictures}\n   \\]\n\n2. **Number of albums:**\n   \\[\n   8 \\text{ albums}\n   \\]\n\n3. **Number of pictures per album:**\n   To find the number of pictures per album, we divide the total number of pictures by the number of albums:\n   \\[\n   \\frac{40 \\text{ pictures}}{8 \\text{ albums}} = 5 \\text{ pictures per album}\n   \\]\n\nSo, the number of pic"
+    },
+    {
+      "idx": 143,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Robin was making baggies of cookies with 6 cookies in each bag. If she had 23 chocolate chip cookies and 25 oatmeal cookies, how many baggies could she make? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Total number of cookies:**\n   - Chocolate chip cookies: 23\n   - Oatmeal cookies: 25\n\n   To find the total number of cookies, we add these two amounts together:\n   \\[\n   23 + 25 = 48\n   \\]\n\n2. **Number of cookies per bag:**\n   - Each bag contains 6 cookies.\n\n3. **Number of baggies Robin can make:**\n   - To find out how many baggies Robin can make, we divide the total number of cookies by the number of cookies per bag:\n   \\[\n   \\frac{48}"
+    },
+    {
+      "idx": 144,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Cody had 45 dollars. For his birthday he got 9 more dollars but spent 19 on a new game. How much money does he have now? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step:\n\n1. Cody started with 45 dollars.\n2. He received 9 more dollars for his birthday, so we add those to his initial amount:\n   \\[\n   45 + 9 = 54\n   \\]\n3. He then spent 19 dollars on a new game. To find out how much money he has left, we subtract the amount he spent from his current amount:\n   \\[\n   54 - 19 = 35\n   \\]\n\nSo, Cody has \\boxed{35} dollars now."
+    },
+    {
+      "idx": 145,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Wendy uploaded 22 pictures from her phone and 2 from her camera to facebook. If she sorted the pics into 4 different albums with the same amount of pics in each album, how many pictures were in each of the albums? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nSure, let's solve this step by step.\n\n1. **Total number of pictures**: Wendy uploaded 22 pictures from her phone and 2 pictures from her camera. So, the total number of pictures is:\n   \\[\n   22 + 2 = 24\n   \\]\n\n2. **Number of albums**: Wendy sorted the pictures into 4 different albums. To find out how many pictures were in each album, we need to divide the total number of pictures by the number of albums:\n   \\[\n   \\frac{24}{4} = 6\n   \\]\n\nSo, there were \\(\\boxed{6}\\) pictures in each of the album"
+    },
+    {
+      "idx": 146,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n For Halloween Katie and her sister combined the candy they received. Katie had 8 pieces of candy while her sister had 23. If they ate 8 pieces the first night, how many pieces do they have left? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the total number of pieces of candy they have combined:**\n   - Katie has 8 pieces.\n   - Her sister has 23 pieces.\n   - Combined, they have:\n     \\[\n     8 + 23 = 31 \\text{ pieces}\n     \\]\n\n2. **Subtract the pieces they ate the first night:**\n   - They ate 8 pieces the first night.\n   - So, the number of pieces left is:\n     \\[\n     31 - 8 = 23 \\text{ pieces}\n     \\]\n\nTherefore, the number of pieces of candy they have left is \\(\\boxe"
+    },
+    {
+      "idx": 147,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A pet store had 88 puppies. In one day they sold 34 of them and put the rest into cages with 6 in each cage. How many cages did they use? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of puppies**: 88\n2. **Puppies sold**: 34\n3. **Puppies left**: \\( 88 - 34 = 54 \\)\n4. **Number of puppies per cage**: 6\n5. **Number of cages**: \\( \\frac{54}{6} = 9 \\)\n\nSo, the pet store used \\(\\boxed{9}\\) cages."
+    },
+    {
+      "idx": 148,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Jerry was helping the cafeteria workers pick up lunch trays, but he could only carry 8 trays at a time. If he had to pick up 9 trays from one table and 7 trays from another, how many trips will he make? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Jerry can carry 8 trays at a time. He needs to pick up 9 trays from one table and 7 trays from another. To find out how many trips he will make, we need to divide the total number of trays he needs to pick up by the number of trays he can carry at a time.\n\n9 trays / 8 trays per trip = 1.125 trips\n\nJerry will need to make 2 trips to pick up all the trays."
+    },
+    {
+      "idx": 149,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Faye was playing a video game where she scores 7 points for each treasure she finds. If she found 2 treasures on the first level and 6 on the second, what would her score be? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the points from the first level:**\n   Faye found 2 treasures on the first level.\n   Each treasure gives 7 points.\n   \\[\n   2 \\text{ treasures} \\times 7 \\text{ points per treasure} = 14 \\text{ points}\n   \\]\n\n2. **Calculate the points from the second level:**\n   Faye found 6 treasures on the second level.\n   Each treasure gives 7 points.\n   \\[\n   6 \\text{ treasures} \\times 7 \\text{ points per treasure} = 42 \\text{ points}\n   \\]\n"
+    },
+    {
+      "idx": 150,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Megan picked 19 carrots from her garden. If she threw out 4 of them and then picked 46 more the next day, how many carrots would she have total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of carrots Megan picked:**\n   \\[\n   19\n   \\]\n\n2. **Carrots thrown out:**\n   \\[\n   4\n   \\]\n   So, the number of carrots left after throwing out 4 is:\n   \\[\n   19 - 4 = 15\n   \\]\n\n3. **Carrots picked the next day:**\n   \\[\n   46\n   \\]\n   So, the total number of carrots Megan has now is:\n   \\[\n   15 + 46 = 61\n   \\]\n\nTherefore, Megan would have a total of \\boxed{61} carrots."
+    },
+    {
+      "idx": 151,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Wendy had 82 files on her computer. She deleted 37 of them and put the rest into folders with 5 files in each one. How many folders did Wendy end up with? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of files**: Wendy had 82 files.\n2. **Files deleted**: Wendy deleted 37 files.\n   \\[\n   82 - 37 = 45\n   \\]\n   So, after deleting 37 files, Wendy has 45 files left.\n3. **Files per folder**: Wendy put the remaining 45 files into folders with 5 files in each one.\n   \\[\n   \\frac{45}{5} = 9\n   \\]\n   So, Wendy ended up with 9 folders.\n\nTherefore, the final answer is:\n\\[\n\\boxed{9}\n\\]"
+    },
+    {
+      "idx": 152,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n There school's baseball team had 12 new players and 44 returning players. If the coach put them into groups with 8 players in each group, how many groups would there be? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nassistant\nSure, let's solve this step by step.\n\n1. **Total number of players**: There are 12 new players and 44 returning players.\n   \\[\n   \\text{Total number of players} = 12 + 44 = 56\n   \\]\n\n2. **Number of players per group**: The coach puts them into groups with 8 players in each group.\n\n3. **Number of groups**: To find the number of groups, we divide the total number of players by the number of players per group.\n   \\[\n   \\text{Number of groups} = \\frac{\\text{Total number of players}}{\\text"
+    },
+    {
+      "idx": 153,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Will made 104 dollars mowing lawns over the summer. If he spent 41 dollars buying new mower blades, how many 9 dollar games could he buy with the money he had left? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "assistant\nSure, let's solve this step by step.\n\n1. **Calculate the remaining money after buying new mower blades:**\n   Will started with $104 and spent $41 on mower blades.\n   \\[\n   104 - 41 = 63\n   \\]\n   So, Will has $63 left.\n\n2. **Determine how many 9 dollar games he can buy with the remaining money:**\n   We need to divide the remaining money by the cost of one game.\n   \\[\n   63 \\div 9 = 7\n   \\]\n   Therefore, Will can buy 7 games with the money he has left.\n\n3. **Final answer:**\n   \\[\n   \\box"
+    },
+    {
+      "idx": 154,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Nancy picked 12 carrots from her garden. If she threw out 2 of them and then picked 21 more the next day, how many carrots would she have total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "> tags.\nassistant\nSure, let's solve this step by step.\n\n1. Nancy initially picked 12 carrots.\n2. She threw out 2 of them, so she had:\n   \\[\n   12 - 2 = 10 \\text{ carrots left}\n   \\]\n3. The next day, she picked 21 more carrots. So, the total number of carrots she has now is:\n   \\[\n   10 + 21 = 31 \\text{ carrots}\n   \\]\n\nTherefore, the total number of carrots Nancy has is \\(\\boxed{31}\\)."
+    },
+    {
+      "idx": 155,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Roger had 16 dollars. For his birthday he got 28 more dollars but spent 25 on a new game. How much money does he have now? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " </answer> tags.\nassistant\nRoger had 16 dollars. For his birthday he got 28 more dollars but spent 25 on a new game. To find out how much money he has now, we need to follow these steps:\n\n1. Start with the initial amount of money Roger had:\n   \\[\n   16 \\text{ dollars}\n   \\]\n\n2. Add the money he received for his birthday:\n   \\[\n   16 + 28 = 44 \\text{ dollars}\n   \\]\n\n3. Subtract the money he spent on a new game:\n   \\[\n   44 - 25 = 19 \\text{ dollars}\n   \\]\n\nSo, Roger has \\boxed{19} dollars now."
+    },
+    {
+      "idx": 156,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Sam was collecting cans for recycling. On Saturday he filled 3 bags up and on Sunday he filled 4 more bags. If each bag had 9 cans in it, how many cans did he pick up total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nSure, let's solve this step by step.\n\n1. **Calculate the number of bags Sam filled on Saturday:**\n   - Sam filled 3 bags on Saturday.\n\n2. **Calculate the number of bags Sam filled on Sunday:**\n   - Sam filled 4 more bags on Sunday.\n   - Therefore, the total number of bags filled on Sunday is:\n     \\[\n     4 \\text{ bags}\n     \\]\n\n3. **Calculate the total number of bags filled:**\n   - Add the number of bags filled on Saturday and Sunday:\n     \\[\n     3 \\text{ bags} + 4 \\text{ bags} = 7 \\text{ bag"
+    },
+    {
+      "idx": 157,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A worksheet had 4 problems on it. If a teacher had 16 worksheets to grade and had already graded 8 of them, how many more problems does she have to grade? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 0.0,
+      "completion": " tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Total number of worksheets**: The teacher has 16 worksheets in total.\n2. **Number of worksheets already graded**: The teacher has already graded 8 worksheets.\n3. **Number of worksheets left to grade**: To find out how many worksheets are left to grade, we subtract the number of worksheets already graded from the total number of worksheets.\n\n\\[\n\\text{Number of worksheets left to grade} = \\text{Total number of worksheets} - \\text{Number o"
+    },
+    {
+      "idx": 158,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Paige was unboxing some of her old winter clothes. She found 6 boxes of clothing and inside each box there were 5 scarves and 5 mittens. How many pieces of winter clothing did Paige have total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Sure, let's solve this step by step.\n\n1. **Determine the number of scarves:**\n   - There are 6 boxes.\n   - Each box contains 5 scarves.\n   - Therefore, the total number of scarves is:\n     \\[\n     6 \\text{ boxes} \\times 5 \\text{ scarves per box} = 30 \\text{ scarves}\n     \\]\n\n2. **Determine the number of mittens:**\n   - There are 6 boxes.\n   - Each box contains 5 mittens.\n   - Therefore, the total number of mittens is:\n     \\[\n     6 \\text{ boxes} \\times 5 \\text{ mittens per box} = 30 \\text{ mitt"
+    },
+    {
+      "idx": 159,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A chef needs to cook 12 potatoes. He has already cooked 6. If each potato takes 6 minutes to cook, how long will it take him to cook the rest? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the total number of potatoes to be cooked:**\n   The chef needs to cook 12 potatoes in total.\n\n2. **Determine how many potatoes have already been cooked:**\n   The chef has already cooked 6 potatoes.\n\n3. **Calculate the number of potatoes left to be cooked:**\n   \\[\n   \\text{Number of potatoes left} = \\text{Total number of potatoes} - \\text{Number of potatoes already cooked}\n   \\]\n   \\[\n   \\text{Number of potatoes left} = 12 - 6 "
+    },
+    {
+      "idx": 160,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Luke was selling his old games. He started out with 57 but sold 39 of them. He packed the rest up putting 2 games into each box. How many boxes did he have to use? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": ".\nassistant\nLuke started with 57 games. He sold 39 of them, so he had 57 - 39 = 18 games left. He put 2 games into each box, so he needed 18 / 2 = 9 boxes."
+    },
+    {
+      "idx": 161,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n April's discount flowers was having a sale where each flower was 3 dollars. If Emily bought 2 roses and 2 daisies, how much did she spend? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the cost of the roses:**\n   - Each rose costs $3.\n   - Emily bought 2 roses.\n   - So, the total cost for the roses is:\n     \\[\n     2 \\text{ roses} \\times 3 \\text{ dollars per rose} = 6 \\text{ dollars}\n     \\]\n\n2. **Calculate the cost of the daisies:**\n   - Each daisy costs $3.\n   - Emily bought 2 daisies.\n   - So, the total cost for the daisies is:\n     \\[\n     2 \\text{ daisies} \\times 3 \\text{ do"
+    },
+    {
+      "idx": 162,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A pet store had 13 puppies. In one day they sold 7 of them and put the rest into cages with 2 in each cage. How many cages did they use? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of puppies**: 13\n2. **Puppies sold**: 7\n3. **Puppies left**: \\( 13 - 7 = 6 \\)\n4. **Number of puppies per cage**: 2\n5. **Number of cages**: \\( \\frac{6}{2} = 3 \\)\n\nSo, the pet store used \\(\\boxed{3}\\) cages."
+    },
+    {
+      "idx": 163,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Faye and her mom were picking carrots from their garden. Faye picked 23 and her mother picked 5. If only 12 of the carrots were good, how many bad carrots did they have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": ".\nassistant\nSure, let's solve this step by step.\n\n1. **Total number of carrots picked by Faye and her mom:**\n   - Faye picked 23 carrots.\n   - Her mom picked 5 carrots.\n   - Total = 23 + 5 = 28 carrots.\n\n2. **Number of good carrots:**\n   - Only 12 carrots were good.\n\n3. **Number of bad carrots:**\n   - To find the number of bad carrots, subtract the number of good carrots from the total number of carrots.\n   - Number of bad carrots = Total carrots - Good carrots\n   - Number of bad carrots = 28 - "
+    },
+    {
+      "idx": 164,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Isabel picked 66 flowers for her friend\u2019s wedding. She was making bouquets with 8 flowers in each one. If 10 of the flowers wilted before the wedding, how many bouquets could she still make? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "assistant\nSure, let's solve this step by step.\n\n1. **Total number of flowers Isabel picked**: 66\n2. **Number of flowers in each bouquet**: 8\n3. **Number of flowers that wilted**: 10\n\nFirst, we need to find out how many flowers are left after some wilted:\n\n\\[ 66 - 10 = 56 \\]\n\nNow, Isabel can make bouquets with 8 flowers in each one. To find out how many bouquets she can make with 56 flowers, we divide the remaining flowers by the number of flowers per bouquet:\n\n\\[ 56 \\div 8 = 7 \\]\n\nSo, Isabel can"
+    },
+    {
+      "idx": 165,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n At the town carnival Oliver rode the ferris wheel 5 times and the bumper cars 4 times. If each ride cost 7 tickets, how many tickets did he use? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the total number of rides Oliver rode:**\n   - Ferris wheel: 5 rides\n   - Bumper cars: 4 rides\n   - Total rides = 5 + 4 = 9 rides\n\n2. **Calculate the total number of tickets needed:**\n   - Each ride costs 7 tickets.\n   - Total tickets = 9 rides * 7 tickets/ride = 63 tickets\n\nSo, Oliver used \\boxed{63} tickets."
+    },
+    {
+      "idx": 166,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Wendy bought 4 new chairs and 4 new tables for her house. If she spent 6 minutes on each piece furniture putting it together, how many minutes did it take her to finish? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the total number of chairs and tables Wendy bought:**\n   - Wendy bought 4 new chairs.\n   - Wendy bought 4 new tables.\n   - Total number of furniture pieces = 4 chairs + 4 tables = 8 pieces.\n\n2. **Calculate the total time spent on putting together all the furniture:**\n   - Wendy spent 6 minutes on each piece of furniture.\n   - Total time spent = 8 pieces \u00d7 6 minutes per piece = 48 minutes.\n\nSo, the total time Wendy s"
+    },
+    {
+      "idx": 167,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Ned was trying to expand his game collection. He bought 50 games from a friend and bought 27 more at a garage sale. If 74 of the games didn't work, how many good games did he end up with? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Sure, let's solve this step by step.\n\n1. **Total number of games bought:**\n   Ned bought 50 games from a friend and 27 more at a garage sale.\n   \\[\n   \\text{Total games} = 50 + 27 = 77\n   \\]\n\n2. **Games that didn't work:**\n   74 games didn't work.\n\n3. **Games that worked:**\n   To find the number of games that worked, we subtract the number of games that didn't work from the total number of games.\n   \\[\n   \\text{Games that worked} = 77 - 74 = 3\n   \\]\n\nSo, Ned ended up with \\boxed{3} good games."
+    },
+    {
+      "idx": 168,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A pet store had 38 siamese cats and 25 house cats. During a sale they sold 45 cats. How many cats do they have left? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " final numerical answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial Count:**\n   - Number of Siamese cats: 38\n   - Number of House cats: 25\n\n2. **Total number of cats initially:**\n   \\[\n   38 \\text{ (Siamese)} + 25 \\text{ (House)} = 63 \\text{ cats}\n   \\]\n\n3. **Cats sold:**\n   - Number of cats sold: 45\n\n4. **Cats left after selling:**\n   \\[\n   63 \\text{ (initial total)} - 45 \\text{ (sold)} = 18 \\text{ cats}\n   \\]\n\nSo, the number of cats left is \\(\\boxed"
+    },
+    {
+      "idx": 169,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Carol was playing a trivia game. In the first round she scored 17 points and in the second round she scored 6 points. In the last round she lost 16 points. How many points did she have at the end of the game? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "\nSure, let's solve this step by step.\n\n1. **First Round**: Carol scored 17 points.\n2. **Second Round**: Carol scored 6 points.\n3. **Last Round**: Carol lost 16 points.\n\nTo find out how many points Carol had at the end of the game, we need to add up all the points she scored and subtract the points she lost.\n\n\\[\n\\text{Total points} = \\text{First round points} + \\text{Second round points} - \\text{Points lost}\n\\]\n\nSubstituting the given values:\n\n\\[\n\\text{Total points} = 17 + 6 - 16\n\\]\n\nNow, perform"
+    },
+    {
+      "idx": 170,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Dave bought 12 boxes of chocolate candy and gave 5 to his little brother. If each box has 3 pieces inside it, how many pieces did Dave still have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " final numerical answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the total number of boxes Dave bought:**\n   Dave bought 12 boxes of chocolate candy.\n\n2. **Determine the number of boxes Dave gave to his little brother:**\n   Dave gave 5 boxes to his little brother.\n\n3. **Calculate the number of boxes Dave has left:**\n   \\[\n   \\text{Boxes left} = \\text{Total boxes} - \\text{Boxes given to brother}\n   \\]\n   \\[\n   \\text{Boxes left} = 12 - 5 = 7\n   \\]\n"
+    },
+    {
+      "idx": 171,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A waiter at 'The Greasy Spoon' restaurant had 39 customers to wait on. During the lunch rush he added another 12 customers. If 49 of the customers didn't leave him a tip, how many customers did leave a tip? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Sure, let's solve this step by step.\n\n1. **Initial number of customers**: The waiter started with 39 customers.\n2. **Customers added during the lunch rush**: He added another 12 customers.\n   \\[\n   39 + 12 = 51\n   \\]\n   So, after adding the 12 customers, the total number of customers is 51.\n3. **Customers who didn't leave a tip**: We know that 49 customers didn't leave a tip.\n4. **Calculating the number of customers who did leave a tip**: Subtract the number of customers who didn't leave a tip f"
+    },
+    {
+      "idx": 172,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n The cafeteria had 50 apples. For lunch they handed out 5 to students and decided to use the rest to make pies. If each pie takes 5 apples, how many pies could they make? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of apples**: 50 apples\n2. **Apples handed out to students**: 5 apples\n3. **Apples left for pies**: \\( 50 - 5 = 45 \\) apples\n4. **Apples needed for pies**: 5 apples per pie\n5. **Number of pies that can be made**: \\( \\frac{45}{5} = 9 \\) pies\n\nSo, the cafeteria can make \\(\\boxed{9}\\) pies."
+    },
+    {
+      "idx": 173,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Oliver had 33 dollars in January. By March he had spent 4 dollars. If he got another 32 dollars from his mom, how much money would he have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " numerical answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial Amount**: Oliver had $33 in January.\n2. **Amount Spent by March**: By March, he had spent $4.\n   \\[\n   \\text{Amount left after March} = 33 - 4 = 29 \\text{ dollars}\n   \\]\n3. **Amount Received from Mom**: Oliver received another $32 from his mom.\n   \\[\n   \\text{Total amount after receiving money} = 29 + 32 = 61 \\text{ dollars}\n   \\]\n\nSo, the final amount of money Oliver has is \\(\\boxed{61}\\)."
+    },
+    {
+      "idx": 174,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n The school cafeteria had 14 apples. If they used 13 to make lunch for the students and then bought 49 more, how many apples would they have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": " final numerical answer in <answer> </answer> tags.\nassistant\nSure, let's solve this step by step:\n\n1. **Initial number of apples**: The cafeteria started with 14 apples.\n2. **Apples used for lunch**: They used 13 apples for lunch.\n3. **Remaining apples after lunch**: Subtract the apples used from the initial number.\n   \\[\n   14 - 13 = 1\n   \\]\n   So, after using 13 apples for lunch, they have 1 apple left.\n4. **Apples bought**: They then bought 49 more apples.\n5. **Total number of apples**: Add "
+    },
+    {
+      "idx": 175,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n While playing a trivia game, Frank answered 3 questions correct in the first half and 2 questions correct in the second half. If each question was worth 3 points, what was his final score? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Calculate the total number of questions answered:**\n   - Frank answered 3 questions correctly in the first half.\n   - Frank answered 2 questions correctly in the second half.\n   - Total questions answered = 3 (first half) + 2 (second half) = 5 questions.\n\n2. **Calculate the total points scored:**\n   - Each question is worth 3 points.\n   - Total points = 5 questions * 3 points/question = 15 points.\n\n3. **Determine Frank'"
+    },
+    {
+      "idx": 176,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Zoe was unboxing some of her old winter clothes. She found 8 boxes of clothing and inside each box there were 4 scarves and 6 mittens. How many pieces of winter clothing did Zoe have total? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "Sure, let's solve this step by step.\n\n1. **Determine the number of scarves:**\n   - There are 8 boxes.\n   - Each box contains 4 scarves.\n   - Therefore, the total number of scarves is:\n     \\[\n     8 \\text{ boxes} \\times 4 \\text{ scarves per box} = 32 \\text{ scarves}\n     \\]\n\n2. **Determine the number of mittens:**\n   - There are 8 boxes.\n   - Each box contains 6 mittens.\n   - Therefore, the total number of mittens is:\n     \\[\n     8 \\text{ boxes} \\times 6 \\text{ mittens per box} = 48 \\text{ mitt"
+    },
+    {
+      "idx": 177,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Frank and his friend were buying trick decks from the magic shop for 7 dollars each. How much did they spend if Frank bought 3 decks and his friend bought 2 decks? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Determine the cost of one deck:**\n   Each deck costs 7 dollars.\n\n2. **Calculate the total cost for Frank's 3 decks:**\n   Frank bought 3 decks, so the total cost for Frank is:\n   \\[\n   3 \\text{ decks} \\times 7 \\text{ dollars/deck} = 21 \\text{ dollars}\n   \\]\n\n3. **Calculate the total cost for his friend's 2 decks:**\n   His friend bought 2 decks, so the total cost for his friend is:\n   \\[\n   2 \\text{ decks} \\times 7 \\text{ dollars/deck} ="
+    },
+    {
+      "idx": 178,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n Sam had to wash 40 short sleeve shirts and 23 long sleeve shirts before school. If he had only washed 29 of them by the time school started, how many did he not wash? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 1.0,
+      "completion": "assistant\nSure, let's solve this step by step.\n\n1. **Total number of shirts Sam had to wash:**\n   - Short sleeve shirts: 40\n   - Long sleeve shirts: 23\n   - Total = 40 + 23 = 63\n\n2. **Number of shirts Sam washed by the time school started:**\n   - Sam washed 29 shirts.\n\n3. **Number of shirts Sam did not wash:**\n   - Total number of shirts = 63\n   - Number of shirts washed = 29\n   - Number of shirts not washed = 63 - 29 = 34\n\nSo, Sam did not wash \\boxed{34} shirts."
+    },
+    {
+      "idx": 179,
+      "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nSolve this math problem step by step.\n\n A waiter had 47 customers to wait on. If 41 customers left and he got another 20 customers, how many customers would he have? \n\nShow your work in <think> </think> tags. Give your final numerical answer in <answer> </answer> tags.<|im_end|>\n<|im_start|>assistant\n",
+      "data_source": "multiarith",
+      "score": 0.0,
+      "completion": "answer> </answer> tags.\nassistant\nSure, let's solve this step by step.\n\n1. **Initial number of customers**: 47\n2. **Customers who left**: 41\n3. **Customers who arrived**: 47 - 41 = 6\n\nNow, we add the customers who arrived to the initial number of customers:\n\\[ 47 + 6 = 53 \\]\n\nSo, the final number of customers is:\n\\[ \\boxed{53} \\]"
+    }
+  ]
+}

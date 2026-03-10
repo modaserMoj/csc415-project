@@ -20,7 +20,6 @@ data/math/
 data/svamp/
 data/phase1_mix/
 data/test_countdown/
-results/
 *.parquet
 .env
 temp.txt
