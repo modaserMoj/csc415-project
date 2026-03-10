@@ -20,10 +20,10 @@ DATASET_NAMES=(gsm8k math countdown4 svamp countdown3)
 # 0.5B setup: base, 2 baselines (gsm8k, math), 2 phase2 (gsm8k, math) — no countdown fine-tuning
 MODELS=(
     "Qwen/Qwen2.5-0.5B"
-    "checkpoints/baseline_gsm8k_0.5b"
-    "checkpoints/baseline_math_0.5b"
-    "checkpoints/phase2_gsm8k_0.5b"
-    "checkpoints/phase2_math_0.5b"
+    "modaserMoj/csc415-baseline-gsm8k-0.5b"
+    "modaserMoj/csc415-baseline-math-0.5b"
+    "modaserMoj/csc415-phase2-gsm8k-0.5b"
+    "modaserMoj/csc415-phase2-math-0.5b"
 )
 
 MODEL_NAMES=(base_0.5b baseline_gsm8k_0.5b baseline_math_0.5b phase2_gsm8k_0.5b phase2_math_0.5b)

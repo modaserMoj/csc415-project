@@ -1,25 +1,3 @@
-"""
-Unified data preparation for all datasets used in Phase 1 and Phase 2.
-
-Converts HuggingFace datasets into the parquet format expected by TinyZero/veRL:
-    - prompt          : the formatted prompt string
-    - data_source     : dataset identifier (used to dispatch the scoring function)
-    - reward_model    : dict with ground_truth info
-
-Supported datasets:
-    - countdown   (Phase 1 + 2)
-    - gsm8k       (Phase 1 + 2)
-    - math        (Phase 1 + 2)
-    - svamp       (held-out generalization eval)
-    - phase1_mix  (all three combined + shuffled for Phase 1)
-
-Usage:
-    python data/prepare_data.py --dataset countdown  --local_dir ./data/countdown
-    python data/prepare_data.py --dataset gsm8k      --local_dir ./data/gsm8k
-    python data/prepare_data.py --dataset math       --local_dir ./data/math
-    python data/prepare_data.py --dataset svamp      --local_dir ./data/svamp
-    python data/prepare_data.py --dataset phase1_mix --local_dir ./data/phase1_mix
-"""
 
 import argparse
 import json
@@ -192,6 +170,48 @@ def prepare_svamp(local_dir: str):
     print(f"SVAMP: {len(train_rows)} train, {len(test_rows)} test -> {local_dir}")
 
 
+def prepare_multiarith(local_dir: str):
+    """Download and format MultiArith from HuggingFace (generalization eval, 600 examples)."""
+    from datasets import load_dataset
+
+    os.makedirs(local_dir, exist_ok=True)
+    ds = load_dataset("ChilleD/MultiArith")
+
+    def format_split(split):
+        rows = []
+        for ex in split:
+            # For ChilleD/MultiArith the schema is: question, final_ans.
+            question = ex.get("question", ex.get("Question", ex.get("problem", "")))
+            answer = ex.get("final_ans", ex.get("answer", ex.get("Answer", ex.get("result", ex.get("ans", "")))))
+            answer = str(answer).strip()
+            prompt = (
+                f"Solve this math problem step by step.\n\n{question}\n\n"
+                f"Show your work in <think> </think> tags. "
+                f"Give your final numerical answer in <answer> </answer> tags."
+            )
+            rows.append({
+                "data_source": "multiarith",
+                "prompt": [{"role": "user", "content": prompt}],
+                "ability": "math",
+                "reward_model": {"style": "rule", "ground_truth": answer},
+                "extra_info": {"question": question, "answer": answer},
+            })
+        return rows
+
+    if "test" in ds:
+        test_rows = format_split(ds["test"])
+        train_rows = format_split(ds["train"]) if "train" in ds else test_rows
+    else:
+        all_rows = format_split(ds["train"])
+        split_idx = int(len(all_rows) * 0.8)
+        random.shuffle(all_rows)
+        train_rows, test_rows = all_rows[:split_idx], all_rows[split_idx:]
+
+    pd.DataFrame(train_rows).to_parquet(os.path.join(local_dir, "train.parquet"))
+    pd.DataFrame(test_rows).to_parquet(os.path.join(local_dir, "test.parquet"))
+    print(f"MultiArith: {len(train_rows)} train, {len(test_rows)} test -> {local_dir}")
+
+
 def _collect_rows(prepare_fn, **kwargs):
     """Run a prepare function but capture the rows instead of writing to disk."""
     import tempfile, shutil
@@ -250,7 +270,7 @@ def prepare_phase1_mix(local_dir: str, countdown_size: int = 10_000, num_operand
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Prepare datasets for training")
     parser.add_argument("--dataset", required=True,
-                        choices=["countdown", "countdown3", "gsm8k", "math", "svamp", "phase1_mix"])
+                        choices=["countdown", "countdown3", "gsm8k", "math", "svamp", "multiarith", "phase1_mix"])
     parser.add_argument("--local_dir", required=True, help="Output directory for parquet files")
     parser.add_argument("--num_operands", type=int, default=4, help="Countdown: number of operands")
     parser.add_argument("--size", type=int, default=490_000, help="Countdown: training set size")
@@ -268,5 +288,7 @@ if __name__ == "__main__":
         prepare_math(args.local_dir)
     elif args.dataset == "svamp":
         prepare_svamp(args.local_dir)
+    elif args.dataset == "multiarith":
+        prepare_multiarith(args.local_dir)
     elif args.dataset == "phase1_mix":
         prepare_phase1_mix(args.local_dir, countdown_size=args.countdown_mix_size, num_operands=args.num_operands)

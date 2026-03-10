@@ -10,7 +10,7 @@ echo "=== Cross-evals GSM8K <-> MATH (no extra training) ==="
 
 # MATH-tuned models on GSM8K (baseline and Phase 2)
 PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
-  --model checkpoints/baseline_math_0.5b \
+  --model modaserMoj/csc415-baseline-math-0.5b \
   --dataset data/gsm8k/test.parquet \
   --output_file results/baseline_math_0.5b_gsm8k.json \
   --max_samples 1000 \
@@ -19,7 +19,7 @@ PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
   > logs/eval_baseline_math_0.5b_gsm8k.log 2>&1
 
 PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
-  --model checkpoints/phase2_math_0.5b \
+  --model modaserMoj/csc415-phase2-math-0.5b \
   --dataset data/gsm8k/test.parquet \
   --output_file results/phase2_math_0.5b_gsm8k.json \
   --max_samples 1000 \
@@ -29,7 +29,7 @@ PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
 
 # GSM8K-tuned models on MATH (baseline and Phase 2)
 PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
-  --model checkpoints/baseline_gsm8k_0.5b \
+  --model modaserMoj/csc415-baseline-gsm8k-0.5b \
   --dataset data/math/test.parquet \
   --output_file results/baseline_gsm8k_0.5b_math.json \
   --max_samples 1000 \
@@ -38,7 +38,7 @@ PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
   > logs/eval_baseline_gsm8k_0.5b_math.log 2>&1
 
 PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
-  --model checkpoints/phase2_gsm8k_0.5b \
+  --model modaserMoj/csc415-phase2-gsm8k-0.5b \
   --dataset data/math/test.parquet \
   --output_file results/phase2_gsm8k_0.5b_math.json \
   --max_samples 1000 \

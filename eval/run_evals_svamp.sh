@@ -16,7 +16,7 @@ PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
   > logs/eval_base_0.5b_svamp.log 2>&1
 
 PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
-  --model checkpoints/baseline_gsm8k_0.5b \
+  --model modaserMoj/csc415-baseline-gsm8k-0.5b \
   --dataset data/svamp/test.parquet \
   --output_file results/baseline_gsm8k_0.5b_svamp.json \
   --max_samples 1000 \
@@ -25,7 +25,7 @@ PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
   > logs/eval_baseline_gsm8k_0.5b_svamp.log 2>&1
 
 PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
-  --model checkpoints/baseline_math_0.5b \
+  --model modaserMoj/csc415-baseline-math-0.5b \
   --dataset data/svamp/test.parquet \
   --output_file results/baseline_math_0.5b_svamp.json \
   --max_samples 1000 \
@@ -34,7 +34,7 @@ PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
   > logs/eval_baseline_math_0.5b_svamp.log 2>&1
 
 PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
-  --model checkpoints/phase2_gsm8k_0.5b \
+  --model modaserMoj/csc415-phase2-gsm8k-0.5b \
   --dataset data/svamp/test.parquet \
   --output_file results/phase2_gsm8k_0.5b_svamp.json \
   --max_samples 1000 \
@@ -43,7 +43,7 @@ PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
   > logs/eval_phase2_gsm8k_0.5b_svamp.log 2>&1
 
 PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
-  --model checkpoints/phase2_math_0.5b \
+  --model modaserMoj/csc415-phase2-math-0.5b \
   --dataset data/svamp/test.parquet \
   --output_file results/phase2_math_0.5b_svamp.json \
   --max_samples 1000 \
@@ -53,50 +53,7 @@ PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
 
 echo "=== SVAMP done; starting Countdown-4 ==="
 
-PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
-  --model Qwen/Qwen2.5-0.5B \
-  --dataset data/countdown/test.parquet \
-  --output_file results/base_0.5b_countdown4.json \
-  --max_samples 1000 \
-  --max_new_tokens 512 \
-  --batch_size 8 \
-  > logs/eval_base_0.5b_countdown4.log 2>&1
 
-PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
-  --model checkpoints/baseline_gsm8k_0.5b \
-  --dataset data/countdown/test.parquet \
-  --output_file results/baseline_gsm8k_0.5b_countdown4.json \
-  --max_samples 1000 \
-  --max_new_tokens 512 \
-  --batch_size 8 \
-  > logs/eval_baseline_gsm8k_0.5b_countdown4.log 2>&1
-
-PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
-  --model checkpoints/baseline_math_0.5b \
-  --dataset data/countdown/test.parquet \
-  --output_file results/baseline_math_0.5b_countdown4.json \
-  --max_samples 1000 \
-  --max_new_tokens 512 \
-  --batch_size 8 \
-  > logs/eval_baseline_math_0.5b_countdown4.log 2>&1
-
-PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
-  --model checkpoints/phase2_gsm8k_0.5b \
-  --dataset data/countdown/test.parquet \
-  --output_file results/phase2_gsm8k_0.5b_countdown4.json \
-  --max_samples 1000 \
-  --max_new_tokens 512 \
-  --batch_size 8 \
-  > logs/eval_phase2_gsm8k_0.5b_countdown4.log 2>&1
-
-PYTHONPATH="${PYTHONPATH:-}:$(pwd)" python eval/evaluate.py \
-  --model checkpoints/phase2_math_0.5b \
-  --dataset data/countdown/test.parquet \
-  --output_file results/phase2_math_0.5b_countdown4.json \
-  --max_samples 1000 \
-  --max_new_tokens 512 \
-  --batch_size 8 \
-  > logs/eval_phase2_math_0.5b_countdown4.log 2>&1
 
 # --- PREP (run once from project root) ---
 #   SVAMP:    python data/prepare_data.py --dataset svamp    --local_dir data/svamp

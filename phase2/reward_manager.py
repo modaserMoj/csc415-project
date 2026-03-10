@@ -161,6 +161,7 @@ SCORE_FNS = {
     "countdown": score_countdown,
     "openai/gsm8k": score_gsm8k,
     "svamp": score_gsm8k,
+    "multiarith": score_gsm8k,
     "lighteval/MATH": score_math,
     "nlile/hendrycks-MATH-benchmark": score_math,
 }
