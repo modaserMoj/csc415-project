@@ -15,7 +15,7 @@ echo "Phase 1 Training: baseline_math + RND"
 echo "=========================================="
 
 PYTHONPATH="$PROJECT_ROOT:${PYTHONPATH:-}" \
-python phase1/main_phase1.py \
+python3 phase1/main_phase1.py \
   --model "$MODEL" \
   --train_file data/phase1_mix/train.parquet \
   --eval_file data/phase1_mix/test.parquet \
