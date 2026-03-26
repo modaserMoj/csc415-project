@@ -29,6 +29,7 @@ echo "=========================================="
 
 PYTHONPATH="$PROJECT_ROOT:${PYTHONPATH:-}" \
   python3 eval/evaluate.py \
+  --model "$MODEL" \
   --dataset "data/gsm8k/test.parquet" \
   --output_file "results/${MODEL_NAME}_gsm8k.json" \
   --max_samples "$MAX_SAMPLES" \
