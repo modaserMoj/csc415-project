@@ -149,11 +149,18 @@ def main():
         inputs = []
         for prompt in prompts:
             if isinstance(prompt, list):
-                # Chat format
+                # Chat format - convert to simple string for Qwen
                 messages = prompt
+                # For Qwen models, convert chat format to simple text
+                text = ""
+                for msg in messages:
+                    if msg["role"] == "user":
+                        text += msg["content"]
+                    elif msg["role"] == "assistant":
+                        text += msg["content"]
+                inputs.append(text)
             else:
-                messages = [{"role": "user", "content": prompt}]
-            inputs.append(tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True))
+                inputs.append(prompt)
 
         tokenized = tokenizer(inputs, return_tensors="pt", padding=True, truncation=True).to(model.device)
 
