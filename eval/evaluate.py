@@ -142,25 +142,27 @@ def main():
     for i in range(0, total, args.batch_size):
         batch = df.iloc[i:i+args.batch_size]
         prompts = batch["prompt"].tolist()
-        ground_truths = batch["reward_model"].apply(lambda x: x["ground_truth"]).tolist()
+        ground_truths = batch["reward_model"].apply(lambda x: json.loads(x)["ground_truth"]).tolist()
         data_sources = batch["data_source"].tolist()
 
         # Prepare inputs
         inputs = []
         for prompt in prompts:
-            if isinstance(prompt, list):
-                # Chat format - convert to simple string for Qwen
+            # Parse JSON string back to list of messages
+            if isinstance(prompt, str):
+                messages = json.loads(prompt)
+            else:
                 messages = prompt
-                # For Qwen models, convert chat format to simple text
+            
+            if isinstance(messages, list):
+                # Chat format - convert to simple string for Qwen
                 text = ""
                 for msg in messages:
-                    if msg["role"] == "user":
-                        text += msg["content"]
-                    elif msg["role"] == "assistant":
+                    if isinstance(msg, dict) and "content" in msg:
                         text += msg["content"]
                 inputs.append(text)
             else:
-                inputs.append(prompt)
+                inputs.append(str(messages))
 
         tokenized = tokenizer(inputs, return_tensors="pt", padding=True, truncation=True).to(model.device)
 
