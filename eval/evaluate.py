@@ -142,7 +142,15 @@ def main():
     for i in range(0, total, args.batch_size):
         batch = df.iloc[i:i+args.batch_size]
         prompts = batch["prompt"].tolist()
-        ground_truths = batch["reward_model"].apply(lambda x: json.loads(x)["ground_truth"]).tolist()
+        ground_truths = []
+        for x in batch["reward_model"]:
+            if isinstance(x, str):
+                gt = json.loads(x)["ground_truth"]
+            elif isinstance(x, dict):
+                gt = x["ground_truth"]
+            else:
+                gt = x
+            ground_truths.append(gt)
         data_sources = batch["data_source"].tolist()
 
         # Prepare inputs
