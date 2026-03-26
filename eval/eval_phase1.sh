@@ -28,8 +28,7 @@ echo "Evaluating: phase1_0.5b on gsm8k"
 echo "=========================================="
 
 PYTHONPATH="$PROJECT_ROOT:${PYTHONPATH:-}" \
-python eval/evaluate.py \
-  --model "$MODEL" \
+  python3 eval/evaluate.py \
   --dataset "data/gsm8k/test.parquet" \
   --output_file "results/${MODEL_NAME}_gsm8k.json" \
   --max_samples "$MAX_SAMPLES" \
@@ -42,7 +41,7 @@ echo "Evaluating: phase1_0.5b on math"
 echo "=========================================="
 
 PYTHONPATH="$PROJECT_ROOT:${PYTHONPATH:-}" \
-python eval/evaluate.py \
+python3 eval/evaluate.py \
   --model "$MODEL" \
   --dataset "data/math/test.parquet" \
   --output_file "results/${MODEL_NAME}_math.json" \
@@ -56,7 +55,7 @@ echo "Evaluating: phase1_0.5b on svamp"
 echo "=========================================="
 
 PYTHONPATH="$PROJECT_ROOT:${PYTHONPATH:-}" \
-python eval/evaluate.py \
+python3 eval/evaluate.py \
   --model "$MODEL" \
   --dataset "data/svamp/test.parquet" \
   --output_file "results/${MODEL_NAME}_svamp.json" \
@@ -70,7 +69,7 @@ echo "Evaluating: phase1_0.5b on multiarith"
 echo "=========================================="
 
 PYTHONPATH="$PROJECT_ROOT:${PYTHONPATH:-}" \
-python eval/evaluate.py \
+python3 eval/evaluate.py \
   --model "$MODEL" \
   --dataset "data/multiarith/test.parquet" \
   --output_file "results/${MODEL_NAME}_multiarith.json" \
@@ -90,7 +89,7 @@ for d_idx in "${!DATASET_NAMES[@]}"; do
   dataset_name="${DATASET_NAMES[$d_idx]}"
   result_file="results/${MODEL_NAME}_${dataset_name}.json"
   if [ -f "$result_file" ]; then
-    acc=$(python -c "import json; d=json.load(open('$result_file')); print(f\"{d['accuracy']*100:.1f}%\")")
+    acc=$(python3 -c "import json; d=json.load(open('$result_file')); print(f\"{d['accuracy']*100:.1f}%\")")
     echo "$(printf '%-10s' "$dataset_name")| $acc"
   else
     echo "$(printf '%-10s' "$dataset_name")| -"
