@@ -110,6 +110,9 @@ SCORE_FNS = {
     "hendrycks/math": score_math,
     "ChilleD/SVAMP": score_svamp,
     "ChilleD/MultiArith": score_multiarith,
+    # Local shorthand names used in this repo's parquet files.
+    "svamp": score_svamp,
+    "multiarith": score_multiarith,
 }
 
 
@@ -138,10 +141,15 @@ def main():
 
     correct = 0
     total = len(df)
+    total_batches = (total + args.batch_size - 1) // args.batch_size if total > 0 else 0
+    progress_interval = 25
+    print(f"Starting evaluation on {total} samples...")
 
     for i in range(0, total, args.batch_size):
+        batch_idx = i // args.batch_size + 1
         batch = df.iloc[i:i+args.batch_size]
         prompts = batch["prompt"].tolist()
+        
         ground_truths = []
         for x in batch["reward_model"]:
             if isinstance(x, str):
@@ -161,13 +169,30 @@ def main():
                 messages = json.loads(prompt)
             else:
                 messages = prompt
-            
+
+            # Some parquet rows store prompt as numpy.ndarray of dicts.
+            if hasattr(messages, "tolist"):
+                messages = messages.tolist()
+
             if isinstance(messages, list):
-                # Chat format - convert to simple string for Qwen
-                text = ""
+                text_parts = []
                 for msg in messages:
-                    if isinstance(msg, dict) and "content" in msg:
-                        text += msg["content"]
+                    if isinstance(msg, dict):
+                        role = str(msg.get("role", "user")).strip().lower()
+                        content = str(msg.get("content", "")).strip()
+                        if not content:
+                            continue
+                        if role == "assistant":
+                            text_parts.append(f"Assistant: {content}")
+                        else:
+                            text_parts.append(f"Human: {content}")
+                    else:
+                        text_parts.append(str(msg))
+
+                # Ensure model sees a turn to complete.
+                text = "\n".join(text_parts).strip()
+                if "Assistant:" not in text_parts[-1] if text_parts else True:
+                    text = f"{text}\nAssistant:"
                 inputs.append(text)
             else:
                 inputs.append(str(messages))
@@ -189,10 +214,20 @@ def main():
             completions.append(decoded)
 
         # Score
+        batch_correct = 0
         for completion, gt, ds in zip(completions, ground_truths, data_sources):
             score_fn = SCORE_FNS.get(ds, lambda c, g: 0.0)
             if score_fn(completion, gt) == 1.0:
+                batch_correct += 1
                 correct += 1
+        if batch_idx == 1 or batch_idx % progress_interval == 0 or batch_idx == total_batches:
+            processed = i + len(batch)
+            running_acc = correct / processed if processed > 0 else 0.0
+            print(
+                f"Progress: batch {batch_idx}/{total_batches} "
+                f"| processed {processed}/{total} "
+                f"| running_acc={running_acc:.4f}"
+            )
 
     accuracy = correct / total if total > 0 else 0.0
 
