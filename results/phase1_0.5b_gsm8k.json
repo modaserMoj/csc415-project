@@ -1,0 +1,7 @@
+{
+  "model": "modaserMoj/csc415-phase1-0.5b-fast",
+  "dataset": "data/gsm8k/test.parquet",
+  "accuracy": 0.232,
+  "correct": 232,
+  "total": 1000
+}

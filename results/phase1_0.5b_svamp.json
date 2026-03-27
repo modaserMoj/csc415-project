@@ -1,0 +1,7 @@
+{
+  "model": "modaserMoj/csc415-phase1-0.5b-fast",
+  "dataset": "data/svamp/test.parquet",
+  "accuracy": 0.39666666666666667,
+  "correct": 119,
+  "total": 300
+}

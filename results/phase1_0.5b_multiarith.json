@@ -1,0 +1,7 @@
+{
+  "model": "modaserMoj/csc415-phase1-0.5b-fast",
+  "dataset": "data/multiarith/test.parquet",
+  "accuracy": 0.4666666666666667,
+  "correct": 84,
+  "total": 180
+}
