@@ -47,7 +47,7 @@ if [ -f "data/math/test.parquet" ]; then
     --max_samples "$MAX_SAMPLES" \
     --max_new_tokens "$MAX_NEW_TOKENS" \
     --batch_size "$BATCH_SIZE" \
-    --progress_interval 5 \
+    # --progress_interval 5 \
     2>&1 | tee "logs/eval_${MODEL_NAME}_math.log"
 else
   echo "Skipping math: data/math/test.parquet not found"
