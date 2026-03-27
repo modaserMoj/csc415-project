@@ -52,18 +52,71 @@ def score_gsm8k(completion: str, ground_truth: str) -> float:
 
 def score_math(completion: str, ground_truth: str) -> float:
     """Check if the completion contains the correct final answer for MATH dataset."""
-    gt = ground_truth.strip().replace(",", "")
+    def _norm(s: str) -> str:
+        s = str(s)
+        s = s.replace("\n", " ").replace("\t", " ")
+        s = s.replace(",", "")
+        s = s.replace("\\left", "").replace("\\right", "")
+        s = re.sub(r"\s+", " ", s).strip()
+        # Remove spaces just inside parentheses/brackets.
+        s = re.sub(r"\(\s+", "(", s)
+        s = re.sub(r"\s+\)", ")", s)
+        s = re.sub(r"\[\s+", "[", s)
+        s = re.sub(r"\s+\]", "]", s)
+        # strip surrounding $...$
+        if len(s) >= 2 and s[0] == "$" and s[-1] == "$":
+            s = s[1:-1].strip()
+        return s
 
-    # Look for \boxed{answer}
-    boxed_match = re.search(r"\\boxed\{([^}]+)\}", completion)
-    if boxed_match:
-        answer_text = boxed_match.group(1).strip().replace(",", "")
-        if answer_text == gt:
+    def _norm_tight(s: str) -> str:
+        # Very aggressive normalization for LaTeX-y answers.
+        s = _norm(s)
+        s = s.replace(",", "")
+        s = re.sub(r"\s+", "", s)
+        return s
+
+    def _boxed_text(s: str) -> str | None:
+        # Extract \boxed{...} with brace matching to support nested braces
+        # (e.g., \boxed{\frac{\pi}{2}}).
+        last = None
+        i = 0
+        while True:
+            start = s.find("\\boxed{", i)
+            if start == -1:
+                break
+            j = start + len("\\boxed{")
+            depth = 1
+            while j < len(s) and depth > 0:
+                if s[j] == "{":
+                    depth += 1
+                elif s[j] == "}":
+                    depth -= 1
+                j += 1
+            if depth == 0:
+                last = s[start + len("\\boxed{") : j - 1]
+                i = j
+            else:
+                break
+        return last.strip() if last is not None else None
+
+    gt_raw = str(ground_truth)
+    gt_box = _boxed_text(gt_raw)
+    gt = _norm(gt_box if gt_box is not None else gt_raw)
+
+    comp_raw = str(completion)
+    comp_box = _boxed_text(comp_raw)
+    if comp_box is not None:
+        if _norm(comp_box) == gt or _norm_tight(comp_box) == _norm_tight(gt):
             return 1.0
 
-    # Fallback: last number
-    all_nums = re.findall(r"-?\d[\d,]*\.?\d*", completion.replace(",", ""))
-    if all_nums and all_nums[-1] == gt:
+    # Fallback: direct normalized substring match (helps for short LaTeX answers)
+    if gt and gt in _norm(comp_raw):
+        return 1.0
+
+    # Last resort: numeric last-token heuristic (works when gt is numeric)
+    gt_num = _norm(gt)
+    all_nums = re.findall(r"-?\d[\d,]*\.?\d*", comp_raw.replace(",", ""))
+    if all_nums and _norm(all_nums[-1]) == gt_num:
         return 1.0
 
     return 0.0
@@ -108,6 +161,7 @@ def score_multiarith(completion: str, ground_truth: str) -> float:
 SCORE_FNS = {
     "openai/gsm8k": score_gsm8k,
     "hendrycks/math": score_math,
+    "lighteval/MATH": score_math,
     "ChilleD/SVAMP": score_svamp,
     "ChilleD/MultiArith": score_multiarith,
     # Local shorthand names used in this repo's parquet files.

@@ -13,6 +13,7 @@ if [ -x "$PROJECT_ROOT/env/Scripts/python.exe" ]; then
 else
   PYTHON_BIN="${PYTHON_BIN:-python3}"
 fi
+PYTHON_UNBUFFERED="${PYTHON_UNBUFFERED:-1}"
 
 # Datasets
 DATASETS=(
@@ -39,13 +40,14 @@ echo "=========================================="
 
 if [ -f "data/gsm8k/test.parquet" ]; then
   PYTHONPATH="$PROJECT_ROOT:${PYTHONPATH:-}" \
-    "$PYTHON_BIN" eval/evaluate.py \
+    "$PYTHON_BIN" -u eval/evaluate.py \
     --model "$MODEL" \
     --dataset "data/gsm8k/test.parquet" \
     --output_file "results/${MODEL_NAME}_gsm8k.json" \
     --max_samples "$MAX_SAMPLES" \
     --max_new_tokens "$MAX_NEW_TOKENS" \
     --batch_size "$BATCH_SIZE" \
+    --progress_interval 5 \
     2>&1 | tee "logs/eval_${MODEL_NAME}_gsm8k.log"
 else
   echo "Skipping gsm8k: data/gsm8k/test.parquet not found"
@@ -57,13 +59,14 @@ echo "=========================================="
 
 if [ -f "data/math/test.parquet" ]; then
   PYTHONPATH="$PROJECT_ROOT:${PYTHONPATH:-}" \
-  "$PYTHON_BIN" eval/evaluate.py \
+  "$PYTHON_BIN" -u eval/evaluate.py \
     --model "$MODEL" \
     --dataset "data/math/test.parquet" \
     --output_file "results/${MODEL_NAME}_math.json" \
     --max_samples "$MAX_SAMPLES" \
     --max_new_tokens "$MAX_NEW_TOKENS" \
     --batch_size "$BATCH_SIZE" \
+    --progress_interval 5 \
     2>&1 | tee "logs/eval_${MODEL_NAME}_math.log"
 else
   echo "Skipping math: data/math/test.parquet not found"
@@ -75,13 +78,14 @@ echo "=========================================="
 
 if [ -f "data/svamp/test.parquet" ]; then
   PYTHONPATH="$PROJECT_ROOT:${PYTHONPATH:-}" \
-  "$PYTHON_BIN" eval/evaluate.py \
+  "$PYTHON_BIN" -u eval/evaluate.py \
     --model "$MODEL" \
     --dataset "data/svamp/test.parquet" \
     --output_file "results/${MODEL_NAME}_svamp.json" \
     --max_samples "$MAX_SAMPLES" \
     --max_new_tokens "$MAX_NEW_TOKENS" \
     --batch_size "$BATCH_SIZE" \
+    --progress_interval 5 \
     2>&1 | tee "logs/eval_${MODEL_NAME}_svamp.log"
 else
   echo "Skipping svamp: data/svamp/test.parquet not found"
@@ -93,13 +97,14 @@ echo "=========================================="
 
 if [ -f "data/multiarith/test.parquet" ]; then
   PYTHONPATH="$PROJECT_ROOT:${PYTHONPATH:-}" \
-  "$PYTHON_BIN" eval/evaluate.py \
+  "$PYTHON_BIN" -u eval/evaluate.py \
     --model "$MODEL" \
     --dataset "data/multiarith/test.parquet" \
     --output_file "results/${MODEL_NAME}_multiarith.json" \
     --max_samples "$MAX_SAMPLES" \
     --max_new_tokens "$MAX_NEW_TOKENS" \
     --batch_size "$BATCH_SIZE" \
+    --progress_interval 5 \
     2>&1 | tee "logs/eval_${MODEL_NAME}_multiarith.log"
 else
   echo "Skipping multiarith: data/multiarith/test.parquet not found"
