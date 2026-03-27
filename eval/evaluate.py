@@ -194,6 +194,7 @@ def main():
     )
 
     correct = 0
+    predictions = []
     total = len(df)
     total_batches = (total + args.batch_size - 1) // args.batch_size if total > 0 else 0
     progress_interval = 25
@@ -269,11 +270,21 @@ def main():
 
         # Score
         batch_correct = 0
-        for completion, gt, ds in zip(completions, ground_truths, data_sources):
+        for input_text, completion, gt, ds in zip(inputs, completions, ground_truths, data_sources):
             score_fn = SCORE_FNS.get(ds, lambda c, g: 0.0)
-            if score_fn(completion, gt) == 1.0:
+            is_correct = score_fn(completion, gt) == 1.0
+            if is_correct:
                 batch_correct += 1
                 correct += 1
+            predictions.append(
+                {
+                    "input": input_text,
+                    "output": completion,
+                    "ground_truth": str(gt),
+                    "data_source": ds,
+                    "correct": bool(is_correct),
+                }
+            )
         if batch_idx == 1 or batch_idx % progress_interval == 0 or batch_idx == total_batches:
             processed = i + len(batch)
             running_acc = correct / processed if processed > 0 else 0.0
@@ -291,6 +302,7 @@ def main():
         "accuracy": accuracy,
         "correct": correct,
         "total": total,
+        "predictions": predictions,
     }
 
     with open(args.output_file, "w") as f:
