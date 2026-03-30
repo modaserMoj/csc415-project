@@ -1,4 +1,4 @@
-# CSC 415 Project — Two-Phase RL Training (GRPO + RND)
+#Two-Phase RL Training (GRPO + RND)
 
 This repo trains a small LLM with a **two-phase RL pipeline**:
 

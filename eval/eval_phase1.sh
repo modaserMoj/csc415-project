@@ -24,9 +24,11 @@ DATASETS=(
 )
 DATASET_NAMES=(gsm8k math svamp multiarith)
 
-# Phase1 model
-MODEL="modaserMoj/csc415-phase1-0.5b-fast"
-MODEL_NAME="phase1_0.5b"
+# Phase1 checkpoint: matches phase1/scripts/train_phase1.sh (--output_dir checkpoints/phase1).
+# Override if you used a different run, e.g. README's checkpoints/phase1_0.5b_fast:
+#   MODEL=checkpoints/phase1_0.5b_fast MODEL_NAME=phase1_0.5b_fast bash eval/eval_phase1.sh
+MODEL="${MODEL:-checkpoints/phase1}"
+MODEL_NAME="${MODEL_NAME:-phase1}"
 
 # Default to a quick smoke test unless overridden.
 # For full runs, set MAX_SAMPLES=1000 (or your desired value).
@@ -34,24 +36,28 @@ MAX_SAMPLES="${MAX_SAMPLES:-1000}"
 MAX_NEW_TOKENS="${MAX_NEW_TOKENS:-512}"
 BATCH_SIZE="${BATCH_SIZE:-8}"
 
-echo "=========================================="
-echo "Evaluating: phase1_0.5b on math"
-echo "=========================================="
+for i in "${!DATASETS[@]}"; do
+  DATASET="${DATASETS[$i]}"
+  DATASET_NAME="${DATASET_NAMES[$i]}"
 
-if [ -f "data/math/test.parquet" ]; then
-  PYTHONPATH="$PROJECT_ROOT:${PYTHONPATH:-}" \
-  "$PYTHON_BIN" -u eval/evaluate.py \
-    --model "$MODEL" \
-    --dataset "data/math/test.parquet" \
-    --output_file "results/${MODEL_NAME}_math.json" \
-    --max_samples "$MAX_SAMPLES" \
-    --max_new_tokens "$MAX_NEW_TOKENS" \
-    --batch_size "$BATCH_SIZE" \
-    # --progress_interval 5 \
-    2>&1 | tee "logs/eval_${MODEL_NAME}_math.log"
-else
-  echo "Skipping math: data/math/test.parquet not found"
-fi
+  echo "=========================================="
+  echo "Evaluating: ${MODEL_NAME} on ${DATASET_NAME}"
+  echo "=========================================="
+
+  if [ -f "$DATASET" ]; then
+    PYTHONPATH="$PROJECT_ROOT:${PYTHONPATH:-}" \
+    "$PYTHON_BIN" -u eval/evaluate.py \
+      --model "$MODEL" \
+      --dataset "$DATASET" \
+      --output_file "results/${MODEL_NAME}_${DATASET_NAME}.json" \
+      --max_samples "$MAX_SAMPLES" \
+      --max_new_tokens "$MAX_NEW_TOKENS" \
+      --batch_size "$BATCH_SIZE" \
+      2>&1 | tee "logs/eval_${MODEL_NAME}_${DATASET_NAME}.log"
+  else
+    echo "Skipping ${DATASET_NAME}: ${DATASET} not found"
+  fi
+done
 
 echo ""
 echo "=== Phase1 evaluations complete ==="
@@ -60,10 +66,12 @@ echo ""
 # Print summary for phase1
 echo "Dataset   | Accuracy"
 echo "----------|---------"
-result_file="results/${MODEL_NAME}_math.json"
-if [ -f "$result_file" ]; then
-  acc=$("$PYTHON_BIN" -c "import json; d=json.load(open('$result_file')); print(f\"{d['accuracy']*100:.1f}%\")")
-  echo "$(printf '%-10s' "math")| $acc"
-else
-  echo "$(printf '%-10s' "math")| -"
-fi
+for d in "${DATASET_NAMES[@]}"; do
+  result_file="results/${MODEL_NAME}_${d}.json"
+  if [ -f "$result_file" ]; then
+    acc=$("$PYTHON_BIN" -c "import json; x=json.load(open('${result_file}')); print(f\"{x['accuracy']*100:.1f}%\")")
+    echo "$(printf '%-10s' "$d")| $acc"
+  else
+    echo "$(printf '%-10s' "$d")| -"
+  fi
+done
