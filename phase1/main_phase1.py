@@ -7,7 +7,7 @@ the base model keeps generations coherent.
 
 Usage:
     python phase1/main_phase1.py \
-        --model Qwen/Qwen2.5-1.5B \
+        --model Qwen/Qwen2.5-0.5B \
         --train_file data/phase1_mix/train.parquet \
         --eval_file data/phase1_mix/test.parquet
 """
