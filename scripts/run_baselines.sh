@@ -13,7 +13,7 @@ LOG_NAME=baseline_gsm8k \
     bash phase2/scripts/train_phase2.sh
 
 echo "=== Baseline-B: GRPO on MATH ==="
-BASE_MODEL=Qwen/Qwen2.5-1.5B \
+BASE_MODEL=Qwen/Qwen2.5-0.5B \
 DATA_DIR=data/math \
 OUTPUT_DIR=checkpoints/baseline_math \
 LOG_NAME=baseline_math \
