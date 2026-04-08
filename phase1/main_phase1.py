@@ -48,7 +48,7 @@ def make_rnd_reward_fn(rnd_config: dict):
 
 def main():
     parser = argparse.ArgumentParser(description="Phase 1: GRPO + RND pretraining")
-    parser.add_argument("--model", default="Qwen/Qwen2.5-1.5B")
+    parser.add_argument("--model", default="Qwen/Qwen2.5-0.5B")
     parser.add_argument("--train_file", required=True)
     parser.add_argument("--eval_file", required=True)
     parser.add_argument("--output_dir", default="checkpoints/phase1")
