@@ -2,7 +2,7 @@
 
 set -euxo pipefail
 
-: "${BASE_MODEL:=Qwen/Qwen2.5-1.5B}"
+: "${BASE_MODEL:=Qwen/Qwen2.5-0.5B}"
 : "${DATA_DIR:=data/phase1_mix}"
 
 PROJECT_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
