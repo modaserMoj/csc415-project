@@ -6,7 +6,7 @@ PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$PROJECT_ROOT"
 
 echo "=== Baseline-A: GRPO on GSM8K ==="
-BASE_MODEL=Qwen/Qwen2.5-1.5B \
+BASE_MODEL=Qwen/Qwen2.5-0.5B \
 DATA_DIR=data/gsm8k \
 OUTPUT_DIR=checkpoints/baseline_gsm8k \
 LOG_NAME=baseline_gsm8k \
